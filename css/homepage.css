@@ -41,6 +41,8 @@ section.view1 {
     background-size: cover;
     background-position: center;
     height: 100vh;
+
+    position: relative;
 }
 section.view {
     background: #fff;
