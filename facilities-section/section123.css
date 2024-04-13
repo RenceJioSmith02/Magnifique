@@ -46,7 +46,7 @@
     /* background-color: orange; */
 }
 .facilities-container .box .text h2 {
-    font-weight: 100;
+    font-weight: 600;
 }
 
 .box.two .img {
@@ -56,9 +56,14 @@
 /* top box */
 .facilities-container .top-package-title {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
     width: 100%;
     
+}
+.facilities-container .top-package-title h2{
+    font-size:30px;
 }
 .facilities-container .top-package-title p {
     border-bottom: 3px solid #000;

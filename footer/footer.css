@@ -61,6 +61,10 @@
     justify-content: right;
 }
 
+.box.text1 .contact {
+    text-align: right;
+}
+
 .footer .box.text2{
     display: flex;
     justify-content: center;
