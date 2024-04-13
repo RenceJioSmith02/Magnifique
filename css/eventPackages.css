@@ -165,7 +165,7 @@ p:nth-of-type(3) {
     left: 50%;
     transform: translate(-50%,-50%);
 
-    padding: 20px 20px 20px 150px;
+    padding: 20px;
     border-radius: 5px;
 
     width: 100%;
@@ -195,10 +195,19 @@ p:nth-of-type(3) {
 
 
 
+@media screen and (max-width: 870px) {
+    .modal-content {
+        position: absolute;
+        top: 50%;
+        left: 53%;
+        transform: translate(-50%,-50%);
 
-@media screen and (max-width: 600px) {
-    body .reserve-btn {
-        bottom: 20px;
-        right: 20px;
+        width: calc(100% - 100px);
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .modal-content {
+        left: 56%;
     }
 }
