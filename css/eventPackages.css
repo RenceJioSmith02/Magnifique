@@ -32,75 +32,6 @@ body {
     max-width: 1920px;
 }
 
-/* section {
-    position: relative;
-    width: calc(100% - 30px);
-    top: 0;
-    left: 0;
-} */
-
-/* .parallax-1 {
-    background: url('../img/gallery/tranding1.PNG') no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 50vh;
-    width: 100%;
-}
-
-.parallax-2 {
-    background: url('../img/gallery/tranding2.png') no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 30vh;
-    width: 100%;
-}
-
-.parallax-3 {
-    background: url('../img/gallery/tranding3.png') no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 30vh;
-}
-
-.parallax-4 {
-    background: url('../img/gallery/tranding4.png') no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 30vh;
-}
-
-.parallax-5 {
-    background: url('../img/gallery/tranding5.png') no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 30vh;
-}
-
-.parallax-6 {
-    background: url('../img/gallery/tranding6.png') no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 30vh;
-}
-
-.parallax-7 {
-    background: url('../img/gallery/tranding7.png') no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 30vh;
-}
-
-.parallax-inner {
-    padding: 10% 0;
-} */
-
 body .reserve-btn {
     position: fixed;
     bottom: 50px;
@@ -121,26 +52,6 @@ body .reserve-btn a h3:hover {
     background: #fff;
     border: 1px solid #071740;
 }
-
-/* p {
-    font-size: 16px;
-    color: #555;
-    text-align: justify;
-    line-height: 30px;
-    margin: 0 50px 40px;
-} */
-
-/* p:nth-of-type(2),
-p:nth-of-type(3) {
-    margin: 40px 50px;
-} */
-
-/* @media screen and (max-width:870px) {
-    body {
-        margin-top: 0;
-    }
-} */
-
 
 
 /* styles.css */
@@ -212,3 +123,133 @@ p:nth-of-type(3) {
         left: 56%;
     }
 }
+
+
+
+
+
+/* reserve now form popup */
+.reserve-form-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  
+    /* padding:25px; */
+    /* min-height: 100vh; */
+    /* background: linear-gradient(90deg, #2ecc71 60%, #27ae60 40.1%); */
+  }
+  
+  .reserve-form-container form{
+    padding: 5px 20px 20px 20px;
+    width: 100%;
+    background: #fff;
+    /* box-shadow: 0 5px 10px rgba(0,0,0,.1); */
+  }
+  
+  .reserve-form-container form .row{
+    display: flex;
+    flex-wrap: wrap;
+    gap:15px;
+  }
+  
+  .reserve-form-container form .row .col{
+    flex:1 1 250px;
+    /* padding: 20px 5px 5px 5px; */
+  }
+  
+  .reserve-form-container form .row .col .title{
+    font-size: 20px;
+    color:#333;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+  }
+  
+  .reserve-form-container form .row .col .inputBox{
+    margin:10px 0;
+  }
+  
+  .reserve-form-container form .row .col .inputBox span{
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  .reserve-form-container form .row .col .inputBox input{
+    width: 100%;
+    border:1px solid #ccc;
+    padding:10px 15px;
+    font-size: 15px;
+    text-transform: none;
+  }
+  
+  .reserve-form-container form .row .col .inputBox input:focus{
+    border:1px solid #000;
+  }
+  
+  .reserve-form-container form .row .col .flex{
+    display: flex;
+    gap:15px;
+  }
+  
+  .reserve-form-container form .row .col .flex .inputBox{
+    margin-top: 5px;
+  }
+  
+  .reserve-form-container form .row .col .inputBox img{
+    height: 34px;
+    margin-top: 5px;
+    filter: drop-shadow(0 0 1px #000);
+  }
+  
+  .reserve-form-container form .save-btn,
+  .reserve-form-container form .order-btn{
+    width: 100%;
+    padding:12px;
+    font-size: 17px;
+    background: #27ae60;
+    color:#fff;
+    margin-top: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .reserve-form-container form .save-btn:hover,
+  .reserve-form-container form .order-btn:hover{
+    background: #2ecc71;
+  }
+  
+
+  .textarea-container {
+    width: 100%; 
+    max-width: 600px;
+    margin: 10px auto; 
+
+  }
+  textarea {
+    width: 100%; 
+    min-height: 60px; 
+    max-height: 300px; 
+    resize: vertical; 
+    box-sizing: border-box; 
+  }
+
+  .reserve-form-container form .row .col .inputBox select{
+    width: 100%;
+    height: 40px;
+    background: none;
+    border: 1px solid #ccc;
+    color: gray;
+    padding:10px 15px;
+    font-size: 15px;
+    text-transform: none;
+  }
+
+  .reserve-form-container form .row .col .inputBox select option {
+    width: 100%;
+    height: 40px;
+    background: white;
+    border: 1px solid #ccc;
+    color: gray;
+    padding:10px 15px;
+    font-size: 15px;
+    text-transform: none;
+  }
