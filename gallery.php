@@ -15,7 +15,7 @@
     <div class="main-container">
         <header>
             <?php include 'nav/nav.html'; ?>
-            <?php include 'login/login.html'; ?>
+            <?php include 'login/login.php'; ?>
         </header>
 
         <section>
