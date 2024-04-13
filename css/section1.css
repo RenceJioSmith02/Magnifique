@@ -12,22 +12,22 @@
     justify-content: space-between;
     align-content: space-around;
     flex-wrap: wrap;
-    padding: 0 40px;
-    margin-top: 50px;
-    height: 100vh;
+    padding: 40px;
+    margin-top: 40px;
+    height: fit-content;
 
     /* background-color: green; */
 }
 
 .card-container .card {
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     flex-direction: column;
 
     position: relative;
 
-    height: 290px;
+    height: 360px;
     width: 100%;
     max-width: 250px;
     min-width: 200px;
@@ -38,13 +38,13 @@
     background: rgba(0,0,0,0.1);
 }
 
-.card-container .card:hover {
+/* .card-container .card:hover {
     height: 430px;
-}   
+}    */
 
 .card .img {
     position: absolute;
-    top: 1%;
+    top: 0;
     left: 50%;
     transform: translate(-50%, -50%);
     
@@ -65,35 +65,35 @@
 
 .card .top-text {
     padding: 5px;
-    margin-top: 250px;
+    margin-top: 80px;
     text-align: center;
 
     /* background-color: YELLOW; */
 }
-.card:hover .top-text {
+/* .card:hover .top-text {
     margin-top: 50px;
-}
+} */
 .card .top-text .title {
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 600;
     color: #202020;
 }
-.card:hover .top-text .title {
+/* .card:hover .top-text .title {
     font-size: 17px;
-}
+} */
 .card .bottom-text {
     padding: 0 20px 10px 20px;
     margin-top: 10px;
 
-    opacity: 0;
-    visibility: hidden;
+    /* opacity: 0; */
+    /* visibility: hidden; */
     transform: 0.1s;
 }
-.card:hover .bottom-text {
+/* .card:hover .bottom-text {
     opacity: 1;
     visibility: visible;
     transition-delay: 0.1s;
-}
+} */
 .card .bottom-text p {
     text-align: justify;
 }
@@ -102,7 +102,7 @@
     bottom: 20px;
     left: 20px;
 }
-.card .bottom-text .readmore-btn a {
+.card .bottom-text .readmore-btn button {
     text-decoration: none;
     background: #e74c3c;
     color: #fff;
@@ -112,24 +112,19 @@
     transition: 0.2s;
 }
 
-.card .bottom-text .readmore-btn a:active {
+.card .bottom-text .readmore-btn button:active {
     background: #fff;
     color: #e74c3c;
     border: 1px solid #e74c3c;
 }
 
 
-
 .top-package-title {
-    position: absolute;
-    top: -1%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
     display: flex;
     flex-direction: column;
-    width: 70%;
+    width: 100%;
     padding: 20px 30px;
+    margin-bottom: 60px;
 
     background-color: white;
 }
