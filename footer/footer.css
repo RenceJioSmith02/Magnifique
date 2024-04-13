@@ -120,12 +120,17 @@
 }
 
 .footer .copyright {
+    
     position: absolute;
     bottom: 15px;
-    right: 15px;
     color: #fff;
+    margin-top: 10px;
 
     /* background-color: yellow; */
+}
+
+.font{
+    font-size: smaller ;
 }
 
 @media  screen and (max-width: 800px) {

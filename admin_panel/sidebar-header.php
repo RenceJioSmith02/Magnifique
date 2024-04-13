@@ -9,9 +9,9 @@ if (isset($_GET['logout'])) {
 <div class="sidebar close">
     <div class="logo-details">
       <div class="img">
-        <img src="../img/bg&icons/logo.png" width="30px" alt="">
+        <img src="../relativeFiles/images/logo&bg/logo_WO_text.png" width="30px" alt="">
       </div>
-      <span class="logo_name">Magnifique</span>
+      <span class="logo_name">Xchords</span>
     </div>
       <ul class="nav-links">
 
@@ -29,21 +29,28 @@ if (isset($_GET['logout'])) {
           <div class="iocn-link">
             <a href="table.php?table=Reservation">
               <i class='bx bx-store'></i>
-              <span class="link_name">Reservation</span>
+              <span class="link_name">Products</span>
             </a>
             <ul class="sub-menu blank">
-              <li><a class="link_name" href="table.php?table=Reservation">Reservation</a></li>
+              <li><a class="link_name" href="table.php?table=Orders">Reservation</a></li>
             </ul>
           </div>
+          <ul class="sub-menu">
+            <li><a class="link_name" href="table.php?table=Products">Products</a></li>
+            <li><a href="table.php?category=Acoustic">Acoustic</a></li>
+            <li><a href="table.php?category=Electric">Electric</a></li>
+            <li><a href="table.php?category=Bass">Bass</a></li>
+            <li><a href="table.php?category=Ukalele">Ukalele</a></li>
+          </ul>
         </li>
 
         <li>
           <a href="table.php?table=Event">
             <i class='bx bx-receipt'></i>
-            <span class="link_name">Event Packages</span>
+            <span class="link_name">Orders</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="table.php?table=Event">Event Packages</a></li>
+            <li><a class="link_name" href="table.php?table=Orders">Event Packages</a></li>
           </ul>
         </li>
 
@@ -53,7 +60,7 @@ if (isset($_GET['logout'])) {
             <span class="link_name">User</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="table.php?table=Users">User</a></li>
+            <li><a class="link_name" href="table.php?table=Users">Users</a></li>
           </ul>
         </li>
 

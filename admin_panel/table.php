@@ -271,7 +271,7 @@
 
 
   <!-- side bar and pop-ups script -->
-    <script src="admin-pop.js"></script>
+    <script src="../relativeFiles/js/admin-pop.js"></script>
 
     
 
