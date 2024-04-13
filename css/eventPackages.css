@@ -86,7 +86,7 @@ p:nth-of-type(3) {
   }
   
   .modal-content {
-    background: url('../img/bg&icons/pop-bg.jpg') no-repeat;
+    background: url('../img/bg&icons/bg.jpg') no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
