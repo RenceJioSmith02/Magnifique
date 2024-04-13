@@ -12,7 +12,7 @@
   left: 0;
   height: 100%;
   width: 260px;
-  background: #191919;
+  background: linear-gradient(to right, #071740, #132955);
   z-index: 100;
   transition: all 0.5s ease;
 }
@@ -63,7 +63,7 @@
   transition: all 0.4s ease;
 }
 .sidebar .nav-links li:hover{
-  background: #141414;
+  background: #132959;
 }
 .sidebar .nav-links li .iocn-link{
   display: flex;
@@ -72,6 +72,10 @@
 }
 .sidebar.close .nav-links li .iocn-link{
   display: block
+}
+.sidebar .nav-links li button {
+  background: none;
+  border: none;
 }
 .sidebar .nav-links li i{
   height: 50px;
@@ -107,7 +111,7 @@
 .sidebar .nav-links li .sub-menu{
   padding: 6px 6px 14px 80px;
   margin-top: -10px;
-  background: #141414;
+  background: #132961;
   display: none;
 }
 .sidebar .nav-links li.showMenu .sub-menu{
@@ -176,7 +180,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #141414;
+  background: #132960;
   padding: 12px 0;
   transition: all 0.5s ease;
 }
