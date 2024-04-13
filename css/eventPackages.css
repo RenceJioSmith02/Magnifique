@@ -32,75 +32,6 @@ body {
     max-width: 1280px;
 }
 
-/* section {
-    position: relative;
-    width: calc(100% - 30px);
-    top: 0;
-    left: 0;
-} */
-
-/* .parallax-1 {
-    background: url('../img/gallery/tranding1.PNG') no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 50vh;
-    width: 100%;
-}
-
-.parallax-2 {
-    background: url('../img/gallery/tranding2.png') no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 30vh;
-    width: 100%;
-}
-
-.parallax-3 {
-    background: url('../img/gallery/tranding3.png') no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 30vh;
-}
-
-.parallax-4 {
-    background: url('../img/gallery/tranding4.png') no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 30vh;
-}
-
-.parallax-5 {
-    background: url('../img/gallery/tranding5.png') no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 30vh;
-}
-
-.parallax-6 {
-    background: url('../img/gallery/tranding6.png') no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 30vh;
-}
-
-.parallax-7 {
-    background: url('../img/gallery/tranding7.png') no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 30vh;
-}
-
-.parallax-inner {
-    padding: 10% 0;
-} */
-
 body .reserve-btn {
     position: fixed;
     bottom: 50px;
@@ -155,7 +86,7 @@ p:nth-of-type(3) {
   }
   
   .modal-content {
-    background: url('../img/bg&icons/pop-bg.jpg') no-repeat;
+    background: url('../img/bg&icons/bg.jpg') no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;

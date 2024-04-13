@@ -36,7 +36,7 @@
 
                 <div class="card">
                     <div class="img">
-                        <img src="img/gallery/tranding1.PNG" alt="">
+                        <img src="img/gallery/wedding.jpg" alt="">
                     </div>
                     <div class="top-text">
                         <div class="title">
@@ -48,14 +48,14 @@
                             Elevate your wedding preparations with the Unifying Love Wedding Package offered by Magnifique Event Co. Access a carefully curated list of reliable suppliers, guaranteeing a smooth and hassle-free journey towards your dream wedding.
                         </p>
                         <div class="readmore-btn">
-                            <button onclick="openModal('UnifyingLove')">Read more</button>
+                             <button onclick="openModal('UnifyingLove')">Read more</button> 
                         </div>
                     </div>
                 </div>
 
                 <div class="card">
                     <div class="img">
-                        <img src="img/gallery/tranding1.PNG" alt="">
+                        <img src="img/gallery/ANNIVERSARY.jpg" alt="">
                     </div>
                     <div class="top-text">
                         <div class="title">
@@ -93,7 +93,7 @@
                 
                 <div class="card">
                     <div class="img">
-                        <img src="img/gallery/tranding1.PNG" alt="">
+                        <img src="img/gallery/venue.jpg" alt="">
                     </div>
                     <div class="top-text">
                         <div class="title">
@@ -123,8 +123,10 @@
 
                 <div class="package-title">
                     <h2>UNIFYING LOVE: Wedding Package SET  w/ Ceremony</h2>
+                    
                     </div>
                     <div class="pack">
+                    <br>
                         <h3>Venue</h3>
                         <ul>
                             <li>
@@ -171,6 +173,7 @@
                         <br>
                     </div>
                     <div class="pack">
+                        <br>
                         <h3>Flowers for the Entourage</h3>
                         <ul>
                             <li>
@@ -213,7 +216,8 @@
                 </div>
                 <div class="package-container">
 
-                    <div class="pack">    
+                    <div class="pack">  
+                        <br>  
                         <h3>Delightful Dining Experience with Elegant Arrangements</h3>
                         <ul>
                             <li>
@@ -265,7 +269,8 @@
                         </ul>
                         <br>
                     </div>
-                    <div class="pack">                    
+                    <div class="pack">  
+                        <br>                  
                         <h3>Lights and Sounds</h3>
                         <ul>
                             <li>Sounds Setup</li>
@@ -322,12 +327,14 @@
 
                 </div>
 
+                
                 <div class="package-container">
-
+                    <br>
                     <div class="package-title">
                         <h2>UNIFYING LOVE: Wedding Package SET  w/o Ceremony</h2>
                     </div>
                     <div class="pack">
+                        <br>
                         <h3>Delightful Dining Experience with Elegant Arrangements</h3>
                         <ul>
                             <li>Your choice of buffet menu (1 soup, 2 vegetable, 1 pork or beef, 1 chicken, 1 fish, 1 pasta, 1 dessert, rice, flowing iced tea, and coffee)</li>
@@ -350,6 +357,7 @@
                     </div>
 
                     <div class="pack">
+                        <br>
                         <h3>Photo and Video Coverage</h3>
                         <ul>
                             <li>2 Photographers</li>
@@ -368,6 +376,7 @@
                 <div class="package-container">
 
                     <div class="pack">
+                        <br>
                         <h3>Lights and Sounds</h3>
                         <ul>
                             <li>Sounds Setup 
@@ -438,6 +447,7 @@
                     </div>
 
                     <div class="pack">
+                        <br>
                         <h3>Venue</h3>
                         <ul>
                             <li>Romantic and cozy venue of your choice</li>
@@ -462,6 +472,7 @@
                     </div>
 
                     <div class="pack">
+                        <br>
                         <h3>Entertainment</h3>
                         <ul>
                             <li>Live music or a musician to serenade the couple</li>
@@ -485,10 +496,12 @@
                 <div class="package-container">
 
                     <div class="package-title">
+                        
                         <h2>ETERNAL BLISS: Anniversary Package w/ Guests</h2>
                     </div>
 
                     <div class="pack">
+                    <br>
                         <h3>Venue</h3>
                         <ul>
                             <li>Romantic and cozy venue of your choice</li>
@@ -509,6 +522,7 @@
                     </div>
 
                     <div class="pack">
+                        <br>
                         <h3>Entertainment</h3>
                         <ul>
                             <li>Live music or a musician to serenade the couple</li>
@@ -532,6 +546,7 @@
                     <div class="package-container">
 
                     <div class="pack">
+                        <br>
                         <h3>Lights and Sounds</h3>
                         <ul>
                             <li>Sounds Setup
@@ -565,6 +580,7 @@
                     </div>
 
                     <div class="pack">
+                        <br>
                         <h3>Freebies</h3>
                         <ul>
                             <li>Complimentary anniversary gift from the venue</li>
@@ -595,6 +611,7 @@
                     </div>
 
                     <div class="pack">
+                        <br>
                         <h3>Venue</h3>
                         <ul>
                             <li>Vibrant Birthday Bash Venue</li>
@@ -618,6 +635,7 @@
                     </div>
 
                     <div class="pack">
+                        <br>
                         <h3>Dining Experience</h3>
                         <ul>
                             <li>Customizable Menu Options including Appetizers, Main Courses, and Desserts</li>
