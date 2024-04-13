@@ -36,14 +36,14 @@
 
         public function Print($start,$limit,$tablename,$primarykey) {
             switch ($tablename) {
-                case 'products':
+                case 'Reservation':
                     $sql = "SELECT p.PID, p.Pname, c.category, p.Pprice, p.Pdescription, p.Pimage 
-                    FROM " . $tablename . " AS p 
+                    FROM products AS p 
                     JOIN category AS c ON p.CID = c.CID 
                     ORDER BY p.PID ASC LIMIT ?, ?";
 
                     break;
-                case 'orders':
+                case 'Event':
                     $sql = "SELECT o.orderID, p.PID, a.name, p.Pname, c.quantity , p.Pprice 
                     FROM orders AS o
                         JOIN accounts AS a ON o.accountID = a.accountID
@@ -56,37 +56,8 @@
                     ORDER BY salesID ASC LIMIT  ?, ?";
                     break;
                 case 'accounts':
-                    $sql = "SELECT * FROM " . $tablename . " ORDER BY " . $primarykey . " ASC LIMIT  ?, ?";
+                    $sql = "SELECT * FROM accounts ORDER BY " . $primarykey . " ASC LIMIT  ?, ?";
                     break;
-                case 'acoustic':
-                    $sql = "SELECT p.* , c.category FROM products as p
-                            JOIN category as c
-                            ON c.CID = p.CID
-                            WHERE p.CID = '1'
-                            ORDER BY PID ASC LIMIT  ?, ?";
-                    break;
-                case 'electric':
-                    $sql = "SELECT p.* , c.category FROM products as p
-                            JOIN category as c
-                            ON c.CID = p.CID
-                            WHERE p.CID = '2'
-                            ORDER BY PID ASC LIMIT  ?, ?";
-                    break;
-                case 'bass':
-                    $sql = "SELECT p.* , c.category FROM products as p
-                            JOIN category as c
-                            ON c.CID = p.CID
-                            WHERE p.CID = '3'
-                            ORDER BY PID ASC LIMIT  ?, ?";
-                    break;
-                case 'ukalele':
-                    $sql = "SELECT p.* , c.category FROM products as p
-                            JOIN category as c
-                            ON c.CID = p.CID
-                            WHERE p.CID = '4'
-                            ORDER BY PID ASC LIMIT  ?, ?";
-                    break;
-
                 default:
                     # code...
                     break;

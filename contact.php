@@ -48,8 +48,10 @@
                         </div>
 
                         <div class="input">
-                            <label for="message"><p>Type Your Message Here</p></label><br>
-                            <input type="text" id="message" name="message" required>
+                            <label for="message"><p>Type Your Message Here</p></label><br><br>
+                            <div class="textarea-container">
+                                <textarea name="" id="" cols="57" rows="3"></textarea>
+                            </div>
                         </div>
                     </div>
                     <div class="submit-btn">

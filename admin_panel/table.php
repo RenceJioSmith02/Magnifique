@@ -25,32 +25,33 @@
     // $tablename = "products";
     // $primarykey = "PID";
 
-    if (isset($_GET['table']) && $_GET['table'] == 'Products') {
-        $tablename = "products";
+    if (isset($_GET['table']) && $_GET['table'] == 'Reservation') {
+        $tablename = "Reservation";
         $primarykey = "PID";
-    } elseif (isset($_GET['table']) && $_GET['table'] == 'Orders') {
-        $tablename = "orders";
+    } elseif (isset($_GET['table']) && $_GET['table'] == 'Event') {
+        $tablename = "Event";
         $primarykey = "orderID";
     } elseif (isset($_GET['table']) && $_GET['table'] == 'Users') {
         $tablename = "accounts";
         $primarykey = "accountID";
+    }
         
         //category 
-    } elseif (isset($_GET['category']) && $_GET['category'] == 'Acoustic') {
-        $tablename = "acoustic";
-        $primarykey = "1";
-    } elseif (isset($_GET['category']) && $_GET['category'] == 'Electric') {
-        $tablename = "electric";
-        $primarykey = "2";
-    } elseif (isset($_GET['category']) && $_GET['category'] == 'Bass') {
-        $tablename = "bass";
-        $primarykey = "3";
-    } elseif (isset($_GET['category']) && $_GET['category'] == 'Ukalele') {
-        $tablename = "ukalele";
-        $primarykey = "4";
-    } 
+    // } elseif (isset($_GET['category']) && $_GET['category'] == 'Acoustic') {
+    //     $tablename = "acoustic";
+    //     $primarykey = "1";
+    // } elseif (isset($_GET['category']) && $_GET['category'] == 'Electric') {
+    //     $tablename = "electric";
+    //     $primarykey = "2";
+    // } elseif (isset($_GET['category']) && $_GET['category'] == 'Bass') {
+    //     $tablename = "bass";
+    //     $primarykey = "3";
+    // } elseif (isset($_GET['category']) && $_GET['category'] == 'Ukalele') {
+    //     $tablename = "ukalele";
+    //     $primarykey = "4";
+    // } 
 
-    if (isset($_GET['table']) || isset($_GET['category']) || isset($_GET['page'])) {
+    if (isset($_GET['table']) || isset($_GET['page'])) {
         $result = $query->Print($start, $limit, $tablename, $primarykey);
         $rows = $result;
     }
@@ -93,9 +94,9 @@
                 <main class="table">
                 
                 <?php 
-                    if (isset($_GET['table']) && $_GET['table'] == 'Products') {
+                    if (isset($_GET['table']) && $_GET['table'] == 'Reservation') {
                         echo "<div class='title-btn'>
-                                <h3>Products</h3>
+                                <h3>Reservation</h3>
                                 <div class='add-btn'>
                                     <a href='pop-ups.php?pop=addProduct'>
                                         <ion-icon name='bag-add-outline'></ion-icon>
@@ -103,21 +104,22 @@
                                 </div>
                                </div>
                             ";
-                    } elseif (isset($_GET['table']) && $_GET['table'] == 'Orders') {
-                        echo "<center><h3>Orders</h3></center>";
+                    } elseif (isset($_GET['table']) && $_GET['table'] == 'Event') {
+                        echo "<center><h3>Event Packages</h3></center>";
                     } elseif (isset($_GET['table']) && $_GET['table'] == 'Users') {
-                        echo "<center><h3>Users</h3></center>";
+                        echo "<center><h3>User Accounts</h3></center>";
+                    }
                         
                         //category 
-                    } elseif (isset($_GET['category']) && $_GET['category'] == 'Acoustic') {
-                        echo "<center><h3>Acoustic</h3></center>";
-                    } elseif (isset($_GET['category']) && $_GET['category'] == 'Electric') {
-                        echo "<center><h3>Electric</h3></center>";
-                    } elseif (isset($_GET['category']) && $_GET['category'] == 'Bass') {
-                        echo "<center><h3>Bass</h3></center>";
-                    } elseif (isset($_GET['category']) && $_GET['category'] == 'Ukalele') {
-                        echo "<center><h3>Ukalele</h3></center>";
-                    } 
+                    // } elseif (isset($_GET['category']) && $_GET['category'] == 'Acoustic') {
+                    //     echo "<center><h3>Acoustic</h3></center>";
+                    // } elseif (isset($_GET['category']) && $_GET['category'] == 'Electric') {
+                    //     echo "<center><h3>Electric</h3></center>";
+                    // } elseif (isset($_GET['category']) && $_GET['category'] == 'Bass') {
+                    //     echo "<center><h3>Bass</h3></center>";
+                    // } elseif (isset($_GET['category']) && $_GET['category'] == 'Ukalele') {
+                    //     echo "<center><h3>Ukalele</h3></center>";
+                    // } 
                 ?>
         
                 <div class="table-body">
@@ -126,7 +128,7 @@
                     <!-- 
                         TABLE HEAD 
                     -->
-                        <?php if (isset($_GET['table']) && $_GET['table'] == 'Products' || isset($_GET['category'])) { ?>
+                        <?php if (isset($_GET['table']) && $_GET['table'] == 'Reservation') { ?>
                             <thead>
                                 <tr>
                                     <th>no.</th>
@@ -139,7 +141,7 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                        <?php } elseif (isset($_GET['table']) && $_GET['table'] == 'Orders') {?>
+                        <?php } elseif (isset($_GET['table']) && $_GET['table'] == 'Event') {?>
                             <thead>
                                 <tr>
                                     <th>no.</th>
@@ -167,7 +169,7 @@
                         <!-- 
                             TABLE BODY 
                         -->
-                        <?php if (isset($_GET['table']) && $_GET['table'] == 'Products') { ?>
+                        <?php if (isset($_GET['table']) && $_GET['table'] == 'Reservation') { ?>
                             <tbody id="results">
 
                             <?php while ($row = mysqli_fetch_assoc($rows)){  ?>
@@ -191,7 +193,7 @@
                             <?php } ?>
 
                             </tbody>
-                        <?php } elseif (isset($_GET['table']) && $_GET['table'] == 'Orders') {?>
+                        <?php } elseif (isset($_GET['table']) && $_GET['table'] == 'Event') {?>
                         
                             <?php 
                                 // $row = mysqli_fetch_assoc($rows);
@@ -239,30 +241,6 @@
                                         </td>
                                     </tr>
                                 <?php } ?>
-                            </tbody>
-                        <?php } elseif (isset($_GET['category'])) {?>
-                            <tbody id="results">
-
-                            <?php while ($row = mysqli_fetch_assoc($rows)){  ?>
-                                <tr>
-                                    <td><?php echo ++$count ?></td>
-                                    <td><?php echo $row['Pname'] ?></td>
-                                    <td><?php echo $row['category'] ?></td>
-                                    <td><?php echo $row['Pprice'] ?></td>
-                                    <td><?php echo $row['Pdescription'] ?></td>
-                                    <td>
-                                        
-                                        <a href="pop-ups.php?pop=viewSpecs&id=<?php echo $row['PID'] ?>"><ion-icon name="eye-outline"></a>
-
-                                    </td>
-                                    <td><img src="<?php echo $row['Pimage'] ?>" alt="Product Image" style="max-width: 100px;"></td>
-                                    <td>
-                                        <a href="pop-ups.php?pop=updateProduct&updateId=<?php echo $row['PID'] ?>"><ion-icon name="create-outline"></a>
-                                        <a href="table.php?deleteid=<?php echo $row['PID'] ?>" onclick="return confirm('Are you sure you want to delete this product?')"><ion-icon name="trash"></ion-icon></a>
-                                    </td>
-                                </tr>
-                            <?php } ?>
-
                             </tbody>
                         <?php } ?>
                             

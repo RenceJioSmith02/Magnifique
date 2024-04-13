@@ -27,23 +27,23 @@ if (isset($_GET['logout'])) {
 
         <li>
           <div class="iocn-link">
-            <a href="table.php?table=Products">
+            <a href="table.php?table=Reservation">
               <i class='bx bx-store'></i>
               <span class="link_name">Reservation</span>
             </a>
             <ul class="sub-menu blank">
-              <li><a class="link_name" href="table.php?table=Orders">Reservation</a></li>
+              <li><a class="link_name" href="table.php?table=Reservation">Reservation</a></li>
             </ul>
           </div>
         </li>
 
         <li>
-          <a href="table.php?table=Orders">
+          <a href="table.php?table=Event">
             <i class='bx bx-receipt'></i>
             <span class="link_name">Event Packages</span>
           </a>
           <ul class="sub-menu blank">
-            <li><a class="link_name" href="table.php?table=Orders">Event Packages</a></li>
+            <li><a class="link_name" href="table.php?table=Event">Event Packages</a></li>
           </ul>
         </li>
 
@@ -64,7 +64,6 @@ if (isset($_GET['logout'])) {
           </div>
           <div class="name-job">
               <div class="profile_name">ADMINISTRATOR</div>
-              <div class="job">Xchords</div>
           </div>
             <form method="GET" action="<?php echo $_SERVER['PHP_SELF']; ?>">
               <button type="submit" name="logout" value="1">

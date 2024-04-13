@@ -47,9 +47,9 @@
                         <p>
                             Elevate your wedding preparations with the Unifying Love Wedding Package offered by Magnifique Event Co. Access a carefully curated list of reliable suppliers, guaranteeing a smooth and hassle-free journey towards your dream wedding.
                         </p>
-                        <div class="readmore-btn">
-                             <button onclick="openModal('UnifyingLove')">Read more</button> 
-                        </div>
+                    </div>
+                    <div class="card-btn">
+                         <button onclick="openModal('UnifyingLove')">Read more</button>
                     </div>
                 </div>
 
@@ -66,9 +66,9 @@
                         <p>
                             Simplify your anniversary preparations with Magnifique Event Co.'s Eternal Bliss Anniversary Package, featuring thoughtfully curated suppliers to elevate your celebration of enduring love.
                         </p>
-                        <div class="readmore-btn">
-                            <button onclick="openModal('EternalBliss')">Read more</button>
-                        </div>
+                    </div>
+                    <div class="card-btn">
+                        <button onclick="openModal('EternalBliss')">Read more</button>
                     </div>
                 </div>
         
@@ -85,9 +85,9 @@
                         <p>
                             Transform your birthday celebration through Magnifique Event Co., offering a unique and unforgettable experience under the Azure Skies. Tailored to your desires, it promises to make your special day truly remarkable.
                         </p>
-                        <div class="readmore-btn">
-                            <button onclick="openModal('AzureSkies')">Read more</button>
-                        </div>
+                    </div>
+                    <div class="card-btn">
+                        <button onclick="openModal('AzureSkies')">Read more</button>
                     </div>
                 </div>
                 
@@ -104,10 +104,14 @@
                         <p>
                             Craft your ideal gatherings in our expansive and environmentally sustainable venues.
                         </p>
-                        <div class="readmore-btn">
-                            <button onclick="openModal('VenueRental')">Read more</button>
-                        </div>
                     </div>
+                    <div class="card-btn">
+                        <button onclick="openModal('VenueRental')">Read more</button>
+                    </div>
+                </div>
+                
+                <div class="reserveBTN-container">
+                    <button class="reservation-btn">Reserve Now!</button>
                 </div>
             </div>
         </section>
@@ -688,7 +692,18 @@
                 </div>
 
             </div>
+            
         </div>
+
+    </div>
+
+    
+    <section class="footer">
+        <?php include 'footer/footer.html'; ?>
+    </section>
+
+
+
 
         <script>
             // script.js
@@ -702,7 +717,6 @@
             modal.style.display = "none";
             }
         </script>
-    </div>
 
 </body>
 
