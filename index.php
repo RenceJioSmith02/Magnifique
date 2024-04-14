@@ -32,8 +32,9 @@ session_start();
     <div class="main-container">
         <header>
             <?php 
-            include('login/login.php'); 
+            
             include('nav/nav.html'); 
+            include('login/login.php'); 
             ?>
         </header>
 
