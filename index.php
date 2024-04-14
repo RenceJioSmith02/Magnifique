@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,8 +31,10 @@
 
     <div class="main-container">
         <header>
-            <?php include 'nav/nav.html'; ?>
-            <?php include 'login/login.php'; ?>
+            <?php 
+            include('login/login.php'); 
+            include('nav/nav.html'); 
+            ?>
         </header>
 
         <section class="view1">

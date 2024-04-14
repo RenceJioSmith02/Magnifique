@@ -20,8 +20,9 @@
 <body>
     <div class="main-container">
         <header>
-            <?php include 'nav/nav.html'; ?>
             <?php include 'login/login.php'; ?>
+            <?php include 'nav/nav.html'; ?>
+            
         </header>
 
                 <!-- top-img -->
