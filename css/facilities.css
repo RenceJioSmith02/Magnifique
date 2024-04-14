@@ -17,6 +17,7 @@
 }
 .facilities-container.border {
     border-bottom: 2px solid #000;
+    margin-top: 20px;
 }
 
 .facilities-container .box {
@@ -65,7 +66,6 @@
     align-items: center;
     flex-direction: column;
     width: 100%;
-    
 }
 .facilities-container .top-package-title h2{
     font-size:30px;

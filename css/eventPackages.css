@@ -1,5 +1,11 @@
 
-
+.parallax-event {
+  background: url('../img/gallery/tranding1.PNG') no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 50vh;
+}
 /* styles.css */
 .modal {
     display: none;
@@ -199,3 +205,7 @@
     font-size: 15px;
     text-transform: none;
   }
+
+  .card-container .top-package-title h2{
+    font-size:30px;
+}

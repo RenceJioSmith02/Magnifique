@@ -24,11 +24,18 @@
             <?php include 'login/login.php'; ?>
         </header>
 
+                <!-- top-img -->
+        <section class="parallax-event">
+        <div class="parallax-inner">
+
+            </div>
+        </section>
+
         <!-- EVENT PACKAGES SECTION 1 -->
         <section>
             <div class="card-container">
                 <div class="top-package-title">
-                    <h2>Event Packages</h2>
+                    <h2 >Event Packages</h2>
                     <p>
                         Explore the flexibility and exceptional value offered by our packages at Magnifique. Browse through our selection to discover the perfect package tailored for you!
                     </p>
