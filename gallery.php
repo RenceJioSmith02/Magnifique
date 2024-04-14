@@ -100,6 +100,13 @@
                     <img src="img/gallery/gallery28.jpg" alt="">
                 </div>
                 
+                <div class="lightbox" id="lightbox">
+                    <span class="close" onclick="closeLightbox()">&times;</span>
+                    <img class="lightbox-content" id="lightboxImg" src="" alt="">
+                    <button class="prev" onclick="prevImage()"><i class="fas fa-chevron-left"></i></button>
+                    <button class="next" onclick="nextImage()"><i class="fas fa-chevron-right"></i></button>
+                </div>
+
             </div>
         </section>
     </div>
@@ -107,6 +114,7 @@
     <section class="footer">
         <?php include 'footer/footer.html'; ?>
     </section>
-    
+
+    <script src = "js/gallery.js"></script>
 </body>
 </html>
