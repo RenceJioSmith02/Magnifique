@@ -49,14 +49,14 @@
     border-radius: 5px;
 }
 .container-package2 .img1 {
-    background: url(../img/gallery/img1.png);
+    background: url(../img/home/5.png);
     background-repeat: no-repeat;
     background-attachment:scroll;
     background-size: cover;
     background-position: center;
 }
 .container-package2 .img2 {
-    background: url(../img/gallery/img1.png);
+    background: url(../img/home/6.png);
     background-repeat: no-repeat;
     background-attachment:scroll;
     background-size: cover;
