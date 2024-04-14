@@ -5,7 +5,9 @@
     font-family: Poppins, sans-serif;
     box-sizing: border-box;
 } */
-
+*{
+    text-decoration: none;
+}
 .sidebar {
     display: flex;
     justify-content: space-around;

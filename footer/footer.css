@@ -10,6 +10,7 @@
     
     position: relative;
     width: 100%;
+    z-index: -1;
 }
 
 .flex-container {
@@ -59,6 +60,10 @@
 .footer .box.text1{
     display: flex;
     justify-content: right;
+}
+
+.box.text1 .contact {
+    text-align: right;
 }
 
 .footer .box.text2{

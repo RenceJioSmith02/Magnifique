@@ -58,13 +58,12 @@
             <?php include 'homepage-sections/section6.html'; ?>
         </section>
 
-        <section class="footer">
-            <?php include 'footer/footer.html'; ?>
-        </section>
-
     </div>
 
-
+    
+    <section class="footer">
+        <?php include 'footer/footer.html'; ?>
+    </section>
 
 
 </body>

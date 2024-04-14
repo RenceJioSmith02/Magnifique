@@ -111,7 +111,8 @@
                 </div>
                 
                 <div class="reserveBTN-container">
-                    <button class="reservation-btn">Reserve Now!</button>
+                    <!-- <button class="reservation-btn">Reserve Now!</button> -->
+                    <button class="reservation-btn" onclick="openModal('reserve')">Reserve Now!</button>
                 </div>
             </div>
         </section>
@@ -695,6 +696,91 @@
             
         </div>
 
+
+        <!-- reservation form -->
+        <div id="reserve" class="modal">
+            <div class="modal-content" style="padding: 10px 20px;">
+                <span class="close" onclick="closeModal('reserve')">&times;</span>
+                
+                <div class="reserve-form-container">
+                    <form action="">
+
+                        <div class="row">
+
+                            <div class="col">
+
+                                <h3 class="title">payment</h3>
+
+                                <div class="inputBox">
+                                    <span>cards accepted :</span>
+                                    <img src="./img/bg&icons/card_img.png" alt="">
+                                </div>
+                                <div class="inputBox">
+                                    <span>Name :</span>
+                                    <input type="text" placeholder="Rence Jio Bal-ot">
+                                </div>
+                                <div class="inputBox">
+                                    <span>Contact number :</span>
+                                    <input type="number" placeholder="9999-999-9999">
+                                </div>
+                                <div class="inputBox">
+                                    <span>Type of Credit Card:</span>
+                                    <select name="" id="">
+                                        <option value="">Select card</option>
+                                        <option value="">Visa</option>
+                                        <option value="">Master</option>
+                                        <option value="">American</option>
+                                        <option value="">Paypal</option>
+                                    </select>
+                                </div>
+                                <div class="inputBox">
+                                    <span>Theme :</span>
+                                    <input type="text" placeholder="Hello kitty">
+                                </div>
+
+                            </div>
+
+                            <div class="col">
+
+                                <div class="inputBox">
+                                    <span>Description :</span>
+                                    <div class="textarea-container">
+                                        <textarea name="" id="" cols="57" rows="3"></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="inputBox">
+                                    <span>Venue: </span>
+                                    <select name="" id="">
+                                        <option value="">Select venue</option>
+                                        <option value="">Garden of Future</option>
+                                        <option value="">Garden of your Dreams</option>
+                                        <option value="">Poolside</option>
+                                        <option value="">Poolside Oasis</option>
+                                        <option value="">Function Hall</option>
+                                        <option value="">Banquet Hall</option>
+                                    </select>
+                                </div>
+
+                                <div class="inputBox">
+                                    <span>Account Name :</span>
+                                    <input type="text" placeholder="Rence Jio Bal-ot">
+                                </div>
+                                <div class="inputBox">
+                                    <span>credit card number :</span>
+                                    <input type="number" placeholder="1111-2222-3333-4444">
+                                </div>
+
+                            </div>
+
+                        </div>
+                        
+                    </form>
+                </div>
+
+            
+            </div>
+        </div>
     </div>
 
     
