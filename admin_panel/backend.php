@@ -165,10 +165,11 @@
             $passwordhashed = password_hash($this->password, PASSWORD_BCRYPT);
             $role = 1;
             $datetime = date('Y-m-d H:i:s');
+            $verification_code = md5(rand()); 
         
-            $stmt =  $this->connection->prepare("INSERT INTO `accounts` (`name`, `email`, `password`,`created_at`, `role`) VALUES(?,?,?,?,?)");
+            $stmt =  $this->connection->prepare("INSERT INTO `accounts` (`name`, `email`, `password`, `verification`, `datecreated`, `role`) VALUES(?,?,?,?,?,?)");
         
-            $stmt->bind_param("sssss", $this->name, $this->email, $passwordhashed, $datetime, $role);
+            $stmt->bind_param("ssssss", $this->name, $this->email, $passwordhashed, $verification_code, $datetime, $role);
             $success = $stmt->execute();
         
             return $success;
