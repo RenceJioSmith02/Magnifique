@@ -102,11 +102,12 @@
                 
                 <div class="lightbox" id="lightbox">
                     <span class="close" onclick="closeLightbox()">&times;</span>
-            
-                    <img class="lightbox-content" id="lightboxImg" src="" alt="">
 
-                    <button class="prev" onclick="prevImage()"><i class="fas fa-chevron-left"></i></button>
-                    <button class="next" onclick="nextImage()"><i class="fas fa-chevron-right"></i></button>
+                    <div class="inner-content">
+                        <button class="prev" onclick="prevImage()"><i class="fas fa-chevron-left"></i></button>
+                        <img class="lightbox-content" id="lightboxImg" src="" alt="">
+                        <button class="next" onclick="nextImage()"><i class="fas fa-chevron-right"></i></button>
+                    </div>
                 </div>
 
             </div>
