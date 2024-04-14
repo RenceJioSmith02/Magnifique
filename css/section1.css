@@ -122,7 +122,7 @@
     flex-direction: column;
     width: 100%;
     padding: 20px 30px;
-    margin-bottom: 60px;
+    /* margin-bottom: 60px; */
 
     background-color: white;
 }
@@ -161,7 +161,7 @@
     border-radius: 3px;
     display: inline;
     transition: 0.2s;
-    cursor:grab;
+    cursor:grab;w1
     border: none;
 }
 .reserveBTN-container {

@@ -1,8 +1,0 @@
-/* SECTION SIZE */
-@media screen and (max-width: 870px) {
-    section {
-        position: relative;
-        left: 30px;
-        width: calc(100% - 50px);
-    }
-}

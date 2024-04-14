@@ -10,7 +10,7 @@
     <!-- css -->
     <link rel="stylesheet" href="css/eventPackages.css">
     <link rel="stylesheet" href="css/screen.css">
-    <link rel="stylesheet" href="css/sectionSize.css">
+    <!-- <link rel="stylesheet" href="css/sectionSize.css"> -->
     <link rel="stylesheet" href="css/section1.css">
     <link rel="stylesheet" href="css/section23456.css">
 
@@ -111,7 +111,6 @@
                 </div>
                 
                 <div class="reserveBTN-container">
-                    <!-- <button class="reservation-btn">Reserve Now!</button> -->
                     <button class="reservation-btn" onclick="openModal('reserve')">Reserve Now!</button>
                 </div>
             </div>
@@ -771,6 +770,12 @@
                                     <input type="number" placeholder="1111-2222-3333-4444">
                                 </div>
 
+                                <!-- reserve-btn -->
+                                <div class="inputBox">
+                                    <div class="reserveBTN-container" style="padding-top: 20px">
+                                        <button class="reservation-btn" onclick="">Reserve</button>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>

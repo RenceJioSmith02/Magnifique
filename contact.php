@@ -11,7 +11,7 @@
     <!-- css -->
     <link rel="stylesheet" href="css/contact.css">
     <link rel="stylesheet" href="css/screen.css">
-    <link rel="stylesheet" href="css/sectionSize.css">
+    <!-- <link rel="stylesheet" href="css/sectionSize.css"> -->
 
 </head>
 <body>

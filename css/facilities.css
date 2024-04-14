@@ -1,46 +1,133 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Poppins, sans-serif;
-    transition: all 0.3s ease-in-out;
-    
-}
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    background: white;
-    position: relative;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-.main-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-
-    width: 100%;
-    max-width: 1920px;
-}
-
-section {
-    position: relative;
-    width: 100%;
-    top: 0;
-    left: 0;
-}
 .parallax-facility {
     background: url('../img/gallery/tranding1.PNG') no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     height: 50vh;
+}
+
+
+.facilities-container {
+    padding: 20px 10px;
+    width: 90%;
+    margin: auto;
+
+    /* background-color: green; */
+}
+.facilities-container.border {
+    border-bottom: 2px solid #000;
+}
+
+.facilities-container .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* background-color: pink; */
+}
+
+.facilities-container .box .img {
+    flex: 1;
+
+    height: 230px;
+    padding: 0px 20px 0 20px;
+    /* background-color: tomato; */
+}
+
+.facilities-container .box .img img {
+    width: 100%;
+    max-height: 230px;
+
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.facilities-container .box .text {
+    flex: 1.2;
+
+    height:230px;
+    padding: 20px 20px 0 20px;
+    /* background-color: orange; */
+}
+.facilities-container .box .text h2 {
+    font-weight: 600;
+}
+
+.box.two .img {
+    order: 1;
+}
+
+/* top box */
+.facilities-container .top-package-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    
+}
+.facilities-container .top-package-title h2{
+    font-size:30px;
+}
+.facilities-container .top-package-title p {
+    border-bottom: 3px solid #000;
+    padding: 30px 0;
+}
+
+.facilities-container .top-package-title .details-text {
+    align-self: center;
+    font-weight: 500;
+    margin: 20px;
+}
+
+.reservation-btn{
+    text-decoration: none;
+    background: #071740;
+    color: #fff;
+    padding: 6px 11px;
+    border-radius: 3px;
+    display: inline;
+    transition: 0.2s;
+    cursor:grab;
+    border: none;
+}
+.reserveBTN-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0 20px 0;
+}
+.reservation-btn {
+    width: 300px;
+    padding: 15px;
+    font-size: 16px;
+}
+.reservation-btn:hover {
+    background: #fff;
+    color: #071740;
+    border: 2px solid #071740;
+}
+.reservation-btn:active {
+    background: #071740;
+    color: #fff;
+}
+
+@media screen and (max-width: 668px) {
+
+    .facilities-container .box {
+        flex-direction: column;
+    }
+    .box.two .img {
+        order: 0;
+    }
+    .facilities-container .box .img {
+        width: 95%;
+        flex: 1;
+    }
+    .facility-btn a h3{
+        max-width: 230px;
+    }
+
 }

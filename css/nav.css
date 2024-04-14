@@ -5,9 +5,9 @@
     font-family: Poppins, sans-serif;
     box-sizing: border-box;
 } */
-*{
+/* *{
     text-decoration: none;
-}
+} */
 .sidebar {
     display: flex;
     justify-content: space-around;
@@ -80,6 +80,7 @@
     justify-content: center;
     align-items: baseline;
     gap: 2px;
+    margin: 0;
 }
 .sidebar .list-items {
     list-style: none;
@@ -192,7 +193,7 @@
         left: 0;
         width: 55px;
         height: 100%;
-        border-radius: 0 10px 10px 0;
+        border-radius: 0;
         padding: 6px 2px;
         transition: .5s;
     }
@@ -243,6 +244,7 @@
         justify-content: center;
         align-items: center;
         gap: 2px;
+        padding: 0;
     }
     .sidebar .list-items {
         list-style: none;
