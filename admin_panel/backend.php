@@ -266,6 +266,11 @@
     }
         
 
+    class reservation {
+
+        
+    }
+
 
 ?>
 

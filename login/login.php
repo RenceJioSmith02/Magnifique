@@ -72,7 +72,6 @@
             $password = $_POST["password"];
             $verification_code = substr(bin2hex(random_bytes(3)), 0, 6);
 
-
             Send_email_verify("$name", "$email",  "$verification_code");
 
             $_SESSION['verification'] = $verification_code;
