@@ -34,11 +34,11 @@
 
         $mail->Body = $email_template;
         $mail->send();
-        if($mail) {
-            header("Location: index.php?msg=email_sent");
-        }else {
-            header("Location: index.php?msg=email_not_sent");
-        }
+        // if($mail) {
+        //     return true;
+        // }else {
+        //     return false;
+        // }
     }
 
     $connect = new Connect_db();

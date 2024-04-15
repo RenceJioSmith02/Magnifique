@@ -802,6 +802,15 @@
                                     <span>credit card number :</span>
                                     <input type="number" placeholder="1111-2222-3333-4444">
                                 </div>
+
+                                <div class="inputBox">
+                                    <span>Payment Type:</span>
+                                    <select name="" id="">
+                                        <option value="">Select....</option>
+                                        <option value="">Initial Payment</option>
+                                        <option value="">Full Payment</option>
+                                    </select>
+                                </div>
                                 
                                 <!-- reserve-btn -->
                                 <div class="inputBox">
