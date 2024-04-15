@@ -61,7 +61,7 @@
                         </p>
                     </div>
                     <div class="card-btn">
-                         <button onclick="openModal('UnifyingLove')">Read more</button>
+                        <button onclick="openModal('UnifyingLove')">Read more</button>
                     </div>
                 </div>
 
@@ -714,24 +714,24 @@
                 <span class="close" onclick="closeModal('reserve')">&times;</span>
                 
                 <div class="reserve-form-container">
-                    <form action="">
+                    <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
 
                         <div class="row">
 
                             <div class="col">
                                 <div class="inputBox">
                                     <span>Name :</span>
-                                    <input type="text" placeholder="Rence Jio Bal-ot">
+                                    <input type="text" name="" placeholder="Rence Jio Bal-ot">
                                 </div>
                                 
                                 <div class="inputBox">
                                     <span>Contact number :</span>
-                                    <input type="number" placeholder="9999-999-9999">
+                                    <input type="number" name="" placeholder="9999-999-9999">
                                 </div>
 
                                 <div class="inputBox">
                                     <span>Event Date :</span>
-                                    <input type="Date" placeholder="">
+                                    <input type="Date" name="" placeholder="">
                                 </div>
 
                                 <div class="inputBox">
@@ -760,7 +760,7 @@
 
                                 <div class="inputBox">
                                     <span>Theme :</span>
-                                    <input type="text" placeholder="Hello kitty">
+                                    <input type="text" name="" placeholder="Hello kitty">
                                 </div>
 
                                 <div class="inputBox">
@@ -785,7 +785,7 @@
 
                                 <div class="inputBox">
                                     <span>Account Name :</span>
-                                    <input type="text" placeholder="Rence Jio Bal-ot">
+                                    <input type="text" name="" placeholder="Rence Jio Bal-ot">
                                 </div>
 
                                 <div class="inputBox">
@@ -801,7 +801,7 @@
 
                                 <div class="inputBox">
                                     <span>credit card number :</span>
-                                    <input type="number" placeholder="1111-2222-3333-4444">
+                                    <input type="number" name="" placeholder="1111-2222-3333-4444">
                                 </div>
 
                                 <div class="inputBox">

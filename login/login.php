@@ -75,7 +75,6 @@
                         unset($_SESSION['name']);
                         unset($_SESSION['email']);
                         unset($_SESSION['password']);
-                        unset($_SESSION['verification']);
                         header("Location: index.php?success=account_created");
                     }else {
                         header("Location: index.php?error=registration_failed");
