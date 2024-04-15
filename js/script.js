@@ -18,4 +18,15 @@ document.querySelector(".container .close-btn").addEventListener("click",functio
     document.querySelector(".pop-up.login").classList.remove("active");
 });
 
+function verification() {
+    const popUp = document.querySelector('.pop-up.login');
+    const container = document.getElementById('container');
+    if (popUp && container) {
+        popUp.classList.add('active');
+        container.classList.add('active');
+    } else {
+        console.error("Popup or container element not found.");
+    }
+}
+
 

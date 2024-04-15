@@ -57,6 +57,7 @@
             $_SESSION['name'] = $name ;
             $_SESSION['email'] = $email;
             $_SESSION['password'] = $password;
+
         }
 
         if (isset($_POST['verify'])) {
@@ -110,6 +111,8 @@
                 header("Location: index.php?error=invalid_email_or_password");
             }
         }
+
+        
     
 ?>
 <!DOCTYPE html>
@@ -126,8 +129,7 @@
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/pop.css">
 </head>
-<body>
-    
+<body>    
     <div class="pop-up login">
 
         <div class="container" id="container">

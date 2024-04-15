@@ -21,6 +21,12 @@
         echo "<script>alert('Wrong_verification_code!')</script>";
     }
 
+    if (isset($_POST['signup'])) {
+        echo "<script>
+            verification();
+        </script>";
+    }
+
 ?>
 
 <!DOCTYPE html>
