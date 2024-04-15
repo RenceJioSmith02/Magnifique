@@ -1,3 +1,10 @@
+<?php
+            
+    include('nav/nav.html'); 
+    include('login/login.php'); 
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,13 +26,8 @@
 
 <body>
     <div class="main-container">
-        <header>
-            <?php include 'login/login.php'; ?>
-            <?php include 'nav/nav.html'; ?>
-            
-        </header>
 
-                <!-- top-img -->
+        <!-- top-img -->
         <section class="parallax-event">
         <div class="parallax-inner">
 

@@ -1,3 +1,10 @@
+<?php
+                
+    include('nav/nav.html'); 
+    include('login/login.php'); 
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,11 +21,6 @@
 <body>
 
     <div class="main-container">
-        <header>
-            
-            <?php include 'nav/nav.html'; ?>
-            <?php include 'login/login.php'; ?>
-        </header>
 
         <section>
             <div class="grid-wrapper">

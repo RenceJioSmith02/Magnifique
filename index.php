@@ -1,5 +1,9 @@
 <?php
-session_start();
+    session_start(); 
+                
+    include('nav/nav.html'); 
+    include('login/login.php'); 
+
 ?>
 
 <!DOCTYPE html>
@@ -30,13 +34,6 @@ session_start();
 <body>
 
     <div class="main-container">
-        <header>
-            <?php 
-            
-            include('nav/nav.html'); 
-            include('login/login.php'); 
-            ?>
-        </header>
 
         <section class="view1">
             <div class="container1">
