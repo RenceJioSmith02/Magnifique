@@ -3,7 +3,7 @@
         private $servername = "localhost";
         private $username ="root";
         private $password = "";
-        private $database = "e-commercedb";
+        private $database = "bookingsystem";
         private $conn;
 
         function  __construct() {
@@ -34,24 +34,39 @@
             $this->connection = $connect->getConn();
         }
 
-        public function Print($start,$limit,$tablename,$primarykey) {
+        public function Print($start,$limit,$tablename) {
             switch ($tablename) {
                 case 'Reservation':
-                    $sql = "SELECT p.PID, p.Pname, c.category, p.Pprice, p.Pdescription, p.Pimage 
-                    FROM products AS p 
-                    JOIN category AS c ON p.CID = c.CID 
-                    ORDER BY p.PID ASC LIMIT ?, ?";
-                    break;
+                    $sql = "SELECT a.accountID, a.name as customerName, e.phonenum, e.date, e.theme, e.description, e.type, v.facility, p.name as packageName, p.price, b.paymentstatus
+                    FROM accounts as a
+                    INNER JOIN eventreserve as e
+                    ON a.accountID = e.accountID
+                    INNER JOIN venue as v
+                    ON e.venueID = v.venueID
+                    INNER JOIN package as p
+                    ON e.packageID = p.packageID
+                    INNER JOIN booking as b
+                    ON e.paymentID = b.bookingID
+                    ORDER BY a.accountID ASC LIMIT ?, ?";
 
-                case 'sales':
-                    $sql = "SELECT * FROM sales
-                    ORDER BY salesID ASC LIMIT  ?, ?";
                     break;
+                case 'event':
+                    $sql = "SELECT a.accountID, a.name as customerName, e.phonenum, e.date, e.theme, e.description, e.type, v.facility, p.name as packageName, p.price
+                    FROM accounts as a
+                    INNER JOIN eventreserve as e
+                    ON a.accountID = e.accountID
+                    INNER JOIN venue as v
+                    ON e.venueID = v.venueID
+                    INNER JOIN package as p
+                    ON e.packageID = p.packageID
+                    ORDER BY accountID ASC LIMIT  ?, ?";
 
+                    break;
                 case 'accounts':
-                    $sql = "SELECT * FROM accounts ORDER BY " . $primarykey . " ASC LIMIT  ?, ?";
+                    $sql = "SELECT * FROM accounts
+                    ORDER BY accountID ASC LIMIT  ?, ?";
+
                     break;
-                    
                 default:
                     # code...
                     break;
@@ -67,8 +82,8 @@
             return $result;
         }
 
-        public  function getTotalRows(){
-            $stmt = $this->connection->prepare("SELECT COUNT(*) AS total FROM products");
+        public  function getTotalRows($tabletoUse_inQuery ){
+            $stmt = $this->connection->prepare("SELECT COUNT(*) AS total FROM $tabletoUse_inQuery ");
             $stmt->execute();
             $row = $stmt->get_result()->fetch_assoc();
             

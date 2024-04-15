@@ -23,40 +23,25 @@
     $start = ($page - 1) * $limit;
 
     // $tablename = "products";
-    // $primarykey = "PID";
+    // $tabletoUse_inQuery = "PID";
 
     if (isset($_GET['table']) && $_GET['table'] == 'Reservation') {
         $tablename = "Reservation";
-        $primarykey = "PID";
+        $tabletoUse_inQuery = "eventreserve";
     } elseif (isset($_GET['table']) && $_GET['table'] == 'Event') {
         $tablename = "Event";
-        $primarykey = "orderID";
+        $tabletoUse_inQuery = "eventreserve";
     } elseif (isset($_GET['table']) && $_GET['table'] == 'Users') {
         $tablename = "accounts";
-        $primarykey = "accountID";
+        $tabletoUse_inQuery = "accounts";
     }
         
-        //category 
-    // } elseif (isset($_GET['category']) && $_GET['category'] == 'Acoustic') {
-    //     $tablename = "acoustic";
-    //     $primarykey = "1";
-    // } elseif (isset($_GET['category']) && $_GET['category'] == 'Electric') {
-    //     $tablename = "electric";
-    //     $primarykey = "2";
-    // } elseif (isset($_GET['category']) && $_GET['category'] == 'Bass') {
-    //     $tablename = "bass";
-    //     $primarykey = "3";
-    // } elseif (isset($_GET['category']) && $_GET['category'] == 'Ukalele') {
-    //     $tablename = "ukalele";
-    //     $primarykey = "4";
-    // } 
-
     if (isset($_GET['table']) || isset($_GET['page'])) {
-        $result = $query->Print($start, $limit, $tablename, $primarykey);
+        $result = $query->Print($start, $limit, $tablename);
         $rows = $result;
     }
     
-    $totalRows = $query->getTotalRows();
+    $totalRows = $query->getTotalRows($tabletoUse_inQuery);
     $totalPages = ceil($totalRows / $limit);
     
     $prev = $page > 1 ? $page - 1 : null;
@@ -108,16 +93,6 @@
                         echo "<center><h3>User Accounts</h3></center>";
                     }
                         
-                        //category 
-                    // } elseif (isset($_GET['category']) && $_GET['category'] == 'Acoustic') {
-                    //     echo "<center><h3>Acoustic</h3></center>";
-                    // } elseif (isset($_GET['category']) && $_GET['category'] == 'Electric') {
-                    //     echo "<center><h3>Electric</h3></center>";
-                    // } elseif (isset($_GET['category']) && $_GET['category'] == 'Bass') {
-                    //     echo "<center><h3>Bass</h3></center>";
-                    // } elseif (isset($_GET['category']) && $_GET['category'] == 'Ukalele') {
-                    //     echo "<center><h3>Ukalele</h3></center>";
-                    // } 
                 ?>
         
                 <div class="table-body">
@@ -165,19 +140,19 @@
                             <?php while ($row = mysqli_fetch_assoc($rows)){  ?>
                                 <tr>
                                     <td><?php echo $count++ ?></td>
-                                    <td><?php echo $row['Pname'] ?></td>
-                                    <td><?php echo $row['category'] ?></td>
-                                    <td><?php echo $row['Pprice'] ?></td>
-                                    <td><?php echo $row['Pdescription'] ?></td>
+                                    <td><?php echo $row['accountID'] ?></td>
+                                    <td><?php echo $row['customerName'] ?></td>
+                                    <td><?php echo $row['phonenum'] ?></td>
+                                    <td><?php echo $row['date'] ?></td>
+                                    <td><?php echo $row['theme'] ?></td>
+                                    <td><?php echo $row['description'] ?></td>
+                                    <td><?php echo $row['facility'] ?></td>
+                                    <td><?php echo $row['packageName'] ?></td>
+                                    <td><?php echo $row['price'] ?></td>
+                                    <td><?php echo $row['paymentstatus'] ?></td>
                                     <td>
-                                        
-                                        <a href="pop-ups.php?pop=viewSpecs&id=<?php echo $row['PID'] ?>"><ion-icon name="eye-outline"></ion-icon></a>
-
-                                    </td>
-                                    <td><img src="<?php echo $row['Pimage'] ?>" alt="Product Image" style="max-width: 100px;"></td>
-                                    <td>
-                                        <a href="pop-ups.php?pop=updateProduct&updateId=<?php echo $row['PID'] ?>"><ion-icon name="create-outline"></ion-icon></a>
-                                        <a href="table.php?deleteid=<?php echo $row['PID'] ?>" onclick="return confirm('Are you sure you want to delete this product?')"><ion-icon name="trash"></ion-icon></a>
+                                        <a href="pop-ups.php?pop=updateProduct&updateId=<?php echo $row['accountID'] ?>"><ion-icon name="create-outline"></ion-icon></a>
+                                        <a href="table.php?deleteid=<?php echo $row['accountID'] ?>" onclick="return confirm('Are you sure you want to delete this product?')"><ion-icon name="trash"></ion-icon></a>
                                     </td>
                                 </tr>
                             <?php } ?>
@@ -194,7 +169,7 @@
                                         <td><?php echo $count++ ?></td>
                                         <td><?php echo $row['name'] ?></td>
                                         <td><?php echo $row['email'] ?></td>
-                                        <td><?php echo $row['created_at'] ?></td>
+                                        <td><?php echo $row['datecreated'] ?></td>
                                         <td>
                                             <a href="users-table.php?deleteid=<?php echo $row['accountID'] ?>" onclick="return confirm('Are you sure you want to delete this product?')"><ion-icon name="trash"></ion-icon></a>
                                         </td>

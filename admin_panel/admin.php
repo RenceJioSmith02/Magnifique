@@ -4,26 +4,26 @@
 
         $query = new Queries($connect);
 
-        // $limit = 5;
+        $limit = 5;
 
-        // $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
+        $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
 
-        // $start = ($page - 1) * $limit;
+        $start = ($page - 1) * $limit;
 
-        // $tablename = "accounts";
-        // $primarykey = "accountID";
+        $tablename = "event";
+        $tabletoUse_inQuery  = "eventreserve";
 
-        // $result = $query->Print($start, $limit, $tablename, $primarykey);
-        // $rows = $result;
+        $result = $query->Print($start, $limit, $tablename);
+        $rows = $result;
 
-        // $totalRows = $query->getTotalRows();
-        // $totalPages = ceil($totalRows / $limit);
+        $totalRows = $query->getTotalRows($tabletoUse_inQuery);
+        $totalPages = ceil($totalRows / $limit);
 
-        // $prev = $page - 1;
-        // $next = $page + 1;
+        $prev = $page - 1;
+        $next = $page + 1;
 
-        // $count = 0;
-        // $count += ($page - 1) * 5;
+        $count = 0;
+        $count += ($page - 1) * 5;
     ?>
 
 <!DOCTYPE html>
@@ -153,16 +153,20 @@
                                                   //     echo"wala";
                                                   // }
 
-                  // while ($row = mysqli_fetch_assoc($rows)){  ?>
+                  while ($row = mysqli_fetch_assoc($rows)){  ?>
                         <tr>
-                            <!-- <td><?php echo ++$count ?></td>
-                            <td><?php echo $row['Cname'] ?></td>
-                            <td><?php echo $row['Pname'] ?></td>
-                            <td><?php echo $row['quantity'] ?></td>
-                            <td><?php echo $row['Pprice'] ?></td>
-                            <td><?php echo $row['delivered'] ?></td> -->
+                            <td><?php echo ++$count ?></td>
+                            <td><?php echo $row['accountID'] ?></td>
+                            <td><?php echo $row['customerName'] ?></td>
+                            <td><?php echo $row['phonenum'] ?></td>
+                            <td><?php echo $row['date'] ?></td>
+                            <td><?php echo $row['theme'] ?></td>
+                            <td><?php echo $row['description'] ?></td>
+                            <td><?php echo $row['facility'] ?></td>
+                            <td><?php echo $row['packageName'] ?></td>
+                            <td><?php echo $row['price'] ?></td>
                         </tr>
-                    <?php //} ?>
+                    <?php } ?>
       
                   </tbody>
               </table>
