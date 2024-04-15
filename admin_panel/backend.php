@@ -3,7 +3,7 @@
         private $servername = "localhost";
         private $username ="root";
         private $password = "";
-        private $database = "bookingsystem";
+        private $database = "e-commercedb";
         private $conn;
 
         function  __construct() {
@@ -41,23 +41,17 @@
                     FROM products AS p 
                     JOIN category AS c ON p.CID = c.CID 
                     ORDER BY p.PID ASC LIMIT ?, ?";
+                    break;
 
-                    break;
-                case 'Event':
-                    $sql = "SELECT o.orderID, p.PID, a.name, p.Pname, c.quantity , p.Pprice 
-                    FROM orders AS o
-                        JOIN accounts AS a ON o.accountID = a.accountID
-                            JOIN cart as c ON c.accountID = a.accountID
-                            JOIN products AS p ON  c.PID = p.PID
-                                ORDER BY o.productID ASC LIMIT  ?, ?";
-                    break;
                 case 'sales':
                     $sql = "SELECT * FROM sales
                     ORDER BY salesID ASC LIMIT  ?, ?";
                     break;
+
                 case 'accounts':
                     $sql = "SELECT * FROM accounts ORDER BY " . $primarykey . " ASC LIMIT  ?, ?";
                     break;
+                    
                 default:
                     # code...
                     break;

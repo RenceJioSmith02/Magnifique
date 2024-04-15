@@ -4,26 +4,26 @@
 
         $query = new Queries($connect);
 
-        $limit = 5;
+        // $limit = 5;
 
-        $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
+        // $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
 
-        $start = ($page - 1) * $limit;
+        // $start = ($page - 1) * $limit;
 
-        $tablename = "sales";
-        $primarykey = "salesID";
+        // $tablename = "accounts";
+        // $primarykey = "accountID";
 
-        $result = $query->Print($start, $limit, $tablename, $primarykey);
-        $rows = $result;
+        // $result = $query->Print($start, $limit, $tablename, $primarykey);
+        // $rows = $result;
 
-        $totalRows = $query->getTotalRows();
-        $totalPages = ceil($totalRows / $limit);
+        // $totalRows = $query->getTotalRows();
+        // $totalPages = ceil($totalRows / $limit);
 
-        $prev = $page - 1;
-        $next = $page + 1;
+        // $prev = $page - 1;
+        // $next = $page + 1;
 
-        $count = 0;
-        $count += ($page - 1) * 5;
+        // $count = 0;
+        // $count += ($page - 1) * 5;
     ?>
 
 <!DOCTYPE html>
@@ -125,18 +125,22 @@
 
       <div class="box-container">
         <main class="table">
-          <center><h3>Sales</h3></center>
+          <center><h3>Current Events</h3></center>
   
           <div class="table-body">
               <table>
                   <thead>
                       <tr>
-                          <th>no.</th>
-                          <th>Customer Name</th>
-                          <th>Product Name</th>
-                          <th>Quantity</th>
-                          <th>Price</th>
-                          <th>Date Delivered</th>
+                        <th>no.</th>
+                        <th>Account Name</th>
+                        <th>Customer Name</th>
+                        <th>Phone Number</th>
+                        <th>Event Date</th>
+                        <th>Theme</th>
+                        <th>Description</th>
+                        <th>Venue</th>
+                        <th>Package</th>
+                        <th>Price</th>
                       </tr>
                   </thead>
                   <tbody id="results">
@@ -149,16 +153,16 @@
                                                   //     echo"wala";
                                                   // }
 
-                  while ($row = mysqli_fetch_assoc($rows)){  ?>
+                  // while ($row = mysqli_fetch_assoc($rows)){  ?>
                         <tr>
-                            <td><?php echo ++$count ?></td>
+                            <!-- <td><?php echo ++$count ?></td>
                             <td><?php echo $row['Cname'] ?></td>
                             <td><?php echo $row['Pname'] ?></td>
                             <td><?php echo $row['quantity'] ?></td>
                             <td><?php echo $row['Pprice'] ?></td>
-                            <td><?php echo $row['delivered'] ?></td>
+                            <td><?php echo $row['delivered'] ?></td> -->
                         </tr>
-                    <?php } ?>
+                    <?php //} ?>
       
                   </tbody>
               </table>
