@@ -718,45 +718,30 @@
                         <div class="row">
 
                             <div class="col">
-
-                                <h3 class="title">payment</h3>
-
-                                <div class="inputBox">
-                                    <span>cards accepted :</span>
-                                    <img src="./img/bg&icons/card_img.png" alt="">
-                                </div>
                                 <div class="inputBox">
                                     <span>Name :</span>
                                     <input type="text" placeholder="Rence Jio Bal-ot">
                                 </div>
+                                
                                 <div class="inputBox">
                                     <span>Contact number :</span>
                                     <input type="number" placeholder="9999-999-9999">
                                 </div>
+
                                 <div class="inputBox">
-                                    <span>Type of Credit Card:</span>
+                                    <span>Event Date :</span>
+                                    <input type="Date" placeholder="">
+                                </div>
+
+                                <div class="inputBox">
+                                    <span>Package:</span>
                                     <select name="" id="">
-                                        <option value="">Select card</option>
-                                        <option value="">Visa</option>
-                                        <option value="">Master</option>
-                                        <option value="">American</option>
-                                        <option value="">Paypal</option>
+                                        <option value="">Select Package</option>
+                                        <option value="">Unifying of Love</option>
+                                        <option value="">Eternal Bliss</option>
+                                        <option value="">Venue Rental Only</option>
+                                        <option value="">None</option>
                                     </select>
-                                </div>
-                                <div class="inputBox">
-                                    <span>Theme :</span>
-                                    <input type="text" placeholder="Hello kitty">
-                                </div>
-
-                            </div>
-
-                            <div class="col">
-
-                                <div class="inputBox">
-                                    <span>Description :</span>
-                                    <div class="textarea-container">
-                                        <textarea name="" id="" cols="57" rows="3"></textarea>
-                                    </div>
                                 </div>
 
                                 <div class="inputBox">
@@ -773,21 +758,61 @@
                                 </div>
 
                                 <div class="inputBox">
+                                    <span>Theme :</span>
+                                    <input type="text" placeholder="Hello kitty">
+                                </div>
+
+                                <div class="inputBox">
+                                    <span>Description :</span>
+                                    <div class="textarea-container">
+                                        <textarea name="" id="" cols="57" rows="3"></textarea>
+                                    </div>
+                                </div>
+
+                                
+
+                            </div>
+
+                            <div class="col">
+
+                                <h3 class="title">payment</h3>
+
+                                <div class="inputBox">
+                                    <span>cards accepted :</span>
+                                    <img src="./img/bg&icons/card_img.png" alt="">
+                                </div>
+
+                                <div class="inputBox">
                                     <span>Account Name :</span>
                                     <input type="text" placeholder="Rence Jio Bal-ot">
                                 </div>
+
+                                <div class="inputBox">
+                                    <span>Type of Credit Card:</span>
+                                    <select name="" id="">
+                                        <option value="">Select card</option>
+                                        <option value="">Visa</option>
+                                        <option value="">Master</option>
+                                        <option value="">American</option>
+                                        <option value="">Paypal</option>
+                                    </select>
+                                </div>
+
                                 <div class="inputBox">
                                     <span>credit card number :</span>
                                     <input type="number" placeholder="1111-2222-3333-4444">
                                 </div>
-
+                                
                                 <!-- reserve-btn -->
                                 <div class="inputBox">
                                     <div class="reserveBTN-container" style="padding-top: 20px">
                                         <button class="reservation-btn" onclick="">Reserve</button>
                                     </div>
                                 </div>
+
                             </div>
+
+                            
 
                         </div>
                         
