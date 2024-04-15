@@ -44,27 +44,6 @@
     $connect = new Connect_db();
     $query = new Queries($connect);
 
-    if (isset($_GET['error']) && $_GET === 'email_exist') 
-    {
-        echo "<script>alert('Email already exist!')</script>";
-    }
-    elseif (isset($_GET['error']) && $_GET === 'invalid_email_or_password') 
-    {
-        echo "<script>alert('Invalid email or password!')</script>";
-    }
-    elseif (isset($_GET['error']) && $_GET === 'registration_failed') 
-    {
-        echo "<script>alert('Account registration failed!')</script>";
-    }
-    elseif (isset($_GET['error']) && $_GET === 'wrong_verification_code') 
-    {
-        echo "<script>alert('Wrong_verification_code!')</script>";
-    }
-    elseif (isset($_GET['error']) && $_GET === 'email_not_sent') 
-    {
-        echo "<script>alert('email_not_sent!')</script>";
-    }
-
     // sa kwan to e sign up
         if (isset($_POST['signup'])) {
             $name = $_POST["name"];
@@ -164,7 +143,7 @@
                     </div>
                 </div>
                     <?php if (!isset($_POST['signup'])) {  ?>
-                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+                        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
                             <h1>Create account</h1>
                             <div class="social-icons">
                                 <a href="">
@@ -186,7 +165,7 @@
                             <button type="submit" name="signup">Sign Up</button>
                         </form>
                     <?php } else{?>
-                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+                        <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
                             <h1>Create account</h1>
                             <div class="social-icons">
                                 <a href="">
