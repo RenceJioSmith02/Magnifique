@@ -1,7 +1,7 @@
 <?php
+
     session_start(); 
-                
-    include('nav/nav.html'); 
+    include('nav/nav.php'); 
     include('login/login.php'); 
 
     if (isset($_GET['error']) && $_GET === 'email_exist') 

@@ -53,9 +53,20 @@
                 </a>
             </li>
             <center>
-                <button id="show-login" class="show-login-btn">
-                    <span class="text">Login</span>
-                </button>
+                <?php if (isset($_SESSION['type'])) { ?>
+                        
+                    <button>
+                        <ion-icon name='person-circle-outline'></ion-icon>
+                        <p class='header-action-label'>Account</p>
+                    </button>
+
+                <?php } else {?>
+
+                    <button id="show-login" class="show-login-btn">
+                        <span class="text">Login</span>
+                    </button>
+
+                <?php } ?>
             </center>
 
         </ul>
@@ -102,5 +113,13 @@
             }
         };
     </script>
+
+
+      <!-- 
+    - ionicon link
+    -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
 </html>

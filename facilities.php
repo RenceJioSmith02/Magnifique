@@ -1,6 +1,7 @@
 <?php
-            
-    include('nav/nav.html'); 
+
+    session_start();
+    include('nav/nav.php'); 
     include('login/login.php'); 
 
 ?>
