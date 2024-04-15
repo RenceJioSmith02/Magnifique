@@ -56,7 +56,7 @@
             <div class="container1">
                 <h1>EVENT BOOKING</h1>
                 <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae, nihil autem sunt, cupiditate voluptatum aut excepturi facilis voluptatem voluptate corrupti laudantium magni inventore saepe illum assumenda aperiam, voluptatibus adipisci voluptas.
+                    hahhadtxdfcgvjbhnjjipcuadrutfcgvkhlbjnjgj[wrpalvsbcxljvhzguosidvbjc ]
                 </p>
             </div>
         </section>
