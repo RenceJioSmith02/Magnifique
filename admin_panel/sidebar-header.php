@@ -45,16 +45,6 @@ if (isset($_GET['logout'])) {
         </li>
 
         <li>
-          <a href="table.php?table=Event">
-            <i class='bx bx-receipt'></i>
-            <span class="link_name">Event Packages</span>
-          </a>
-          <ul class="sub-menu blank">
-            <li><a class="link_name" href="table.php?table=Event">Event Packages</a></li>
-          </ul>
-        </li>
-
-        <li>
           <a href="table.php?table=Users">
             <i class='bx bxs-user-detail'></i>
             <span class="link_name">User</span>

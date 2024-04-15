@@ -125,18 +125,22 @@
 
       <div class="box-container">
         <main class="table">
-          <center><h3>Sales</h3></center>
+          <center><h3>Current Events</h3></center>
   
           <div class="table-body">
               <table>
                   <thead>
                       <tr>
-                          <th>no.</th>
-                          <th>Customer Name</th>
-                          <th>Product Name</th>
-                          <th>Quantity</th>
-                          <th>Price</th>
-                          <th>Date Delivered</th>
+                        <th>no.</th>
+                        <th>Account Name</th>
+                        <th>Customer Name</th>
+                        <th>Phone Number</th>
+                        <th>Event Date</th>
+                        <th>Theme</th>
+                        <th>Description</th>
+                        <th>Venue</th>
+                        <th>Package</th>
+                        <th>Price</th>
                       </tr>
                   </thead>
                   <tbody id="results">

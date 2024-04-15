@@ -104,8 +104,6 @@
                                 </div>
                                </div>
                             ";
-                    } elseif (isset($_GET['table']) && $_GET['table'] == 'Event') {
-                        echo "<center><h3>Event Packages</h3></center>";
                     } elseif (isset($_GET['table']) && $_GET['table'] == 'Users') {
                         echo "<center><h3>User Accounts</h3></center>";
                     }
@@ -132,24 +130,16 @@
                             <thead>
                                 <tr>
                                     <th>no.</th>
-                                    <th>Product Name</th>
-                                    <th>Product Category</th>
-                                    <th>Price</th>
+                                    <th>Account Name</th>
+                                    <th>Customer Name</th>
+                                    <th>Phone Number</th>
+                                    <th>Event Date</th>
+                                    <th>Theme</th>
                                     <th>Description</th>
-                                    <th>Specs</th>
-                                    <th>Product Image</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                        <?php } elseif (isset($_GET['table']) && $_GET['table'] == 'Event') {?>
-                            <thead>
-                                <tr>
-                                    <th>no.</th>
-                                    <th>Customer</th>
-                                    <th>Product Name</th>
-                                    <th>Quantity</th>
+                                    <th>Venue</th>
+                                    <th>Package</th>
                                     <th>Price</th>
-                                    <th>Shipping Info.</th>
+                                    <th>Payment Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -193,36 +183,6 @@
                             <?php } ?>
 
                             </tbody>
-                        <?php } elseif (isset($_GET['table']) && $_GET['table'] == 'Event') {?>
-                        
-                            <?php 
-                                // $row = mysqli_fetch_assoc($rows);
-                                //     if($row != null) {
-                                //         echo "may laman naman";
-                                //         echo $row['quantity'];
-                                //     }else {
-                                //         echo"wala";
-                                //     }
-                            ?>
-
-
-                            <tbody id="results">
-                                <?php while ($row = mysqli_fetch_assoc($rows)){  ?>
-                                    <tr>
-                                        <td><?php echo $count++ ?></td>
-                                        <td><?php echo $row['name'] ?></td>
-                                        <td><?php echo $row['Pname'] ?></td>
-                                        <td><?php echo $row['quantity'] ?></td>
-                                        <td><?php echo $row['Pprice'] ?></td>
-                                        <td>
-                                            <a href="view-specs.php?id=<?php echo $row['PID'] ?>"><ion-icon name="eye-outline"></a>
-                                        </td>
-                                        <td>
-                                            <a href="update-product.php?id=<?php echo $row['orderID'] ?>">Ship Out</a>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
-                            </tbody>
                         <?php } elseif (isset($_GET['table']) && $_GET['table'] == 'Users') {?>
                             <tbody id="results">
                                 <?php while ($row = mysqli_fetch_assoc($rows)){
@@ -231,7 +191,6 @@
                                     }
                                 ?>
                                     <tr>
-                                        
                                         <td><?php echo $count++ ?></td>
                                         <td><?php echo $row['name'] ?></td>
                                         <td><?php echo $row['email'] ?></td>
