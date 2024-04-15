@@ -1,33 +1,68 @@
 <?php
     require_once "./admin_panel/backend.php";
 
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+
+    //Load Composer's autoloader
+    require 'vendor/autoload.php';
+
+    function Send_email_verify($name, $email,  $verification_code){
+        $mail = new PHPMailer(true);
+
+        $mail->isSMTP();                                                                
+        $mail->SMTPAuth   = true;   
+
+        $mail->Host       = 'smtp.gmail.com'; 
+        $mail->Username   = 'magnifiqueeventsandco@gmail.com';                    
+        $mail->Password   = 'imtyvdctjwkvlisv'; 
+        
+        $mail->SMTPSecure = "tls";            
+        $mail->Port       = 587;
+
+        $mail->setFrom('magnifiqueeventsandco@gmail.com', $name);
+        $mail->addAddress($email);
+
+        $mail->isHTML(true);
+        $mail->Subject = "Email Verification from  Magnifique Events & Co.";
+
+        $email_template = "
+            <h2>You have Registered with Magnifique Events & Co.</h2>
+            <h5>Here is your Verification code:</h5> <h4>$verification_code</h4>
+        ";
+
+        $mail->Body = $email_template;
+        $mail->send();
+        if($mail) {
+            header("Location: index.php?msg=email_sent");
+        }else {
+            header("Location: index.php?msg=email_not_sent");
+        }
+    }
+
     $connect = new Connect_db();
     $query = new Queries($connect);
 
-
-    if (isset($_POST['signin'])) {
-        $email = $_POST["email"];
-        $password = $_POST["password"];
-
-        $query = new AccountLogin($connect, $email, $password);
-        $result = $query->loginAccount();
-
-        if ($result) {
-            $row = $result;
-            $_SESSION['email'] = $row['email'];
-            $role = $row['role'];
-
-            if ($role === 0) {
-                $_SESSION['type'] = "admin";
-                header("Location: ./admin_panel/admin.php");
-            }else{
-                $_SESSION['type'] = 'user';
-                $_SESSION['UID'] = $row['accountID'];
-                header("Location: index.php?success=login_success");
-            }
-        }else {
-            echo "<script>alert('Invalid email or password!')</script>";
-        }
+    if (isset($_GET['error']) && $_GET === 'email_exist') 
+    {
+        echo "<script>alert('Email already exist!')</script>";
+    }
+    elseif (isset($_GET['error']) && $_GET === 'invalid_email_or_password') 
+    {
+        echo "<script>alert('Invalid email or password!')</script>";
+    }
+    elseif (isset($_GET['error']) && $_GET === 'registration_failed') 
+    {
+        echo "<script>alert('Account registration failed!')</script>";
+    }
+    elseif (isset($_GET['error']) && $_GET === 'wrong_verification_code') 
+    {
+        echo "<script>alert('Wrong_verification_code!')</script>";
+    }
+    elseif (isset($_GET['error']) && $_GET === 'email_not_sent') 
+    {
+        echo "<script>alert('email_not_sent!')</script>";
     }
 
     // sa kwan to e sign up
@@ -35,23 +70,70 @@
             $name = $_POST["name"];
             $email = $_POST["email"];
             $password = $_POST["password"];
+            $verification_code = substr(bin2hex(random_bytes(3)), 0, 6);
 
-            $query = new Accounts($connect,$name, $email, $password);
 
-            if ($query->checkIfUserExists()) {
-                header("Location: sign_in.php?error=email_exist");
-            }
-            else {
-                if ($query->createAccount() ) {
-                    header("Location: index.php?success=account_created");
+            Send_email_verify("$name", "$email",  "$verification_code");
+
+            $_SESSION['verification'] = $verification_code;
+            $_SESSION['name'] = $name ;
+            $_SESSION['email'] = $email;
+            $_SESSION['password'] = $password;
+        }
+
+        if (isset($_POST['verify'])) {
+            $usercode = $_POST['user_code'];
+            
+            if ($usercode === $_SESSION['verification']) {
+
+                $query = new Accounts($connect,$_SESSION['name'], $_SESSION['email'], $_SESSION['password']);
+
+                if ($query->checkIfUserExists()) {
+                    header("Location: facilities.php?error=email_exist");
                 }
+                else {
+                    if ($query->createAccount() ) {
+                        unset($_SESSION['name']);
+                        unset($_SESSION['email']);
+                        unset($_SESSION['password']);
+                        unset($_SESSION['verification']);
+                        header("Location: index.php?success=account_created");
+                    }else {
+                        header("Location: index.php?error=registration_failed");
+                    }
+            }
+            }else {
+                header("Location: facilities.php?error=wrong_verification_code");
+            }
+        }
+
+        if (isset($_POST['signin'])) {
+            $email = $_POST["email"];
+            $password = $_POST["password"];
+    
+            $query = new AccountLogin($connect, $email, $password);
+            $result = $query->loginAccount();
+    
+            if ($result) {
+                $row = $result;
+                $_SESSION['email'] = $row['email'];
+                $role = $row['role'];
+    
+                if ($role === 0) {
+                $_SESSION['type'] = "admin";
+                    header("Location: ./admin_panel/admin.php");
+                }else{
+                    $_SESSION['type'] = 'user';
+                    $_SESSION['UID'] = $row['accountID'];
+                    header("Location: index.php?success=logged_in");
+                }
+                
+            }else {
+                header("Location: index.php?error=invalid_email_or_password");
             }
         }
     
-
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,27 +164,50 @@
                         </span>
                     </div>
                 </div>
-                <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
-                    <h1>Create account</h1>
-                    <div class="social-icons">
-                        <a href="">
-                            <i class="fa-brands fa-google"></i>
-                        </a>
-                        <a href="">
-                            <i class="fa-brands fa-facebook"></i>
-                        </a>
-                        <a href="">
-                            <i class="fa-brands fa-github-alt"></i>
-                        </a>
-                    </div>
-                    <span>
-                        or use your email for registration
-                    </span> 
-                    <input type="text" name="name" placeholder="Name" required />
-                    <input type="email" name="email" placeholder="Email" required />
-                    <input type="password" name="password" placeholder="Password" required/>
-                    <button type="submit" name="signup">Sign Up</button>
-                </form>
+                    <?php if (!isset($_POST['signup'])) {  ?>
+                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+                            <h1>Create account</h1>
+                            <div class="social-icons">
+                                <a href="">
+                                    <i class="fa-brands fa-google"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fa-brands fa-facebook"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fa-brands fa-github-alt"></i>
+                                </a>
+                            </div>
+                            <span>
+                                or use your email for registration
+                            </span> 
+                            <input type="text" name="name" placeholder="Name" required />
+                            <input type="email" name="email" placeholder="Email" required />
+                            <input type="password" name="password" placeholder="Password" required/>
+                            <button type="submit" name="signup">Sign Up</button>
+                        </form>
+                    <?php } else{?>
+                        <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
+                            <h1>Create account</h1>
+                            <div class="social-icons">
+                                <a href="">
+                                    <i class="fa-brands fa-google"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fa-brands fa-facebook"></i>
+                                </a>
+                                <a href="">
+                                    <i class="fa-brands fa-github-alt"></i>
+                                </a>
+                            </div>
+                            <span>
+                                verify  your account by entering the code sent to your email.
+                            </span> 
+                            <input type="text" name="user_code" placeholder="code" required />
+                            
+                            <button type="submit" name="verify">Verify</button>
+                        </form>
+                    <?php } ?>
             </div>
     
             <div class="form-container sign-in">

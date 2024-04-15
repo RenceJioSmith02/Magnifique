@@ -165,17 +165,15 @@
             $passwordhashed = password_hash($this->password, PASSWORD_BCRYPT);
             $role = 1;
             $datetime = date('Y-m-d H:i:s');
-            $verification_code = md5(rand()); 
         
-            $stmt =  $this->connection->prepare("INSERT INTO `accounts` (`name`, `email`, `password`, `verification`, `datecreated`, `role`) VALUES(?,?,?,?,?,?)");
+            $stmt =  $this->connection->prepare("INSERT INTO `accounts` (`name`, `email`, `password`, `datecreated`, `role`) VALUES(?,?,?,?,?)");
         
-            $stmt->bind_param("ssssss", $this->name, $this->email, $passwordhashed, $verification_code, $datetime, $role);
+            $stmt->bind_param("sssss", $this->name, $this->email, $passwordhashed, $datetime, $role);
             $success = $stmt->execute();
         
             return $success;
         }
 
-        
     }
 
     class AccountLogin extends Accounts {
@@ -265,23 +263,6 @@
             }
         }
 
-        public function Update1($id){
-            // Return all attributes of the class
-            return [
-                'PID' => $id,
-                'Pname' => $this->productName,
-                'CID' => $this->productType,
-                'Pprice' => $this->productPrice,
-                'Pdescription' => $this->aboutProduct,
-                'Pimage' => $this->productPictures,
-                'bodymaterial' => $this->bodymaterial,
-                'bodyfinish' => $this->bodyfinish,
-                'fretboardmaterial' => $this->fretboardmaterial,
-                'numoffrets' => $this->numoffrets,
-                'strings' => $this->strings,
-                'specsID' => $id
-            ];
-        }
     }
         
 
