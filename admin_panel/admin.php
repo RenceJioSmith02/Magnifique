@@ -32,6 +32,8 @@
   <head>
     <meta charset="UTF-8">
 
+    <link rel="icon" type="image/x-icon" href="img/bg&icons/logo.png">
+    <title>MAGNIFIQUE Events & Co.</title>
     <link rel="stylesheet" href="admin.css">
 
     <!-- Boxiocns CDN Link -->
