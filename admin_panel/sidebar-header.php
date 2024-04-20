@@ -1,11 +1,28 @@
 <?php
-if (isset($_GET['logout'])) {
-  session_destroy();
-  header( "location: ../index.php" );
-}
+// if (isset($_GET['logout'])) {
+//   session_destroy();
+//   header( "location: ../index.php" );
+// }
 ?>
 
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- Include SweetAlert2 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+</head>
+<body>
+
+  <!-- Include SweetAlert2 library -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+  
 <div class="sidebar close">
     <div class="logo-details">
       <div class="img">
@@ -35,13 +52,6 @@ if (isset($_GET['logout'])) {
               <li><a class="link_name" href="table.php?table=Reservation">Reservation</a></li>
             </ul>
           </div>
-          <!-- <ul class="sub-menu">
-            <li><a class="link_name" href="table.php?table=Products">Products</a></li>
-            <li><a href="table.php?category=Acoustic">Acoustic</a></li>
-            <li><a href="table.php?category=Electric">Electric</a></li>
-            <li><a href="table.php?category=Bass">Bass</a></li>
-            <li><a href="table.php?category=Ukalele">Ukalele</a></li>
-          </ul> -->
         </li>
 
         <li>
@@ -62,11 +72,9 @@ if (isset($_GET['logout'])) {
           <div class="name-job">
               <div class="profile_name">ADMINISTRATOR</div>
           </div>
-            <form method="GET" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-              <button class="logout-btn" type="submit" name="logout" value="1">
-                <i class='bx bx-log-out'></i>
-              </button>
-            </form>
+            <button onclick="logout()">
+              <i class='bx bx-log-out'></i>
+            </button>
           </div>
       </li>
     </ul>
@@ -77,3 +85,30 @@ if (isset($_GET['logout'])) {
     <i class='bx bx-menu' ></i>
     <span class="text">Dashboard</span>
   </div>
+
+
+
+
+
+  <script>
+    function logout() {
+      Swal.fire({
+            title: 'Are you sure?',
+            text: "You will be logged out!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, logout!'
+
+          }).then((result) => {
+            if (result.isConfirmed) {
+              window.location.href='<?php echo "../index.php?logout=true"?>';
+              //alert("Logout successful!"); // For demonstration, you can replace this with actual logout action
+            }
+      })
+    }
+  </script>
+
+</body>
+</html>

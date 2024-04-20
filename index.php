@@ -1,6 +1,13 @@
 <?php
 
-    session_start(); 
+    session_start();
+
+    if (isset($_GET['logout'])) {
+        session_destroy();
+        header( "location: index.php" );
+    }
+
+    
     include('nav/nav.php'); 
     include('login/login.php'); 
 
