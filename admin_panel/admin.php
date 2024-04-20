@@ -40,8 +40,18 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
+
+     <!-- ajax -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <!-- Include SweetAlert2 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+</head>
 <body>
+
+  <!-- Include SweetAlert2 library -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <!-- sidebar-header -->
   <?php include 'sidebar-header.php'; ?>
@@ -147,28 +157,7 @@
                   </thead>
                   <tbody id="results">
                     
-                  <?php
-                                                  // $row = mysqli_fetch_assoc($rows);
-                                                  // if($row != null) {
-                                                  //     echo "may laman naman";
-                                                  // }else {
-                                                  //     echo"wala";
-                                                  // }
-
-                  while ($row = mysqli_fetch_assoc($rows)){  ?>
-                        <tr>
-                            <td><?php echo ++$count ?></td>
-                            <td><?php echo $row['accountID'] ?></td>
-                            <td><?php echo $row['customerName'] ?></td>
-                            <td><?php echo $row['phonenum'] ?></td>
-                            <td><?php echo $row['date'] ?></td>
-                            <td><?php echo $row['theme'] ?></td>
-                            <td><?php echo $row['description'] ?></td>
-                            <td><?php echo $row['facility'] ?></td>
-                            <td><?php echo $row['packageName'] ?></td>
-                            <td><?php echo $row['price'] ?></td>
-                        </tr>
-                    <?php } ?>
+                    <!-- ajax will puno this hehe -->
       
                   </tbody>
               </table>
@@ -181,12 +170,10 @@
     </div>
   </section>
 
-
     
   <!-- side bar and pop-ups script -->
   <script src="admin-pop.js"></script>
-
-
+  
     <!-- ionicons -->
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

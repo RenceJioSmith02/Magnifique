@@ -242,12 +242,60 @@ section{
   top: 60px;
   height: calc(100vh - 60px);
 }
+
+
+/* 
+  ---------HEADER - SEARCH----------------------
+*/
+.header-search {
+  display: block;
+  position: relative;
+  width: max-content;
+
+  margin-right: 43px;
+  float: right;
+}
+
+.header-search .input-field {
+  border: 1px solid #151515;
+  width: 280px;
+  padding: 9px 15px;
+  border-radius: 6px;
+  transition: var(--transition-1);
+  color: #151515;
+
+  margin-bottom: 0px;
+}
+
+.header-search .input-field:focus { outline: 1px solid #151515; }
+
+.header-search .search-btn {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-43%);
+  font-size: 20px;
+  color: #151515;
+  background: none;
+  border: none;
+}
+
+.header-search .search-btn ion-icon {
+ --ionicon-stroke-width: 30px; 
+}
+
+
+
+
+
 .admin-header{
   height: 60px;
   left: 260px;
   width: calc(100% - 260px);
   display: flex;
   align-items: center;
+  justify-content: space-between;
+
   z-index: 3;
   white-space: nowrap;
   overflow: hidden;
@@ -261,6 +309,10 @@ section{
 .sidebar.close ~ .admin-header{
   left: 78px;
   width: calc(100% - 78px);
+}
+.left-box {
+  display: flex;
+  align-items: center;
 }
 .admin-header .bx-menu,
 .admin-header .text{

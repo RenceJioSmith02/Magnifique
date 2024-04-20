@@ -168,9 +168,9 @@
                 </a>
             </li>
             <center>
-                <?php if (isset($_SESSION['type'])) { ?>
+                <?php if (isset($_SESSION['UID'])) { ?>
                         
-                    <button>
+                    <button class="show-login-btn">
                         <ion-icon name='person-circle-outline'></ion-icon>
                         <p class='header-action-label'>Account</p>
                     </button>

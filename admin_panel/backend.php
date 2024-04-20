@@ -38,15 +38,17 @@
             switch ($tablename) {
                 case 'Reservation':
                     $sql = "SELECT a.accountID, a.name as customerName, e.phonenum, e.date, e.theme, e.description, e.type, v.facility, p.name as packageName, p.price, b.paymentstatus
-                    FROM accounts as a
+                    FROM booking as b
                     INNER JOIN eventreserve as e
-                    ON a.accountID = e.accountID
+                    ON b.eventID = e.eventID
+                    INNER JOIN accounts as a
+                    ON e.accountID = a.accountID
                     INNER JOIN venue as v
                     ON e.venueID = v.venueID
                     INNER JOIN package as p
                     ON e.packageID = p.packageID
-                    INNER JOIN booking as b
-                    ON e.paymentID = b.bookingID
+                    INNER JOIN payment as pay
+                    ON e.paymentID = pay.paymentID
                     ORDER BY a.accountID ASC LIMIT ?, ?";
 
                     break;

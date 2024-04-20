@@ -14,19 +14,92 @@
     sidebar.classList.toggle("close");
     });
 
+    function logout() {
+        Swal.fire({
+              title: 'Are you sure?',
+              text: "You will be logged out!",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Yes, logout!'
+  
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location.href='<?php echo "../index.php?logout=true"?>';
+                //alert("Logout successful!"); // For demonstration, you can replace this with actual logout action
+              }
+        })
+      }
 
-// <!-- add products script -->
 
-    // var overlay = document.getElementById('overlay');
-    // var popup = document.getElementById('popup');
-    // var addProductBtn = document.querySelector('.add-product');
+//   // Search script
+//   $(document).ready(function(){
+//     var initialData = "";
 
-    // addProductBtn.addEventListener('click', function() {
-    //     overlay.style.display = 'block';
-    //     popup.style.display = 'block';
-    // });
+//     // onload to pre
+//     $.ajax({
+//         url:"table-data.php",
+//         method:"GET",
+//         success:function(data){
+//             initialData = data;
+//             $('#results').html(initialData);
+//         }
+//     });
 
-    // function closePopup() {
-    //     overlay.style.display = 'none';
-    //     popup.style.display = 'none';
-    // }
+//       document.getElementById("searchEvent").addEventListener("input", function() {
+//         var searchEvent = $(this).val();
+
+//         if (searchEvent != "") {
+//             // If searching, clear the initial data
+//             $('#results').html("");
+
+//             $.ajax({
+//                 url:"table-data.php",
+//                 method:"POST",
+//                 data:{ searchEvent:searchEvent },
+//                 success:function(data)
+//                 {
+//                     $('#results').html(data);
+//                 }
+//             });
+//         } else {
+//             $('#results').html(initialData);
+//         }
+//       });
+      
+// });
+
+
+$(document).ready(function(){
+    var initialData = "";
+
+    // Load initial data
+    $.ajax({
+        url: "table-data.php",
+        method: "GET",
+        success: function(data) {
+            initialData = data;
+            $('#results').html(initialData);
+        }
+    });
+
+    // Listen for input changes
+    $('#searchEvent').on('input', function() {
+        var searchEvent = $(this).val();
+
+        if (searchEvent.trim() !== "") {
+            $.ajax({
+                url: "table-data.php",
+                method: "POST",
+                data: { searchEvent: searchEvent },
+                success: function(data) {
+                    $('#results').html(data);
+                }
+            });
+        } else {
+            $('#results').html(initialData);
+        }
+    });
+});
+

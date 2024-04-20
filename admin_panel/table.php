@@ -28,9 +28,6 @@
     if (isset($_GET['table']) && $_GET['table'] == 'Reservation') {
         $tablename = "Reservation";
         $tabletoUse_inQuery = "eventreserve";
-    } elseif (isset($_GET['table']) && $_GET['table'] == 'Event') {
-        $tablename = "Event";
-        $tabletoUse_inQuery = "eventreserve";
     } elseif (isset($_GET['table']) && $_GET['table'] == 'Users') {
         $tablename = "accounts";
         $tabletoUse_inQuery = "accounts";
