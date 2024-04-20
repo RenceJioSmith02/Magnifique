@@ -33,66 +33,32 @@
       }
 
 
-//   // Search script
-//   $(document).ready(function(){
-//     var initialData = "";
-
-//     // onload to pre
-//     $.ajax({
-//         url:"table-data.php",
-//         method:"GET",
-//         success:function(data){
-//             initialData = data;
-//             $('#results').html(initialData);
-//         }
-//     });
-
-//       document.getElementById("searchEvent").addEventListener("input", function() {
-//         var searchEvent = $(this).val();
-
-//         if (searchEvent != "") {
-//             // If searching, clear the initial data
-//             $('#results').html("");
-
-//             $.ajax({
-//                 url:"table-data.php",
-//                 method:"POST",
-//                 data:{ searchEvent:searchEvent },
-//                 success:function(data)
-//                 {
-//                     $('#results').html(data);
-//                 }
-//             });
-//         } else {
-//             $('#results').html(initialData);
-//         }
-//       });
-      
-// });
-
+// script for search pare
 
 $(document).ready(function(){
     var initialData = "";
+    var tablename = $('input[name="action"]').val(); 
 
     // Load initial data
     $.ajax({
         url: "table-data.php",
         method: "GET",
+        data: { tablename: tablename },
         success: function(data) {
             initialData = data;
             $('#results').html(initialData);
         }
     });
 
-    // Listen for input changes
     $('#searchEvent').on('input', function() {
         var searchEvent = $(this).val();
-
+    
         if (searchEvent.trim() !== "") {
             $.ajax({
                 url: "table-data.php",
-                method: "POST",
-                data: { searchEvent: searchEvent },
+                method: "GET",
+                data: { searchEvent: searchEvent, 
+                        tablename: tablename },
                 success: function(data) {
                     $('#results').html(data);
                 }
@@ -102,4 +68,27 @@ $(document).ready(function(){
         }
     });
 });
+
+
+
+
+
+    // Listen for input changes
+    // $('#searchEvent').on('input', function() {
+    //     var searchEvent = $(this).val();
+
+    //     if (searchEvent.trim() !== "") {
+    //         $.ajax({
+    //             url: "table-data.php",
+    //             method: "POST",
+    //             data: { searchEvent: searchEvent },
+    //             success: function(data) {
+    //                 $('#results').html(data);
+    //             }
+    //         });
+    //     } else {
+    //         $('#results').html(initialData);
+    //     }
+    // });
+
 

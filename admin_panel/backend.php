@@ -34,55 +34,55 @@
             $this->connection = $connect->getConn();
         }
 
-        public function Print($start,$limit,$tablename) {
-            switch ($tablename) {
-                case 'Reservation':
-                    $sql = "SELECT a.accountID, a.name as customerName, e.phonenum, e.date, e.theme, e.description, e.type, v.facility, p.name as packageName, p.price, b.paymentstatus
-                    FROM booking as b
-                    INNER JOIN eventreserve as e
-                    ON b.eventID = e.eventID
-                    INNER JOIN accounts as a
-                    ON e.accountID = a.accountID
-                    INNER JOIN venue as v
-                    ON e.venueID = v.venueID
-                    INNER JOIN package as p
-                    ON e.packageID = p.packageID
-                    INNER JOIN payment as pay
-                    ON e.paymentID = pay.paymentID
-                    ORDER BY a.accountID ASC LIMIT ?, ?";
+        // public function Print($start,$limit,$tablename) {
+        //     switch ($tablename) {
+        //         case 'Reservation':
+        //             $sql = "SELECT a.accountID, a.name as customerName, e.phonenum, e.date, e.theme, e.description, e.type, v.facility, p.name as packageName, p.price, b.paymentstatus
+        //             FROM booking as b
+        //             INNER JOIN eventreserve as e
+        //             ON b.eventID = e.eventID
+        //             INNER JOIN accounts as a
+        //             ON e.accountID = a.accountID
+        //             INNER JOIN venue as v
+        //             ON e.venueID = v.venueID
+        //             INNER JOIN package as p
+        //             ON e.packageID = p.packageID
+        //             INNER JOIN payment as pay
+        //             ON e.paymentID = pay.paymentID
+        //             ORDER BY a.accountID ASC LIMIT ?, ?";
 
-                    break;
-                case 'event':
-                    $sql = "SELECT a.accountID, a.name as customerName, e.phonenum, e.date, e.theme, e.description, e.type, v.facility, p.name as packageName, p.price
-                    FROM accounts as a
-                    INNER JOIN eventreserve as e
-                    ON a.accountID = e.accountID
-                    INNER JOIN venue as v
-                    ON e.venueID = v.venueID
-                    INNER JOIN package as p
-                    ON e.packageID = p.packageID
-                    ORDER BY accountID ASC LIMIT  ?, ?";
+        //             break;
+        //         case 'event':
+        //             $sql = "SELECT a.accountID, a.name as customerName, e.phonenum, e.date, e.theme, e.description, e.type, v.facility, p.name as packageName, p.price
+        //             FROM accounts as a
+        //             INNER JOIN eventreserve as e
+        //             ON a.accountID = e.accountID
+        //             INNER JOIN venue as v
+        //             ON e.venueID = v.venueID
+        //             INNER JOIN package as p
+        //             ON e.packageID = p.packageID
+        //             ORDER BY accountID ASC LIMIT  ?, ?";
 
-                    break;
-                case 'accounts':
-                    $sql = "SELECT * FROM accounts
-                    ORDER BY accountID ASC LIMIT  ?, ?";
+        //             break;
+        //         case 'accounts':
+        //             $sql = "SELECT * FROM accounts
+        //             ORDER BY accountID ASC LIMIT  ?, ?";
 
-                    break;
-                default:
-                    # code...
-                    break;
-            }
+        //             break;
+        //         default:
+        //             # code...
+        //             break;
+        //     }
             
 
-            $stmt  = $this->connection->prepare($sql);
+        //     $stmt  = $this->connection->prepare($sql);
 
-            $stmt->bind_param("ii", $start, $limit);
-            $stmt->execute();
-            $result = $stmt->get_result();
+        //     $stmt->bind_param("ii", $start, $limit);
+        //     $stmt->execute();
+        //     $result = $stmt->get_result();
             
-            return $result;
-        }
+        //     return $result;
+        // }
 
         public  function getTotalRows($tabletoUse_inQuery ){
             $stmt = $this->connection->prepare("SELECT COUNT(*) AS total FROM $tabletoUse_inQuery ");
@@ -92,8 +92,7 @@
             return $row["total"];
         }
 
-        public function deleteProduct($productId)
-        {
+        public function deleteProduct($productId) {
             $stmt_select = $this->connection->prepare("SELECT Pimage FROM products WHERE PID = ?");
             $stmt_select->bind_param("i", $productId);
             $stmt_select->execute();

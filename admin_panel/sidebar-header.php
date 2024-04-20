@@ -84,11 +84,12 @@
       <span class="text">Dashboard</span>
     </div>
 
-    <?php if (isset($_GET['table']) && $_GET['table'] == 'Event') { ?>
       <div class="header-search">
         <form action="admin.php" method="GET" enctype="multipart/form-data" class="form">
 
           <input type="text" id="searchEvent" name="search" placeholder="Search..." class="input-field" required>
+          <input type="hidden" name="action" value="<?php if (isset($_GET['table'])) echo $_GET['table']; ?>"/>
+          
           <button type="submit" name=searchBtn class="search-btn" aria-label="Search">
             <ion-icon name="search-outline"></ion-icon>
           </button>
@@ -96,11 +97,14 @@
         </form>
       </div>
 
+
+    <!-- <?php if (isset($_GET['table']) && $_GET['table'] == 'Event') { ?>
+
     <?php } elseif (isset($_GET['table']) && $_GET['table'] == 'Reservation') { ?>
             search 2
     <?php } elseif (isset($_GET['table']) && $_GET['table'] == 'Users') { ?>
             search 3
-    <?php } ?>
+    <?php } ?> -->
    
   </div>
 

@@ -167,22 +167,23 @@
                     <span class="link-name" style="--i:5">CONTACT US</span>
                 </a>
             </li>
-            <center>
+            <li class="header-btn-container">
                 <?php if (isset($_SESSION['UID'])) { ?>
                         
-                    <button class="show-login-btn">
+                    <button class="header-btn account">
                         <ion-icon name='person-circle-outline'></ion-icon>
-                        <p class='header-action-label'>Account</p>
+                        
                     </button>
+                    <span>Account</span>
 
                 <?php } else {?>
 
-                    <button id="show-login" class="show-login-btn">
+                    <button id="show-login" class="header-btn login">
                         <span class="text">Login</span>
                     </button>
 
                 <?php } ?>
-            </center>
+            </li>
 
         </ul>
     </nav>

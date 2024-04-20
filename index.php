@@ -7,15 +7,14 @@
         header( "location: index.php" );
     }
 
-    
-    include('nav/nav.php'); 
+    include('nav/nav.php');
     include('login/login.php'); 
 
-    if (isset($_GET['error']) && $_GET === 'email_exist') 
+    if (isset($_GET['error']) && $_GET === 'email_exist')
     {
         echo "<script>alert('Email already exist!')</script>";
     }
-    elseif (isset($_GET['error']) && $_GET === 'invalid_email_or_password') 
+    elseif (isset($_GET['error']) && $_GET === 'invalid_email_or_password')
     {
         echo "<script>alert('Invalid email or password!')</script>";
     }
@@ -23,7 +22,7 @@
     {
         echo "<script>alert('Account registration failed!')</script>";
     }
-    elseif (isset($_GET['error']) && $_GET === 'wrong_verification_code') 
+    elseif (isset($_GET['error']) && $_GET === 'wrong_verification_code')
     {
         echo "<script>alert('Wrong_verification_code!')</script>";
     }

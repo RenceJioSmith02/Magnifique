@@ -2,28 +2,28 @@
         require("backend.php");
         $connect = new Connect_db();
 
-        $query = new Queries($connect);
+        // $query = new Queries($connect);
 
-        $limit = 5;
+        // $limit = 5;
 
-        $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
+        // $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
 
-        $start = ($page - 1) * $limit;
+        // $start = ($page - 1) * $limit;
 
-        $tablename = "event";
-        $tabletoUse_inQuery  = "eventreserve";
+        // $tablename = "event";
+        // $tabletoUse_inQuery  = "eventreserve";
 
-        $result = $query->Print($start, $limit, $tablename);
-        $rows = $result;
+        // $result = $query->Print($start, $limit, $tablename);
+        // $rows = $result;
 
-        $totalRows = $query->getTotalRows($tabletoUse_inQuery);
-        $totalPages = ceil($totalRows / $limit);
+        // $totalRows = $query->getTotalRows($tabletoUse_inQuery);
+        // $totalPages = ceil($totalRows / $limit);
 
-        $prev = $page - 1;
-        $next = $page + 1;
+        // $prev = $page - 1;
+        // $next = $page + 1;
 
-        $count = 0;
-        $count += ($page - 1) * 5;
+        // $count = 0;
+        // $count += ($page - 1) * 5;
     ?>
 
 <!DOCTYPE html>
@@ -147,8 +147,9 @@
                         <th>Account Name</th>
                         <th>Customer Name</th>
                         <th>Phone Number</th>
+                        <th>Event Type</th>
                         <th>Event Date</th>
-                        <th>Theme</th>
+                        <th>Event Time</th>
                         <th>Description</th>
                         <th>Venue</th>
                         <th>Package</th>

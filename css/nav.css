@@ -112,8 +112,8 @@
     transition: opacity .3s;
 }
 
-/* button to show login */
-.sidebar .show-login-btn {
+/* button to show.header-btn login */
+.sidebar .header-btn.login {
     background: #fff;
     border: 0;
     border-radius: 8px;
@@ -133,21 +133,45 @@
     cursor: pointer;
     transition: all .3s;
     padding: 8px 0 8px 0;
-    margin-left: 100px;
   }
   
-  .sidebar .show-login-btn:hover {
+  .sidebar .header-btn.login:hover {
     scale: 0.95
   }
   
-  .sidebar .show-login-btn:active {
+  .sidebar .header-btn.login:active {
     background: #071740;
     color: #fff;
     scale: 0.9
   }
 
+
+  .header-btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 100px;
+    color: white;
+  }
+
+  .sidebar .header-btn.account {
+    background: none;
+    border: none;
+  }
+  .sidebar .header-btn.account ion-icon {
+    font-size: 30px;
+    color: white;
+  }
+  .sidebar .header-btn-container span {
+    font-size: 13px;
+  }
+
+
+
+
 @media screen and (max-width: 1100px) {
-    .sidebar .show-login-btn {
+    .sidebar .header-btn.login {
         margin-left: 50px;
     }
     /* .list .list-items a {
@@ -163,7 +187,7 @@
         margin: 5px 0;
         /* line-height: 32px; */
     }
-    .sidebar .show-login-btn {
+    .sidebar .header-btn.login {
         padding: 10px 0 10px 0;
         min-width: 80px;
     }
@@ -290,7 +314,7 @@
     }
 
     /* button */
-    .sidebar .show-login-btn {
+    .sidebar .header-btn.login {
         margin-left: 0;
         margin-top: 50px;
         padding: 10px 0 10px 0;
@@ -299,7 +323,7 @@
         transition: all 0.1s ease-in-out;
     }
 
-    .sidebar.active .show-login-btn {
+    .sidebar.active .header-btn.login {
         opacity:  1;
         min-width: 220px;
     }
