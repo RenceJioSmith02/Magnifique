@@ -716,9 +716,10 @@
                 <div class="reserve-form-container">
                     <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
 
+                    <h3 class="title" style="text-align: center; padding: 5px 0;">PAYMENT</h3>
                         <div class="row">
-
                             <div class="col">
+
                                 <div class="inputBox">
                                     <span>Name :</span>
                                     <input type="text" name="" placeholder="Rence Jio Bal-ot">
@@ -776,8 +777,6 @@
 
                             <div class="col">
 
-                                <h3 class="title">payment</h3>
-
                                 <div class="inputBox">
                                     <span>cards accepted :</span>
                                     <img src="./img/bg&icons/card_img.png" alt="">
@@ -813,18 +812,16 @@
                                     </select>
                                 </div>
                                 
-                                <!-- reserve-btn -->
-                                <div class="inputBox">
+
+                            </div>
+
+                        </div>
+                                                        <!-- reserve-btn -->
+                                                        <div class="inputBox">
                                     <div class="reserveBTN-container" style="padding-top: 20px">
                                         <button class="reservation-btn" onclick="">Reserve</button>
                                     </div>
                                 </div>
-
-                            </div>
-
-                            
-
-                        </div>
                         
                     </form>
                 </div>

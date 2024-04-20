@@ -67,7 +67,7 @@
 
         <section class="view1">
             <div class="container1">
-                <h1>EVENT BOOKING</h1>
+                <h1 class="main-title">EVENT BOOKING</h1>
                 <p>
                     hahhadtxdfcgvjbhnjjipcuadrutfcgvkhlbjnjgj[wrpalvsbcxljvhzguosidvbjc ]
                 </p>
