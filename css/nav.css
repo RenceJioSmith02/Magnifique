@@ -8,7 +8,7 @@
     width: 100%;
     height: 70px;
     background: linear-gradient(to right, #071740, #132955);
-    backdrop-filter: blur(10px);
+    /* backdrop-filter: blur(10px); */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.8);
     padding: 6px 14px;
     transition: .5s;
@@ -147,6 +147,7 @@
 
 
   .header-btn-container {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -158,6 +159,7 @@
   .sidebar .header-btn.account {
     background: none;
     border: none;
+    cursor: pointer;
   }
   .sidebar .header-btn.account ion-icon {
     font-size: 30px;
@@ -196,8 +198,18 @@
         padding:  20px;
     }
 }
-
+@media screen and (min-width: 870px) {
+  .list-items.mobile {
+    display: none;
+  }
+}
 @media screen and (max-width: 870px) {
+  .header-btn.account{
+    display: none;
+  }
+  .header-btn-container {
+    margin-left: 0;
+  }
 
     .sidebar {
         display: block;
@@ -330,3 +342,164 @@
 
 }
 
+
+/* account setting */
+
+.account-option {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: left;
+  
+    width: 150px;
+    height: 100px;
+    z-index: 13;
+  
+    position: absolute;
+    top: 100px;
+    transform: translate(-50%, -50%);
+  
+    color: white;
+    padding: 20px 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    background: linear-gradient(to top right, #071740, #132955);
+  }
+  .account-option.active {
+    display: flex;
+  }
+  .account-option button {
+    background: none;
+    border: none;
+    color: white;
+    width: 100%;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    cursor: pointer;
+    margin-left: 18px;
+  }
+  .account-option button i{
+    margin-right: 10px;
+    font-size: 20px;
+  }
+
+
+  /* reservation container */
+
+  
+/* account option*/
+
+.popup-reservation {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+  
+    height: 100%;
+    max-height: 500px;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+  
+    color: white;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(to top right, #071740, #132955);
+    border: 1px solid black;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    overflow: hidden;
+  }
+  .popup-reservation .reservation-close {
+    position: inherit;
+    right: 20px;
+    bottom: 15px;
+  }
+  .popup-reservation .reservation-close button {
+    background: none;
+    border: none;
+    color: white;
+  }
+  
+  .popup-reservation .reservation-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+    overflow: scroll;
+    height: 390px;
+    width: 100%;
+  }
+  
+  .reservation-container .reservation-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.1);
+  }
+  .reservation-container .reservation-list:hover {
+    background: rgba(255,255,255,0.2);
+    transition: var(--transition-1);
+  }
+  
+  .reservation-list .product-name {
+    width: 60px; 
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+  }
+  .reservation-list .o-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  
+    height: fit-content;
+    width: 70px;
+    padding: 2px;
+    border-radius: 4px;
+    background: rgba(255,255,255,0.2);
+  }
+  .reservation-list .o-image img {
+    height: 70px;
+    width: 55px;
+  }
+  
+  .reservation-container button {
+    padding: 4px 9px;
+    border-radius: 4px;
+    color: black;
+    background: #3aa856;
+    border: 1px solid #3aa856;
+    box-shadow: 0px 2px 4px 1px rgba(0, 0, 0, 0.2);
+    scale: 1;
+  }
+  .reservation-container button:hover {
+    cursor: pointer;
+    background: limegreen;
+  }
+  .reservation-container button:active {
+    transform: scale(0.9);
+  } 
+  
+  
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+  .account-btn {
+    display: inline-block;
+    margin-right: 10px;
+  }

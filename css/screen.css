@@ -39,14 +39,13 @@ section {
 
 /* SECTION SIZE */
 @media screen and (max-width: 870px) {
-    section {
+    section,
+    .footer{
         position: relative;
-        left: 30px;
-        width: calc(100% - 50px);
+        left: 27px;
+        width: calc(100% - 55px);
     }
 }
-
-
 
 
 @media  screen and (max-width: 2440px) {

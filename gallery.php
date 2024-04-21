@@ -119,9 +119,7 @@
         </section>
     </div>
 
-    <section class="footer">
-        <?php include 'footer/footer.html'; ?>
-    </section>
+    <?php include 'footer/footer.html'; ?>
 
     <script src = "js/gallery.js"></script>
 </body>

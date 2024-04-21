@@ -121,72 +121,188 @@
     <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- Boxiocns CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/pop.css">
+
+    <!-- Include SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
 </head>
 <body>
+
+  <!-- Include SweetAlert2 library -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
-    <nav class="sidebar">
-        <div class="top-bar">
-            <div class="logo-menu">
-                <img src="img/bg&icons/logo-white.png" style="max-width: 60px; min-width: 50px;" alt="logo">
+    <header>
+        <nav class="sidebar">
+            <div class="top-bar">
+                <div class="logo-menu">
+                    <img src="img/bg&icons/logo-white.png" style="max-width: 60px; min-width: 50px;" alt="logo">
+                </div>
+                <i class="fa-solid fa-bars toggle-btn"></i>
             </div>
-            <i class="fa-solid fa-bars toggle-btn"></i>
+
+            <ul class="list">
+
+                <li class="list-items">
+                    <a href="index.php" class="nav-link">
+                        <i class="fa-solid fa-house"></i>
+                        <span class="link-name" style="--i:1">HOME</span>
+                    </a>
+                </li>
+                <li class="list-items">
+                    <a href="eventPackages.php" class="nav-link">
+                        <i class="fa-solid fa-cube"></i>
+                        <span class="link-name" style="--i:2"> EVENT PACKAGES</span>
+                    </a>
+                </li>
+                <li class="list-items">
+                    <a href="facilities.php" class="nav-link">
+                        <i class="fa-solid fa-house-circle-check"></i>
+                        <span class="link-name" style="--i:3">FACILITIES</span>
+                    </a>
+                </li>
+                <li class="list-items">
+                    <a href="gallery.php" class="nav-link">
+                        <i class="fa-solid fa-image"></i>
+                        <span class="link-name" style="--i:4">GALLERY</span>
+                    </a>
+                </li>
+                <li class="list-items">
+                    <a href="contact.php" class="nav-link">
+                        <i class="fa-solid fa-phone"></i>
+                        <span class="link-name" style="--i:5">CONTACT US</span>
+                    </a>
+                </li>
+
+                <?php if (isset($_SESSION['UID'])) { ?> 
+                    <li class="list-items mobile">
+                        <a href="#" class="nav-link"onclick="openPopup('reservation')">
+                            <i class="fa-solid fa-list"></i>
+                            <span class="link-name" style="--i:6">RESERVATION</span>
+                        </a>
+                    </li>
+                    <li class="list-items mobile">
+                        <a href="#" class="nav-link" onclick="openPopup('logout')">
+                            <i class="fa-solid fa-right-from-bracket"></i>
+                            <span class="link-name" style="--i:7">LOGOUT</span>
+                        </a>
+                    </li>
+                <?php } ?>
+
+                <!-- desktop buttons -->
+                <li class="header-btn-container">
+                    <?php if (isset($_SESSION['UID'])) { ?>                   
+                        <button class="header-btn account" onclick="openPopup('accountSetting')">
+                            <ion-icon name='person-circle-outline'></ion-icon>                      
+                        </button>
+                        <span class="header-btn account">Account</span>
+                    <?php } else {?>
+                        <button id="show-login" class="header-btn login">
+                            <span class="text">Login</span>
+                        </button>
+                    <?php } ?>
+
+                    <div class="account-option"  id="accountOption"> 
+                        <div class="account-btn">
+                            <button onclick="openPopup('reservation')"><i class='bx bx-receipt'></i>Reserved</button>
+                        </div>
+                        <div class="account-btn">
+                            <button onclick="openPopup('logout')"><i class='bx bx-log-out'></i>Logout</button>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+        </nav>
+
+        <?php
+            // $result = $query->selectreservation();
+        ?>
+
+        <div id="popup-reservation" class="popup-reservation">
+
+            <center><h2>reservations</h2></center>
+
+            <ul class="reservation-container">
+            <?php //while ($row = mysqli_fetch_assoc($result)) { ?>
+
+                <li class="reservation-list">
+                    <div class="o-image">
+                    <img src="<?php //echo $row['Pimage']; ?>" alt="">
+                    <p class="product-name"><?php //echo $row['Pname']; ?></p>
+                    </div>
+                    <div class="price">
+                    <p>&#8369;<?php //echo $row['Pprice']; ?></p>
+                    </div>
+                    <div class="quantity">
+                    <span><?php //echo $row['quantity']; ?></span>
+                    </div>
+
+                    <?php
+                        //if (isset($row['status']) && $row['status'] == 'pending') {
+                        //echo "<span>Pending</span>";
+                        //} else {
+                    ?>
+                        <button class="received-btn" onclick="location.href='<?php //echo $_SERVER['PHP_SELF'] . '?reservationRecieved=' . $row['reservationID'] ?>'">Received</button>
+                <?php //} ?>
+                </li>
+
+            <?php //} ?>
+            </ul>
+
+            <div class="reservation-close">
+            <button onclick="closePopup()">Close</button>
+            </div>
+
         </div>
 
-        <ul class="list">
+        <div id="overlay" class="overlay"></div>
+    </header>
 
-            <li class="list-items">
-                <a href="index.php" class="nav-link">
-                    <i class="fa-solid fa-house"></i>
-                    <span class="link-name" style="--i:1">HOME</span>
-                </a>
-            </li>
-            <li class="list-items">
-                <a href="eventPackages.php" class="nav-link">
-                    <i class="fa-solid fa-cube"></i>
-                    <span class="link-name" style="--i:2"> EVENT PACKAGES</span>
-                </a>
-            </li>
-            <li class="list-items">
-                <a href="facilities.php" class="nav-link">
-                    <i class="fa-solid fa-house-circle-check"></i>
-                    <span class="link-name" style="--i:3">FACILITIES</span>
-                </a>
-            </li>
-            <li class="list-items">
-                <a href="gallery.php" class="nav-link">
-                    <i class="fa-solid fa-image"></i>
-                    <span class="link-name" style="--i:4">GALLERY</span>
-                </a>
-            </li>
-            <li class="list-items">
-                <a href="contact.php" class="nav-link">
-                    <i class="fa-solid fa-phone"></i>
-                    <span class="link-name" style="--i:5">CONTACT US</span>
-                </a>
-            </li>
-            <li class="header-btn-container">
-                <?php if (isset($_SESSION['UID'])) { ?>
-                        
-                    <button class="header-btn account">
-                        <ion-icon name='person-circle-outline'></ion-icon>
-                        
-                    </button>
-                    <span>Account</span>
 
-                <?php } else {?>
+    <script>
+        function openSearch(open) {
+            if (open = true) {
+                document.querySelector('.header-search.mobile').classList.toggle("active");
+            }
+        }
 
-                    <button id="show-login" class="header-btn login">
-                        <span class="text">Login</span>
-                    </button>
+        function openPopup(action) {
+            var title, content;
+            if (action === 'reservation') {        
+                document.getElementById('popup-reservation').style.display = 'block';
+                document.getElementById('overlay').style.display = 'block';
 
-                <?php } ?>
-            </li>
+            } else if (action === 'logout') {
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You will be logged out!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, logout!'
 
-        </ul>
-    </nav>
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                    window.location.href='<?php echo "index.php?logout=true"?>';
+                    //alert("Logout successful!"); // For demonstration, you can replace this with actual logout action
+                    }
+                })
+            } else if (action = 'accountSetting') {
+                document.getElementById('accountOption').classList.toggle("active");
+            } 
+        }
+
+        function closePopup() {
+            document.getElementById('popup-reservation').style.display = 'none';
+            document.getElementById('overlay').style.display = 'none';
+        }
+    </script>
 
     <script>
         const sidebar = document.querySelector('.sidebar');
@@ -230,10 +346,7 @@
         };
     </script>
 
-
-      <!-- 
-    - ionicon link
-    -->
+    <!-- ionicon link -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 

@@ -832,9 +832,7 @@
     </div>
 
     
-    <section class="footer">
-        <?php include 'footer/footer.html'; ?>
-    </section>
+    <?php include 'footer/footer.html'; ?>
 
 
 

@@ -1,10 +1,10 @@
 <?php
 
     session_start();
-
-    if (isset($_GET['logout'])) {
+    
+    if (isset( $_GET["logout"])) {
         session_destroy();
-        header( "location: index.php" );
+        header("Location: index.php");
     }
 
     include('nav/nav.php');
@@ -240,11 +240,7 @@
 
     </div>
 
-    
-    <section class="footer">
-        <?php include 'footer/footer.html'; ?>
-    </section>
-
+    <?php include 'footer/footer.html'; ?>
 
 </body>
 </html>

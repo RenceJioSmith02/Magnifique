@@ -176,7 +176,7 @@
             $role = 1;
             $datetime = date('Y-m-d H:i:s');
         
-            $stmt =  $this->connection->prepare("INSERT INTO `accounts` (`name`, `email`, `password`, `datecreated`, `role`) VALUES(?,?,?,?,?)");
+            $stmt =  $this->connection->prepare("INSERT INTO `accounts` (`accountname`, `email`, `password`, `datecreated`, `role`) VALUES(?,?,?,?,?)");
         
             $stmt->bind_param("sssss", $this->name, $this->email, $passwordhashed, $datetime, $role);
             $success = $stmt->execute();
