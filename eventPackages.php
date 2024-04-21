@@ -4,6 +4,69 @@
     include('nav/nav.php'); 
     include('login/login.php'); 
 
+    require_once "./admin_panel/backend.php";
+
+    $connect = new Connect_db();
+    $query = new Queries($connect);
+
+    if (isset($_POST['reserve'])) {
+        $name = $_POST['name'];
+        $phonenum = $_POST['phonenum'];
+        $package = $_POST['package'];
+        $eventdate= $_POST['eventdate'];
+        $eventtime = $_POST['eventtime'];
+        $venue = $_POST['venue'];
+        $numofguest = $_POST['numofguest'];
+        $description = $_POST['description'];
+        $cardname = $_POST['cardname'];
+        $cardtype = $_POST['cardtype'];
+        $cardnumber = $_POST['cardnumber'];
+        $paymenttype = $_POST['paymenttype'];
+        $amount = $_POST['amount'];
+
+        switch ($package) {
+            case '1':
+                $eventtype = "Wedding";
+                break;
+            case '2':
+                $eventtype = "Wedding";
+                break;
+            case '3':
+                $eventtype = "Anniversary";
+                break;
+            case '4':
+                $eventtype = "Anniversary";
+                break;
+            case '5':
+                $eventtype = "Birthday";
+                break;
+            case '6':
+                $eventtype = "None";
+                break;
+            case '7':
+                $eventtype = $_POST['eventtype'];
+                break;
+            
+            default:
+                
+                break;
+        }
+
+        if ($query->checkDate($venue, $eventdate) ) {
+            header("location: eventPackages.php?error=not_available");
+        }else {
+            $query_insert = new Reservation($connect, $custname, $phonenum, $package, $eventdate, $eventtime, $venue, $numofguest, $description, $cardname, $cardtype, $cardnumber, $paymenttype, $amount, $dateofpayment, $eventtype);
+
+            if ($query_insert) {
+                header("location: eventPackages.php?msg=reservation_success");
+            }else {
+                header("location: eventPackages.php?error=insertion_error");
+            }
+        }
+
+    }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -714,7 +777,7 @@
                 <span class="close" onclick="closeModal('reserve')">&times;</span>
                 
                 <div class="reserve-form-container">
-                    <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
+                    <form action="eventPackages.php" method="post">
 
                     <h3 class="title" style="text-align: center; padding: 5px 0;">PAYMENT</h3>
                         <div class="row">
@@ -722,52 +785,79 @@
 
                                 <div class="inputBox">
                                     <span>Name :</span>
-                                    <input type="text" name="" placeholder="Rence Jio Bal-ot">
+                                    <input type="text" name="name" placeholder="full Name">
                                 </div>
                                 
                                 <div class="inputBox">
                                     <span>Contact number :</span>
-                                    <input type="number" name="" placeholder="9999-999-9999">
+                                    <input type="number" name="phonenum" placeholder="9999-999-9999">
                                 </div>
+
+                                <div class="inputBox">
+                                    <span>Event Package:</span>
+                                    <select id="packageSelect" name="package" onchange="showInput()" required>
+                                        <option value="">Select Package</option>
+                                        <option value="1">Unifying Love: Wedding Package SET w/ Ceremony</option>
+                                        <option value="2">Unifying Love: Wedding Package SET Without Ceremony</option>
+                                        <option value="3">Eternal Bliss: Anniversary Package (Couples only)</option>
+                                        <option value="4">Eternal Bliss: Anniversary Package w/ Guests</option>
+                                        <option value="5">Azure Skies: Birthday Package</option>
+                                        <option value="6">Venue Rental Only</option>
+                                        <option value="7">None</option>
+                                    </select>
+                                </div>
+
+                                <div id="otherInput" class="inputBox" style="display: none;">
+                                    <span>Event Type:</span>
+                                    <select id="eventTypeSelect" name="eventtype" required>
+                                        <option value="">Select Event Type</option>
+                                        <option value="Wedding">Wedding</option>
+                                        <option value="Birthday Party">Birthday Party</option>
+                                        <option value="Anniversary">Anniversary</option>
+                                        <option value="Corporate Event">Corporate Event</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+
+
+
+
 
                                 <div class="inputBox">
                                     <span>Event Date :</span>
-                                    <input type="Date" name="" placeholder="">
+                                    <input type="Date" name="eventdate" placeholder="">
                                 </div>
 
                                 <div class="inputBox">
-                                    <span>Package:</span>
-                                    <select name="" id="">
-                                        <option value="">Select Package</option>
-                                        <option value="">Unifying of Love</option>
-                                        <option value="">Eternal Bliss</option>
-                                        <option value="">Venue Rental Only</option>
-                                        <option value="">None</option>
-                                    </select>
+                                    <span>Event Time :</span>
+                                    <input type="time" id="eventtime" name="event-time" min="09:00" max="18:00" required>
                                 </div>
+
+                                
 
                                 <div class="inputBox">
                                     <span>Venue: </span>
-                                    <select name="" id="">
+                                    <select name="venue" id="">
                                         <option value="">Select venue</option>
-                                        <option value="">Garden of Future</option>
-                                        <option value="">Garden of your Dreams</option>
-                                        <option value="">Poolside</option>
-                                        <option value="">Poolside Oasis</option>
-                                        <option value="">Function Hall</option>
-                                        <option value="">Banquet Hall</option>
+                                        <option value="1">Garden of Future</option>
+                                        <option value="2">Garden of your Dreams</option>
+                                        <option value="3">Poolside</option>
+                                        <option value="4">Poolside Oasis</option>
+                                        <option value="5">Function Hall</option>
+                                        <option value="6">Banquet Hall</option>
                                     </select>
                                 </div>
 
                                 <div class="inputBox">
-                                    <span>Theme :</span>
-                                    <input type="text" name="" placeholder="Hello kitty">
+                                    <span>Number of Guests :</span>
+                                    <input type="number" name="numofguest" placeholder="">
                                 </div>
 
+
                                 <div class="inputBox">
-                                    <span>Description :</span>
+                                    <span>Brief Description of Event :</span>
                                     <div class="textarea-container">
-                                        <textarea name="" id="" cols="57" rows="3"></textarea>
+                                        <textarea name="description" cols="57" rows="4"></textarea>
                                     </div>
                                 </div>
 
@@ -777,39 +867,51 @@
 
                             <div class="col">
 
+                                <h3 class="title">payment</h3>
+
                                 <div class="inputBox">
-                                    <span>cards accepted :</span>
+                                    <span>Cards Accepted :</span>
                                     <img src="./img/bg&icons/card_img.png" alt="">
                                 </div>
 
                                 <div class="inputBox">
                                     <span>Account Name :</span>
-                                    <input type="text" name="" placeholder="Rence Jio Bal-ot">
+                                    <input type="text" name="cardname" placeholder="Rence Jio Bal-ot">
                                 </div>
 
                                 <div class="inputBox">
                                     <span>Type of Credit Card:</span>
-                                    <select name="" id="">
+                                    <select name="cardtype">
                                         <option value="">Select card</option>
-                                        <option value="">Visa</option>
-                                        <option value="">Master</option>
-                                        <option value="">American</option>
-                                        <option value="">Paypal</option>
+                                        <option value="Visa">Visa</option>
+                                        <option value="Master">Master</option>
+                                        <option value="American">American</option>
+                                        <option value="Paypal">Paypal</option>
                                     </select>
                                 </div>
 
                                 <div class="inputBox">
-                                    <span>credit card number :</span>
-                                    <input type="number" name="" placeholder="1111-2222-3333-4444">
+                                    <span>Credit Card Number :</span>
+                                    <input type="number" name="cardnumber" placeholder="1111-2222-3333-4444">
+                                </div>
+
+                                <div class="inputBox">
+                                    <span>Date of Payment :</span>
+                                    <input type="Date" name="paymentdate" placeholder="">
                                 </div>
 
                                 <div class="inputBox">
                                     <span>Payment Type:</span>
-                                    <select name="" id="">
+                                    <select name="paymenttype" id="">
                                         <option value="">Select....</option>
-                                        <option value="">Initial Payment</option>
-                                        <option value="">Full Payment</option>
+                                        <option value="Initial">Initial Payment</option>
+                                        <option value="Full">Full Payment</option>
                                     </select>
+                                </div>
+
+                                <div class="inputBox">
+                                    <span>Amount:</span>
+                                    <input type="number" name="amount" placeholder="">
                                 </div>
                                 
 
@@ -819,7 +921,8 @@
                                                         <!-- reserve-btn -->
                                                         <div class="inputBox">
                                     <div class="reserveBTN-container" style="padding-top: 20px">
-                                        <button class="reservation-btn" onclick="">Reserve</button>
+                                        <!-- <button  class="reservation-btn" type="submit" name="reserve">Reserve</button> -->
+                                        <input type="submit" name="reserve" value="Submit">
                                     </div>
                                 </div>
                         
@@ -833,6 +936,20 @@
 
     
     <?php include 'footer/footer.html'; ?>
+
+    
+        <script>
+            function showInput() {
+                var select = document.getElementById("packageSelect");
+                var otherInput = document.getElementById("otherInput");
+
+                if (select.value === "None") {
+                    otherInput.style.display = "block";
+                } else {
+                    otherInput.style.display = "none";
+                }
+            }
+        </script>
 
 
 

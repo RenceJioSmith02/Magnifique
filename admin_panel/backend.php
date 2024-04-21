@@ -24,7 +24,6 @@
         function closeConn(){
             $this->conn->close();
         }    
-                
     }
 
     class Queries {
@@ -38,17 +37,15 @@
         //     switch ($tablename) {
         //         case 'Reservation':
         //             $sql = "SELECT a.accountID, a.name as customerName, e.phonenum, e.date, e.theme, e.description, e.type, v.facility, p.name as packageName, p.price, b.paymentstatus
-        //             FROM booking as b
+        //             FROM accounts as a
         //             INNER JOIN eventreserve as e
-        //             ON b.eventID = e.eventID
-        //             INNER JOIN accounts as a
-        //             ON e.accountID = a.accountID
+        //             ON a.accountID = e.accountID
         //             INNER JOIN venue as v
         //             ON e.venueID = v.venueID
         //             INNER JOIN package as p
         //             ON e.packageID = p.packageID
-        //             INNER JOIN payment as pay
-        //             ON e.paymentID = pay.paymentID
+        //             INNER JOIN booking as b
+        //             ON e.paymentID = b.bookingID
         //             ORDER BY a.accountID ASC LIMIT ?, ?";
 
         //             break;
@@ -92,58 +89,70 @@
             return $row["total"];
         }
 
-        public function deleteProduct($productId) {
-            $stmt_select = $this->connection->prepare("SELECT Pimage FROM products WHERE PID = ?");
-            $stmt_select->bind_param("i", $productId);
-            $stmt_select->execute();
-            $result_select = $stmt_select->get_result();
-            $row = $result_select->fetch_assoc();
-            $imagePath = $row['Pimage'];
+        // public function deleteProduct($productId)
+        // {
+        //     $stmt_select = $this->connection->prepare("SELECT Pimage FROM products WHERE PID = ?");
+        //     $stmt_select->bind_param("i", $productId);
+        //     $stmt_select->execute();
+        //     $result_select = $stmt_select->get_result();
+        //     $row = $result_select->fetch_assoc();
+        //     $imagePath = $row['Pimage'];
         
-            // Delete the image path from the database
-            $stmt_delete = $this->connection->prepare("DELETE FROM products WHERE PID = ?");
-            $stmt_delete->bind_param("i", $productId);
-            $result = $stmt_delete->execute();
+        //     // Delete the image path from the database
+        //     $stmt_delete = $this->connection->prepare("DELETE FROM products WHERE PID = ?");
+        //     $stmt_delete->bind_param("i", $productId);
+        //     $result = $stmt_delete->execute();
         
-            // Delete the image file from the folder
-            if ($imagePath && file_exists($imagePath)) {
-                unlink($imagePath);
-            }
+        //     // Delete the image file from the folder
+        //     if ($imagePath && file_exists($imagePath)) {
+        //         unlink($imagePath);
+        //     }
             
-            return $result;
-        }
+        //     return $result;
+        // }
 
-        public function selectAll($tablename,$id) {
-            $query="SELECT * FROM ".$tablename." WHERE productID=?";
-            $stmt =  $this->connection->prepare($query);
-            $stmt->bind_param('i',$id);
+        // public function selectAll($tablename,$id) {
+        //     $query="SELECT * FROM ".$tablename." WHERE productID=?";
+        //     $stmt =  $this->connection->prepare($query);
+        //     $stmt->bind_param('i',$id);
+        //     $stmt->execute();
+        //     $results = $stmt->get_result();
+
+        //     return $results;
+        // }
+
+        // public function printUpdateproducts($id){
+        //     $stmt = $this->connection->prepare("SELECT * FROM products JOIN specs ON products.PID= specs.specsID WHERE products.PID = ?");
+        //     $stmt->bind_param('i', $id);
+        //     $stmt->execute();
+        //     $results = $stmt->get_result();
+        
+        //     return $results;
+        // }
+
+        // public function getProductImageById($id) {
+        //     $stmt_select = $this->connection->prepare("SELECT Pimage FROM products WHERE PID = ?");
+        //     $stmt_select->bind_param("i", $id);
+        //     $stmt_select->execute();
+        //     $result_select = $stmt_select->get_result();
+        //     $row = $result_select->fetch_assoc();
+        
+        //     return $row['Pimage'];
+        // }
+        
+        
+        public function checkDate($venue,$eventdate){
+            $stmt = $this->connection->prepare("SELECT b.venueID, e.eventdate 
+                                                    FROM `booking` as b
+                                                    INNER JOIN eventreserve as e 
+                                                    ON b.RID = e.RID
+                                                    WHERE b.venueID = ? AND e.eventdate = ?");
+            $stmt->bind_param('is', $venue, $eventdate);
             $stmt->execute();
             $results = $stmt->get_result();
-
-            return $results;
-        }
-
-        public function printUpdateproducts($id){
-            $stmt = $this->connection->prepare("SELECT * FROM products JOIN specs ON products.PID= specs.specsID WHERE products.PID = ?");
-            $stmt->bind_param('i', $id);
-            $stmt->execute();
-            $results = $stmt->get_result();
         
             return $results;
         }
-
-        public function getProductImageById($id) {
-            $stmt_select = $this->connection->prepare("SELECT Pimage FROM products WHERE PID = ?");
-            $stmt_select->bind_param("i", $id);
-            $stmt_select->execute();
-            $result_select = $stmt_select->get_result();
-            $row = $result_select->fetch_assoc();
-        
-            return $row['Pimage'];
-        }
-        
-        
-
 
 
     }
@@ -203,82 +212,77 @@
             return null;
         }
     }
-    
-
-    class Products {
-        protected $connection;
-        private $productName;
-        private $productType;
-        private $productPrice;
-        private $aboutProduct;
-        private $productPictures;
-        protected $bodymaterial;
-        protected $bodyfinish;
-        protected $fretboardmaterial;
-        protected $numoffrets;
-        protected $strings;
         
-    
-        public function __construct(Connect_db $connect, $productName, $productType, $productPrice, $aboutProduct, $productPictures, $bodymaterial, $bodyfinish, $fretboardmaterial, $numoffrets, $strings) {
 
+    class Reservation {
+        private $connection;
+        private $name;
+        private $phonenum;
+        private $package;
+        private $eventdate;
+        private $eventtime;
+        private $venue;
+        private $numofguest;
+        private $description;
+        private $cardname;
+        private $cardtype;
+        private $cardnumber;
+        private $paymenttype;
+        private $amount;
+        private $dateofpayment;
+        private $eventtype;
+
+        public function __construct(Connect_db $connect, $custname, $phonenum, $package, $eventdate, $eventtime, $venue, $numofguest, $description, $cardname, $cardtype, $cardnumber, $paymenttype, $amount, $dateofpayment, $eventtype) {
             $this->connection = $connect->getConn();
-            $this->productName = $productName;
-            $this->productType = $productType;
-            $this->productPrice = $productPrice;
-            $this->aboutProduct = $aboutProduct;
-            $this->productPictures = $productPictures;
-            $this->bodymaterial = $bodymaterial;
-            $this->bodyfinish = $bodyfinish;
-            $this->fretboardmaterial = $fretboardmaterial;
-            $this->numoffrets = $numoffrets;
-            $this->strings = $strings;
+            $this->name = $custname;
+            $this->phonenum = $phonenum;
+            $this->package = $package;
+            $this->eventdate = $eventdate;
+            $this->eventtime = $eventtime;
+            $this->venue = $venue;
+            $this->numofguest = $numofguest;
+            $this->description = $description;
+            $this->cardname = $cardname;
+            $this->cardtype = $cardtype;
+            $this->cardnumber = $cardnumber;
+            $this->paymenttype = $paymenttype;
+            $this->amount = $amount;
+            $this->dateofpayment = $dateofpayment;
+            $this->eventtype = $eventtype;
+
         }
 
-        public function InsertProducts() {
-            $stmt = $this->connection->prepare("INSERT INTO `products` (`Pname`, `CID`, `Pprice`, `Pdescription`, `Pimage`) VALUES(?,?,?,?,?)");
-            $stmt->bind_param("sidss" , $this->productName, $this->productType, $this->productPrice, $this->aboutProduct, $this->productPictures);
-            $result = $stmt->execute();
+        public function insertReserve($accountID) {
 
-            if ($result) {
-                $foreignkey = mysqli_insert_id( $this->connection ); 
+            
+            $stmt =  $this->connection->prepare("INSERT INTO `payment`( `nameoncard`, `cardnumber`, `amount`, `payment_date`, `paymentstatus`)  VALUES(?,?,?,?,?)");
+        
+            $stmt->bind_param("ssiis", $this->cardname, $this->cardtype, $this->cardnumber, $this->amount, $this->dateofpayment, $this->paymenttype );
+            $success = $stmt->execute();
 
-                $stmt = $this->connection->prepare("INSERT INTO `specs`(`bodymaterial`,`bodyfinish`,`fretboardmaterial`,`numoffrets`,`strings`,`productID`) VALUES (?,?,?,?,?,?)");
+            if ($success) {
+                $foreignkey = mysqli_insert_id($this->connection) ;  // get the last id inserted in database
+                $stmt =  $this->connection->prepare("INSERT INTO `eventreserve`(`customername`, `phonenum`, `eventtype`, `eventdate`, `eventtime`, `numofguest`, `description`, `paymentID`, `accountID`) VALUES(?,?,?,?,?,?,?,?,?)");
+        
+                $stmt->bind_param("sisssssii", $this->name, $this->phonenum, $this->eventtype, $this->eventdate, $this->eventtime, $this->numofguest, $this->description, $foreignkey, $accountID);
+                $success1 = $stmt->execute();
 
-                $stmt->bind_param("sssisi",$this->bodymaterial, $this->bodyfinish, $this->fretboardmaterial, $this->numoffrets, $this->strings, $foreignkey);
-                $success = $stmt->execute();
-                if($success){
-                    return $success;
-                }else{
-                    return  false;
+                if ($success1) {
+                    $foreignkey1 = mysqli_insert_id($this->connection) ;  // get the last id inserted in database
+                    $date =  date("Y-m-d");
+                    $status = 'Pending';
+                    $stmt =  $this->connection->prepare("INSERT INTO `booking`(`RID`, `bookingdate`, `venueID`, `packageID`, `reservationstatus`) VALUES(?,?,?,?,?)");
+            
+                    $stmt->bind_param("isiis",$foreignkey1, $date, $this->venue, $this->package, $status);
+                    $success2 = $stmt->execute();
+
+                    if ($success2) {
+                        return $success2;
+                    }
                 }
             }
+            return false;
         }
-
-        public function Update($id){
-
-            $stmt = $this->connection->prepare("UPDATE `products` SET `Pname`= ?, `CID`= ?, `Pprice`= ?, `Pdescription`= ?, `Pimage`=? WHERE `PID`= ?");
-            $stmt->bind_param("sidssi", $this->productName, $this->productType, $this->productPrice, $this->aboutProduct, $this->productPictures, $id);
-            $result = $stmt->execute();
-        
-            if ($result) {
-                $stmt = $this->connection->prepare("UPDATE `specs` SET `bodymaterial`=?, `bodyfinish`=?, `fretboardmaterial`=?, `numoffrets`=?, `strings`=? WHERE `specsID`= ?");
-                $stmt->bind_param("sssisi", $this->bodymaterial, $this->bodyfinish, $this->fretboardmaterial, $this->numoffrets, $this->strings, $id);
-                $success = $stmt->execute();
-
-                if ($success) {
-                    return $success;
-                }
-            } else {
-                return $stmt->error;
-            }
-        }
-
-    }
-        
-
-    class reservation {
-
-        
     }
 
 
