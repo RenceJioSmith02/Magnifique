@@ -9,6 +9,8 @@
     $connect = new Connect_db();
     $query = new Queries($connect);
 
+    $accountID = $_SESSION[ 'UID' ];
+
     if (isset($_POST['reserve'])) {
         $name = $_POST['name'];
         $phonenum = $_POST['phonenum'];
@@ -21,6 +23,7 @@
         $cardname = $_POST['cardname'];
         $cardtype = $_POST['cardtype'];
         $cardnumber = $_POST['cardnumber'];
+        $dateofpayment = $_POST['paymentdate'];
         $paymenttype = $_POST['paymenttype'];
         $amount = $_POST['amount'];
 
@@ -53,17 +56,16 @@
         }
 
         if ($query->checkDate($venue, $eventdate) ) {
-            header("location: eventPackages.php?error=not_available");
+            echo '<script>alert("Venue already reserved on that day");</script>';
         }else {
-            $query_insert = new Reservation($connect, $custname, $phonenum, $package, $eventdate, $eventtime, $venue, $numofguest, $description, $cardname, $cardtype, $cardnumber, $paymenttype, $amount, $dateofpayment, $eventtype);
+            $query_insert = new Reservation($connect, $name, $phonenum, $package, $eventdate, $eventtime, $venue, $numofguest, $description, $cardname, $cardtype, $cardnumber, $paymenttype, $amount, $dateofpayment, $eventtype);
 
-            if ($query_insert) {
-                header("location: eventPackages.php?msg=reservation_success");
+            if ($query_insert->insertReserve($accountID)) {
+                echo '<script>alert("Event Reservation  Successful!");</script>';
             }else {
-                header("location: eventPackages.php?error=insertion_error");
+                echo '<script>alert("Event Reservation  Failed!");</script>';
             }
         }
-
     }
 
 
@@ -770,6 +772,7 @@
             
         </div>
 
+        
 
         <!-- reservation form -->
         <div id="reserve" class="modal">
@@ -809,7 +812,7 @@
 
                                 <div id="otherInput" class="inputBox" style="display: none;">
                                     <span>Event Type:</span>
-                                    <select id="eventTypeSelect" name="eventtype" required>
+                                    <select id="eventTypeSelect" name="eventtype" >
                                         <option value="">Select Event Type</option>
                                         <option value="Wedding">Wedding</option>
                                         <option value="Birthday Party">Birthday Party</option>
@@ -830,7 +833,7 @@
 
                                 <div class="inputBox">
                                     <span>Event Time :</span>
-                                    <input type="time" id="eventtime" name="event-time" min="09:00" max="18:00" required>
+                                    <input type="time" id="eventtime" name="eventtime" min="09:00" max="18:00" required>
                                 </div>
 
                                 
@@ -921,8 +924,7 @@
                                                         <!-- reserve-btn -->
                                                         <div class="inputBox">
                                     <div class="reserveBTN-container" style="padding-top: 20px">
-                                        <!-- <button  class="reservation-btn" type="submit" name="reserve">Reserve</button> -->
-                                        <input type="submit" name="reserve" value="Submit">
+                                        <button  class="reservation-btn" type="submit" name="reserve">Reserve</button>
                                     </div>
                                 </div>
                         
@@ -943,7 +945,7 @@
                 var select = document.getElementById("packageSelect");
                 var otherInput = document.getElementById("otherInput");
 
-                if (select.value === "None") {
+                if (select.value === "7") { // Check for "None" option
                     otherInput.style.display = "block";
                 } else {
                     otherInput.style.display = "none";

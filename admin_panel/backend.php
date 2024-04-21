@@ -149,12 +149,10 @@
                                                     WHERE b.venueID = ? AND e.eventdate = ?");
             $stmt->bind_param('is', $venue, $eventdate);
             $stmt->execute();
-            $results = $stmt->get_result();
+            $results = $stmt->get_result()->fetch_assoc();
         
-            return $results;
+            return $results !== null;
         }
-
-
     }
 
     class Accounts {
@@ -232,9 +230,9 @@
         private $dateofpayment;
         private $eventtype;
 
-        public function __construct(Connect_db $connect, $custname, $phonenum, $package, $eventdate, $eventtime, $venue, $numofguest, $description, $cardname, $cardtype, $cardnumber, $paymenttype, $amount, $dateofpayment, $eventtype) {
+        public function __construct(Connect_db $connect, $name, $phonenum, $package, $eventdate, $eventtime, $venue, $numofguest, $description, $cardname, $cardtype, $cardnumber, $paymenttype, $amount, $dateofpayment, $eventtype) {
             $this->connection = $connect->getConn();
-            $this->name = $custname;
+            $this->name = $name;
             $this->phonenum = $phonenum;
             $this->package = $package;
             $this->eventdate = $eventdate;
@@ -255,9 +253,9 @@
         public function insertReserve($accountID) {
 
             
-            $stmt =  $this->connection->prepare("INSERT INTO `payment`( `nameoncard`, `cardnumber`, `amount`, `payment_date`, `paymentstatus`)  VALUES(?,?,?,?,?)");
+            $stmt =  $this->connection->prepare("INSERT INTO `payment`( `nameoncard`,`cardtype`, `cardnumber`, `amount`, `payment_date`, `paymentstatus`)  VALUES(?,?,?,?,?,?)");
         
-            $stmt->bind_param("ssiis", $this->cardname, $this->cardtype, $this->cardnumber, $this->amount, $this->dateofpayment, $this->paymenttype );
+            $stmt->bind_param("ssiiss", $this->cardname, $this->cardtype, $this->cardnumber, $this->amount, $this->dateofpayment, $this->paymenttype );
             $success = $stmt->execute();
 
             if ($success) {
