@@ -123,7 +123,7 @@
   
             }).then((result) => {
               if (result.isConfirmed) {
-                window.location.href='<?php echo "../index.php?logout=true";?>';
+                window.location.href='<?php echo "admin.php?logout=true";?>';
                 //alert("Logout successful!"); // For demonstration, you can replace this with actual logout action
               }
         })

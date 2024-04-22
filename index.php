@@ -1,12 +1,23 @@
 <?php
 
     session_start();
+    require_once "./admin_panel/backend.php";
     
+    $connect = new Connect_db();
+    $query = new Queries($connect);
+
     if (isset( $_GET["logout"])) {
         session_destroy();
         header("Location: index.php");
     }
-
+    if (isset($_SESSION['UID']) && ($query->checkUserExist($_SESSION['UID']) <= 0)) {
+        session_destroy();
+        header("Location: index.php");
+    }
+    if (isset($_SESSION['type']) && $_SESSION['type'] == 'admin') {
+        header("Location: ./admin_panel/admin.php");
+    }
+    
     include('nav/nav.php');
     include('login/login.php'); 
 
@@ -43,21 +54,9 @@
     <link rel="icon" type="image/x-icon" href="img/bg&icons/logo.png">
     <title>MAGNIFIQUE Events & Co.</title>
     
-
     <!-- css -->
     <link rel="stylesheet" href="css/homepage.css">
     <link rel="stylesheet" href="css/screen.css">
-
-    <!-- <style>
-        /* SECTION SIZE */
-        @media screen and (max-width: 870px) {
-            section {
-                position: relative;
-                left: 30px;
-                width: calc(100% - 50px);
-            }
-        }
-    </style> -->
 
 </head>
 <body>

@@ -1,6 +1,16 @@
-    <?php
+<?php
+        session_start();
+
         require("backend.php");
         $connect = new Connect_db();
+
+        if (isset($_SESSION['UID'])) {
+          header("Location: ../index.php");
+        }
+        if (isset( $_GET["logout"])) {
+          session_destroy();
+          header("Location: ../index.php");
+      }
 
         // $query = new Queries($connect);
 

@@ -69,7 +69,7 @@
                         <td><?php echo $row['amount'] ?></td>
                         <td><?php echo $row['paymentstatus'] ?></td>
                         <td>
-                            <a href="pop-ups.php?pop=updateProduct&updateId=<?php echo $row['accountID'] ?>">accept</a>
+                            <a href="table.php?table=Reservation&UpdateReserveStatus=<?php echo $row['bookingID'] ?>">accept</a>
                             <a href="table.php?deleteid=<?php echo $row['accountID'] ?>" onclick="return confirm('Are you sure you want to delete this product?')">decline</a>
                         </td>
                     </tr>
@@ -85,7 +85,7 @@
                         <td><?php echo $row['email'] ?></td>
                         <td><?php echo $row['datecreated'] ?></td>
                         <td>
-                            <a href="users-table.php?deleteid=<?php echo $row['accountID'] ?>" onclick="return confirm('Are you sure you want to delete this product?')"><ion-icon name="trash"></ion-icon></a>
+                            <a href="table.php?table=Users&deleteAcc=<?php echo $row['accountID'] ?>" onclick="return confirm('Are you sure you want to delete this product?')"><ion-icon name="trash"></ion-icon></a>
                         </td>
                     </tr>
 

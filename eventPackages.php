@@ -1,15 +1,27 @@
 <?php
     
     session_start();
-    include('nav/nav.php'); 
-    include('login/login.php'); 
-
     require_once "./admin_panel/backend.php";
 
     $connect = new Connect_db();
     $query = new Queries($connect);
 
-    $accountID = $_SESSION[ 'UID' ];
+    // sessions
+
+    if (isset( $_GET["logout"])) {
+        session_destroy();
+        header("Location: index.php");
+    }
+    if (isset($_SESSION['UID']) && ($query->checkUserExist($_SESSION['UID']) <= 0)) {
+        session_destroy();
+        header("Location: index.php");
+    }
+    include('nav/nav.php'); 
+    include('login/login.php'); 
+
+    if (isset($_SESSION[ 'UID' ])) {
+        $accountID = $_SESSION[ 'UID' ];
+    }
 
     if (isset($_POST['reserve'])) {
         $name = $_POST['name'];
@@ -192,9 +204,6 @@
                 </div>
             </div>
         </section>
-
-
-
 
         <!-- Modal 1: UnifyingLove Modal -->
         <div id="UnifyingLove" class="modal">
@@ -771,8 +780,6 @@
             </div>
             
         </div>
-
-        
 
         <!-- reservation form -->
         <div id="reserve" class="modal">

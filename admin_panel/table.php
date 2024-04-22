@@ -4,16 +4,20 @@
     
     $connect = new Connect_db();
     $query = new Queries($connect);
-    
-    
-    if (isset($_GET['deleteid'])) {
-        $productId = $_GET['deleteid'];
-            
-        if ($query->deleteProduct($productId)) {
-            header("Location: table.php?table=Products&deleted=Successfully_deleted_the_selected_item!");
-        }
+
+    if (isset($_SESSION['UID'])) {
+        header("Location: ../index.php");
     }
 
+    // sessions
+    if (isset($_GET['deleteAcc'])) {
+        $query->deleteAccount($_GET['deleteAcc']);
+    }
+    
+    if (isset($_GET['UpdateReserveStatus'])) {
+        $query->UpdateReservationStatus($_GET['UpdateReserveStatus']);
+    }
+    
     // query
 
     // $limit = 5;

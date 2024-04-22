@@ -33,54 +33,6 @@
             $this->connection = $connect->getConn();
         }
 
-        // public function Print($start,$limit,$tablename) {
-        //     switch ($tablename) {
-        //         case 'Reservation':
-        //             $sql = "SELECT a.accountID, a.name as customerName, e.phonenum, e.date, e.theme, e.description, e.type, v.facility, p.name as packageName, p.price, b.paymentstatus
-        //             FROM accounts as a
-        //             INNER JOIN eventreserve as e
-        //             ON a.accountID = e.accountID
-        //             INNER JOIN venue as v
-        //             ON e.venueID = v.venueID
-        //             INNER JOIN package as p
-        //             ON e.packageID = p.packageID
-        //             INNER JOIN booking as b
-        //             ON e.paymentID = b.bookingID
-        //             ORDER BY a.accountID ASC LIMIT ?, ?";
-
-        //             break;
-        //         case 'event':
-        //             $sql = "SELECT a.accountID, a.name as customerName, e.phonenum, e.date, e.theme, e.description, e.type, v.facility, p.name as packageName, p.price
-        //             FROM accounts as a
-        //             INNER JOIN eventreserve as e
-        //             ON a.accountID = e.accountID
-        //             INNER JOIN venue as v
-        //             ON e.venueID = v.venueID
-        //             INNER JOIN package as p
-        //             ON e.packageID = p.packageID
-        //             ORDER BY accountID ASC LIMIT  ?, ?";
-
-        //             break;
-        //         case 'accounts':
-        //             $sql = "SELECT * FROM accounts
-        //             ORDER BY accountID ASC LIMIT  ?, ?";
-
-        //             break;
-        //         default:
-        //             # code...
-        //             break;
-        //     }
-            
-
-        //     $stmt  = $this->connection->prepare($sql);
-
-        //     $stmt->bind_param("ii", $start, $limit);
-        //     $stmt->execute();
-        //     $result = $stmt->get_result();
-            
-        //     return $result;
-        // }
-
         public  function getTotalRows($tabletoUse_inQuery ){
             $stmt = $this->connection->prepare("SELECT COUNT(*) AS total FROM $tabletoUse_inQuery ");
             $stmt->execute();
@@ -88,57 +40,6 @@
             
             return $row["total"];
         }
-
-        // public function deleteProduct($productId)
-        // {
-        //     $stmt_select = $this->connection->prepare("SELECT Pimage FROM products WHERE PID = ?");
-        //     $stmt_select->bind_param("i", $productId);
-        //     $stmt_select->execute();
-        //     $result_select = $stmt_select->get_result();
-        //     $row = $result_select->fetch_assoc();
-        //     $imagePath = $row['Pimage'];
-        
-        //     // Delete the image path from the database
-        //     $stmt_delete = $this->connection->prepare("DELETE FROM products WHERE PID = ?");
-        //     $stmt_delete->bind_param("i", $productId);
-        //     $result = $stmt_delete->execute();
-        
-        //     // Delete the image file from the folder
-        //     if ($imagePath && file_exists($imagePath)) {
-        //         unlink($imagePath);
-        //     }
-            
-        //     return $result;
-        // }
-
-        // public function selectAll($tablename,$id) {
-            // $query="SELECT * FROM ".$tablename." WHERE productID=?";
-            // $stmt =  $this->connection->prepare($query);
-            // $stmt->bind_param('i',$id);
-            // $stmt->execute();
-            // $results = $stmt->get_result();
-
-            // return $results;
-        // }
-
-        // public function printUpdateproducts($id){
-        //     $stmt = $this->connection->prepare("SELECT * FROM products JOIN specs ON products.PID= specs.specsID WHERE products.PID = ?");
-        //     $stmt->bind_param('i', $id);
-        //     $stmt->execute();
-        //     $results = $stmt->get_result();
-        
-        //     return $results;
-        // }
-
-        // public function getProductImageById($id) {
-        //     $stmt_select = $this->connection->prepare("SELECT Pimage FROM products WHERE PID = ?");
-        //     $stmt_select->bind_param("i", $id);
-        //     $stmt_select->execute();
-        //     $result_select = $stmt_select->get_result();
-        //     $row = $result_select->fetch_assoc();
-        
-        //     return $row['Pimage'];
-        // }
 
         public function selectALLreservation($accountID) {
             $query="SELECT e.RID, e.accountID, e.customername, p.packagename, e.eventdate, e.eventtime, v.facility, b.bookingdate, b.reservationstatus
@@ -182,6 +83,26 @@
         
             return $results !== null;
         }
+        
+        public function checkUserExist($accountID) {
+            $stmt = $this->connection->prepare("SELECT DISTINCT COUNT(*) AS total FROM accounts WHERE accountID=?");
+            $stmt->bind_param("i", $accountID); 
+            $stmt->execute();
+            $row = $stmt->get_result()->fetch_assoc();
+            
+            return $row["total"];
+        }
+        public function deleteAccount($accountID) {
+            $stmt_delete = $this->connection->prepare("DELETE FROM accounts WHERE accountID = ?");
+            $stmt_delete->bind_param("i", $accountID);
+            $stmt_delete->execute();
+        }
+        public function UpdateReservationStatus($bookingID) {
+            $stmt_delete = $this->connection->prepare("UPDATE `booking` SET `reservationstatus`='Approved' WHERE bookingID = ?");
+            $stmt_delete->bind_param("i", $bookingID);
+            $stmt_delete->execute();
+        }
+        
     }
 
     class Accounts {

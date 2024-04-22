@@ -7,6 +7,7 @@
     box-sizing: border-box;
     transition: all 0.3s ease-in-out;
     text-decoration: none;
+    list-style-type: none;
 }
 
 body {
@@ -50,7 +51,7 @@ section {
 
 @media  screen and (max-width: 2440px) {
     p {
-        font-size: 15px;
+        font-size: 14px;
     }
     .sidebar span.link-name {
         font-size: 14px;
@@ -99,7 +100,7 @@ section {
         font-size:  15px;
     }
     p {
-        font-size: 13px;
+        font-size: 12px;
     }
     .sidebar span.link-name {
         font-size: 15px;
@@ -107,7 +108,7 @@ section {
 }
 @media screen and (max-width: 810px) {
     p {
-        font-size: 12px;
+        font-size: 11px;
     }
     .sidebar span.link-name {
         font-size: 11px;
@@ -123,7 +124,7 @@ section {
     p,
     .pack ul,
     .pack-last {
-        font-size: 11px;
+        font-size: 9px;
     }
 }
 
