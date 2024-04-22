@@ -118,6 +118,18 @@
 
             return $row;
         }
+
+        public function updateSalesChart () {
+            $stmt =  $this->connection->prepare("SELECT 
+                                                (SELECT COUNT(bookingID) FROM booking WHERE reservationstatus = 'approved') AS approved, 
+                                                (SELECT COUNT(bookingID) FROM booking WHERE reservationstatus = 'declined') AS declined,
+                                                (SELECT COUNT(bookingID) FROM booking WHERE reservationstatus = 'pending') AS pending
+                                                FROM booking");
+            $stmt->execute();
+            $result = $stmt->get_result()->fetch_assoc();
+            return $result;
+        }
+
         
     }
 
@@ -234,7 +246,7 @@
                 if ($success1) {
                     $foreignkey1 = mysqli_insert_id($this->connection) ;  // get the last id inserted in database
                     $date =  date("Y-m-d");
-                    $status = 'Pending';
+                    $status = 'pending';
                     $stmt =  $this->connection->prepare("INSERT INTO `booking`(`RID`, `bookingdate`, `venueID`, `packageID`, `reservationstatus`) VALUES(?,?,?,?,?)");
             
                     $stmt->bind_param("isiis",$foreignkey1, $date, $this->venue, $this->package, $status);

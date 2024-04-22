@@ -3,6 +3,7 @@
 
         require("backend.php");
         $connect = new Connect_db();
+        $query = new Queries($connect);
 
         if (isset($_SESSION['UID'])) {
           header("Location: ../index.php");
@@ -34,6 +35,18 @@
 
         // $count = 0;
         // $count += ($page - 1) * 5;
+
+        $result = $query->updateSalesChart();
+        $pending = $result['pending'];
+        $declined = $result['declined'];
+        $approved = $result['approved'];
+      
+        $total_catergory = $pending + $declined + $approved;
+
+        $pending = ($pending / $total_catergory) * 100;
+        $declined = ($declined / $total_catergory) * 100;
+        $approved = ($approved / $total_catergory) * 100;
+
     ?>
 
 <!DOCTYPE html>
@@ -80,28 +93,23 @@
               <ul>
                 <li class="color-label">
                   <div style="width: 10px; height: 10px; background: yellow;"></div>
-                  <span>Acoustic</span>
-                </li>
-                <li class="color-label">
-                  <div style="width: 10px; height: 10px; background: blue;"></div>
-                  <span>Electric</span>
+                  <span>Pending</span>
                 </li>
                 <li class="color-label">
                   <div style="width: 10px; height: 10px; background: green;"></div>
-                  <span>Bass</span>
+                  <span>Approved</span>
                 </li>
                 <li class="color-label">
                   <div style="width: 10px; height: 10px; background: red;"></div>
-                  <span>Ukalele</span>
+                  <span>Declined</span>
                 </li>
               </ul>
             </div>
 
             <div class="chart" 
-            style="--acoustic: 30%; 
-                    --electric: 30%; 
-                    --bass: 20%; 
-                    --ukalele: 20%;"
+            style="--Pending: <?php echo $pending ?>%;
+                    --Approved: <?php echo $pending ?>%;
+                    --Declined: <?php echo $pending ?>%;"
             >
              <div class="center-circle"></div> 
             </div>
@@ -109,7 +117,7 @@
           </div>
 
           <div class="box-label">
-            <h3>Orders</h3>
+            <h3>Reservation  Status</h3>
           </div>
         </div>
 
