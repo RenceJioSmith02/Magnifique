@@ -8,7 +8,7 @@
     //Load Composer's autoloader
     require 'vendor/autoload.php';
 
-    function Send_email_verify($name, $email,  $verification_code){
+    function Send_email_verify($name, $email, $verification_code){
         $mail = new PHPMailer(true);
 
         $mail->isSMTP();                                                                

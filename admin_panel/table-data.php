@@ -67,7 +67,7 @@
                         <td><?php echo $row['description'] ?></td>
                         <td><?php echo $row['facility'] ?></td>
                         <td><?php echo $row['packagename'] ?></td>
-                        <td><?php echo $row['price'] ?></td>
+                        <td><?php echo $row['amount'] ?></td>
                         <td><?php echo $row['paymentstatus'] ?></td>
                         <td>
                             <a href="pop-ups.php?pop=updateProduct&updateId=<?php echo $row['accountID'] ?>">accept</a>
