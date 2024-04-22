@@ -924,7 +924,7 @@
                                                         <!-- reserve-btn -->
                                                         <div class="inputBox">
                                     <div class="reserveBTN-container" style="padding-top: 20px">
-                                        <button  class="reservation-btn" type="submit" name="reserve">Reserve</button>
+                                        <button  class="reservation-btn" type="submit" name="reserve" onclick="return confirmreserve();">Reserve</button>
                                     </div>
                                 </div>
                         
@@ -950,6 +950,10 @@
                 } else {
                     otherInput.style.display = "none";
                 }
+            }
+
+            function confirmreserve(){
+                return confirm("are you sure to the details you provided?");    
             }
         </script>
 

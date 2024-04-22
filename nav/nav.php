@@ -8,7 +8,7 @@
     //Load Composer's autoloader
     require 'vendor/autoload.php';
 
-    function Send_email_verify($name, $email,  $verification_code){
+    function Send_email_verify($name, $email, $verification_code){
         $mail = new PHPMailer(true);
 
         $mail->isSMTP();                                                                
@@ -103,6 +103,7 @@
                 }else{
                     $_SESSION['type'] = 'user';
                     $_SESSION['UID'] = $row['accountID'];
+                    $_SESSION['login_email'] = $row['email'];
                     header("Location: index.php?success=logged_in");
                 }
                 
