@@ -70,9 +70,9 @@
 
         <section class="view1">
             <div class="container1">
-                <h1 class="main-title">EVENT BOOKING</h1>
-                <p>
-                    hahhadtxdfcgvjbhnjjipcuadrutfcgvkhlbjnjgj[wrpalvsbcxljvhzguosidvbjc ]
+                <h1 class="main-title">Magnifique Events & Co.</h1>
+                <p style="font-size: 16px; font-style:italic; margin-top: 15px;">
+                "Where every moment is crafted with timeless elegance, merging seamlessly with unforgettable experiences to create lasting memories that will be cherished for a lifetime."
                 </p>
             </div>
         </section>
@@ -96,8 +96,6 @@
                             <h2>MAGNIFIQUE</h2><span>Events & co.</span>
                         </div>
                         <p>
-                            Your journey to the perfect event starts here, where enchantment and elegance converge to craft unforgettable moments. 
-                            <br><br>
                             Discover our exclusive venues with tailored packages and reliable partners, we guarantee flawless execution of every event detail, allowing you to immerse yourself in the elegance and refined luxury of MAGNIFIQUE.
                         </p>
                     </div>
