@@ -4,6 +4,61 @@
     include('nav/nav.php'); 
     include('login/login.php'); 
 
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+
+    //Load Composer's autoloader
+    require 'vendor/autoload.php';
+
+    function Send_contactus($name, $email, $phonenum, $message){
+        $mail = new PHPMailer(true);
+
+        $mail->isSMTP();                                                                
+        $mail->SMTPAuth   = true;   
+
+        $mail->Host       = 'smtp.gmail.com'; 
+        $mail->Username   = 'magnifiqueeventsandco@gmail.com';                    
+        $mail->Password   = 'imtyvdctjwkvlisv'; 
+        
+        $mail->SMTPSecure = "tls";            
+        $mail->Port       = 587;
+
+        $mail->setFrom('magnifiqueeventsandco@gmail.com', $name);
+        $mail->addAddress('magnifiqueeventsandco@gmail.com');
+
+        $mail->isHTML(true);
+        $mail->Subject = "From: " .$email;
+
+        $email_template = "Name: $name<br>
+                        Contact Number: $phonenum<br>
+                        Message: $message
+        ";
+
+        $mail->Body = $email_template;
+        $mail->send();
+        if($mail) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+
+    if (isset($_POST['sendcontact'])) {
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $phonenum = $_POST['phonenum'];
+        $message = $_POST['message'];
+        
+        if (Send_contactus($name, $email, $phonenum, $message)) {
+            echo '<script>alert("Your Message has been Sent!");</script>';
+        }else {
+            echo '<script>alert("Failed to Send Message!");</script>';
+        }
+
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,31 +91,34 @@
                         </h3>
                     </div>
 
-                    <div class="inputs-container">
-                        <div class="input">
-                            <label for="name"><p>Name</p></label><br>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="input">
-                            <label for="email"><p>Email</p></label><br>
-                            <input type="text" id="email" name="email" required>
-                        </div>
+                    <form action="contact.php" method="post">
 
-                        <div class="input">    
-                            <label for="number"><p>Contact Number</p></label><br>
-                            <input type="number" name="number" id="" required>
-                        </div>
+                        <div class="inputs-container">
+                            <div class="input">
+                                <label for="name"><p>Name</p></label><br>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="input">
+                                <label for="email"><p>Email</p></label><br>
+                                <input type="text" id="email" name="email" required>
+                            </div>
 
-                        <div class="input">
-                            <label for="message"><p>Type Your Message Here</p></label><br><br>
-                            <div class="textarea-container">
-                                <textarea name="" id="" cols="57" rows="3"></textarea>
+                            <div class="input">    
+                                <label for="number"><p>Contact Number</p></label><br>
+                                <input type="number" name="phonenum" id="" required>
+                            </div>
+
+                            <div class="input">
+                                <label for="message"><p>Type Your Message Here</p></label><br><br>
+                                <div class="textarea-container">
+                                    <textarea name="message" id="" cols="57" rows="3"></textarea>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="submit-btn">
-                        <button type="submit" id="submit">Submit</button>
-                    </div>
+                            <div class="submit-btn">
+                                <button type="submit" name="sendcontact" id="submit">Submit</button>
+                            </div>
+                    </form>
                 </div>
 
                 <div class="right">

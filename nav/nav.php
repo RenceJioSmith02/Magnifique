@@ -103,6 +103,7 @@
                 }else{
                     $_SESSION['type'] = 'user';
                     $_SESSION['UID'] = $row['accountID'];
+                    $_SESSION['login_email'] = $row['email'];
                     header("Location: index.php?success=logged_in");
                 }
                 
