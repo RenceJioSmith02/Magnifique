@@ -4,7 +4,7 @@
     $connect = new Connect_db();
     $mysqli = $connect->getConn(); 
 
-    if (isset( $_GET['tablename'] )) {
+    if (isset( $_GET['tablename'])) {
         $tablename = $_GET['tablename'];
     }
     

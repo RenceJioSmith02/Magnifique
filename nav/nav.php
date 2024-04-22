@@ -76,7 +76,7 @@
                         unset($_SESSION['email']);
                         unset($_SESSION['password']);
                         header("Location: index.php?success=account_created");
-                    }else {
+                    } else {
                         header("Location: index.php?error=registration_failed");
                     }
             }
@@ -86,10 +86,10 @@
         }
 
         if (isset($_POST['signin'])) {
-            $email = $_POST["email"];
-            $password = $_POST["password"];
+            $_SESSION['email'] = $_POST["email"];
+            $_SESSION['password'] = $_POST["password"];
     
-            $query = new AccountLogin($connect, $email, $password);
+            $query = new AccountLogin($connect, $_SESSION['email'], $_SESSION['password']);
             $result = $query->loginAccount();
     
             if ($result) {
@@ -98,7 +98,9 @@
                 $role = $row['role'];
     
                 if ($role === 0) {
-                $_SESSION['type'] = "admin";
+                    $_SESSION['type'] = "admin";
+                    unset($_SESSION['email']);
+                    unset($_SESSION['password']);
                     header("Location: ./admin_panel/admin.php");
                 }else{
                     $_SESSION['type'] = 'user';

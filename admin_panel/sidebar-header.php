@@ -84,33 +84,36 @@
       <span class="text">Dashboard</span>
     </div>
 
-      <div class="header-search">
-        <form action="admin.php" method="GET" enctype="multipart/form-data" class="form">
+      <div class="header-search mobile">
 
+        <div class="desktop-search">
           <input type="text" id="searchEvent" name="search" placeholder="Search..." class="input-field" required>
-          <input type="hidden" name="action" value="<?php if (isset($_GET['table'])) echo $_GET['table']; ?>"/>
+          <input type="hidden" name="action" value="<?php if (isset($_GET['table'])) { echo $_GET['table']; } else { echo 'Event'; }?>"/>
           
           <button type="submit" name=searchBtn class="search-btn" aria-label="Search">
             <ion-icon name="search-outline"></ion-icon>
           </button>
+        </div>
 
-        </form>
+        <div class="mobile-search">
+          <button type="submit" name=searchBtn class="search-btn" onclick="openSearch(true)">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+        </div>
+
       </div>
-
-
-    <!-- <?php if (isset($_GET['table']) && $_GET['table'] == 'Event') { ?>
-
-    <?php } elseif (isset($_GET['table']) && $_GET['table'] == 'Reservation') { ?>
-            search 2
-    <?php } elseif (isset($_GET['table']) && $_GET['table'] == 'Users') { ?>
-            search 3
-    <?php } ?> -->
    
   </div>
 
 
 
   <script>
+      function openSearch(open) {
+        if (open = true) {
+          document.querySelector('.desktop-search').classList.toggle("active");
+        }
+      }
+
       function logout() {
         Swal.fire({
               title: 'Are you sure?',

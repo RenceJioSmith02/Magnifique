@@ -121,7 +121,7 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                        <?php } elseif (isset($_GET['table']) && $_GET['table'] == 'Users') {?>
+                        <?php } elseif (isset($_GET['table']) && $_GET['table'] == 'Users') { ?>
                             <thead>
                                 <tr>
                                     <th>no.</th>
@@ -133,9 +133,8 @@
                             </thead>
                         <?php } ?>
                         
-
                         <!-- 
-                            TABLE BODY 
+                            TABLE BODY
                         -->
                         <?php if (isset($_GET['table']) && $_GET['table'] == 'Reservation') { ?>
 
