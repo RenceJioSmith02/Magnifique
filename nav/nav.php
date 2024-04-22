@@ -68,20 +68,20 @@
                 $query = new Accounts($connect,$_SESSION['name'], $_SESSION['email'], $_SESSION['password']);
 
                 if ($query->checkIfUserExists()) {
-                    header("Location: facilities.php?error=email_exist");
+                    header("Location: index.php?error=Email Not Exist");
                 }
                 else {
                     if ($query->createAccount() ) {
                         unset($_SESSION['name']);
                         unset($_SESSION['email']);
                         unset($_SESSION['password']);
-                        header("Location: index.php?success=account_created");
+                        header("Location: index.php?success=Account Created");
                     } else {
-                        header("Location: index.php?error=registration_failed");
+                        header("Location: index.php?error=Registration Failed");
                     }
             }
             }else {
-                header("Location: facilities.php?error=wrong_verification_code");
+                header("Location: index.php?error=Wrong Verification Code");
             }
         }
 
@@ -110,7 +110,7 @@
                 }
                 
             }else {
-                header("Location: index.php?error=invalid_email_or_password");
+                header("Location: index.php?error=Invalid Email or Password");
             }
         }
     

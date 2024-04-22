@@ -31,39 +31,20 @@
                     <?php if (!isset($_POST['signup'])) {  ?>
                         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
                             <h1>Create account</h1>
-                            <div class="social-icons">
-                                <a href="">
-                                    <i class="fa-brands fa-google"></i>
-                                </a>
-                                <a href="">
-                                    <i class="fa-brands fa-facebook"></i>
-                                </a>
-                                <a href="">
-                                    <i class="fa-brands fa-github-alt"></i>
-                                </a>
-                            </div>
                             <span>
-                                or use your email for registration
+                                <!-- or use your email for registration -->
                             </span> 
                             <input type="text" name="name" placeholder="Name" required />
                             <input type="email" name="email" placeholder="Email" required />
                             <input type="password" name="password" placeholder="Password" required/>
+                            <span class="error-container">
+                                <?php if(isset($_GET['error'])) echo $_GET['error']; ?>
+                            </span> 
                             <button type="submit" name="signup">Sign Up</button>
                         </form>
                     <?php } else{?>
                         <form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="post">
                             <h1>Create account</h1>
-                            <div class="social-icons">
-                                <a href="">
-                                    <i class="fa-brands fa-google"></i>
-                                </a>
-                                <a href="">
-                                    <i class="fa-brands fa-facebook"></i>
-                                </a>
-                                <a href="">
-                                    <i class="fa-brands fa-github-alt"></i>
-                                </a>
-                            </div>
                             <span>
                                 verify  your account by entering the code sent to your email.
                             </span> 
@@ -86,25 +67,14 @@
                 </div>
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                     <h1>Sign In</h1>
-                    <div class="social-icons">
-                        <a href="">
-                            <i class="fa-brands fa-google"></i>
-                        </a>
-                        <a href="">
-                            <i class="fa-brands fa-facebook"></i>
-                        </a>
-                        <a href="">
-                            <i class="fa-brands fa-github-alt"></i>
-                        </a>
-                    </div>
                     <span>
-                        or use your email paswword
+                        <!-- or use your email paswword -->
                     </span> 
                     <input type="email" name="email" placeholder="Email" required value="<?php if(isset($_SESSION['email'])) echo $_SESSION['email']?>"/>
                     <input type="password" name="password" placeholder="Password" required value="<?php if(isset($_SESSION['password'])) echo $_SESSION['password']?>"/>
-                    <a href="">
-                        forgot your password?
-                    </a>
+                    <span class="error-container">
+                        <?php if(isset($_GET['error'])) echo $_GET['error']; ?>
+                    </span> 
                     <button type="submit" name="signin">Sign In</button>
                 </form>
             </div>

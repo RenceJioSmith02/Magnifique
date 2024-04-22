@@ -114,7 +114,7 @@
     justify-content: space-center;
     align-items: center;
     gap:  20px;
-    padding:  20px 70px;
+    padding:  100px 70px 10PX 70PX;
 }
 .form-container .logo-title img {
     width: 100%;
@@ -131,6 +131,9 @@
 }
 .logo-title .title span {
     font-size: 12px;
+}
+.error-container {
+    color: red;
 }
 
 .container.active .sign-up{

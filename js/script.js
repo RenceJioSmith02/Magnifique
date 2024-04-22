@@ -28,6 +28,14 @@ function verification() {
         console.error("Popup or container element not found.");
     }
 }
+function poploginwithError() {
+    const popUp = document.querySelector('.pop-up.login');
+    if (popUp && container) {
+        popUp.classList.add('active');
+    } else {
+        console.error("Popup or container element not found.");
+    }
+}
 
 
 
