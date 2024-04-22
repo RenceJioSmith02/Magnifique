@@ -133,9 +133,11 @@
                                 </div>
                             </div>
                         </div>
+                        <center>
                             <div class="submit-btn">
                                 <button type="submit" name="sendcontact" id="submit">Submit</button>
                             </div>
+                        </center>
                     </form>
                 </div>
 

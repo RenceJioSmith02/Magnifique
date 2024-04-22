@@ -128,7 +128,7 @@ section {
 
 /* inputs */
 .inputs-container {
-    height: 500px;
+    /* height: 500px; */
     width: 100%;
     gap: 3px;
 
