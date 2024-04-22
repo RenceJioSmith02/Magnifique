@@ -12,6 +12,7 @@
         
         $searchEvent = $_GET['searchEvent'];
 
+        // search for all HAHAHAHA
         $query = "SELECT *
                     FROM booking as b
                     INNER JOIN eventreserve as e ON b.RID = e.RID
@@ -19,7 +20,8 @@
                     INNER JOIN package as p ON b.packageID = p.packageID
                     INNER JOIN accounts as a ON e.accountID = a.accountID
                     INNER JOIN payment as pay ON e.paymentID = pay.paymentID
-                    WHERE a.accountname LIKE '%$searchEvent%'";
+                    WHERE a.accountname LIKE '%$searchEvent%' OR a.email LIKE '%$searchEvent%' OR b.bookingdate LIKE '%$searchEvent%' OR e.customername LIKE '%$searchEvent%' OR e.phonenum LIKE '%$searchEvent%' OR e.eventtype LIKE '%$searchEvent%' OR P.packagename LIKE '%$searchEvent%' OR pay.nameoncard LIKE '%$searchEvent%' OR v.facility LIKE '%$searchEvent%'";
+
         $stmt = $mysqli->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
