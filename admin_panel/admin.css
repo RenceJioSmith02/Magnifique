@@ -458,9 +458,9 @@ section{
   height: 120px;
   border-radius: 50%;
   background: conic-gradient(
-    yellow 0% var(--Pending),
-    green var(--Pending) calc( var(--Approved) + var(--Approved) ),
-    red calc( var(--Declined) + var(--Declined) ) 100%
+    yellow 0% var(--pending),
+    green var(--pending) calc( var(--approved) + var(--approved) ),
+    red calc( var(--declined) + var(--declined) ) 100%
   );
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
 }

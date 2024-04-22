@@ -46,6 +46,7 @@
         $pending = ($pending / $total_catergory) * 100;
         $declined = ($declined / $total_catergory) * 100;
         $approved = ($approved / $total_catergory) * 100;
+        
 
     ?>
 
@@ -107,9 +108,9 @@
             </div>
 
             <div class="chart" 
-            style="--Pending: <?php echo $pending ?>%;
-                    --Approved: <?php echo $pending ?>%;
-                    --Declined: <?php echo $pending ?>%;"
+            style="--pending: <?php echo $pending."%"; ?>; 
+                    --approved: <?php echo $approved."%"; ?>; 
+                    --declined: <?php echo $declined."%"; ?>;"
             >
              <div class="center-circle"></div> 
             </div>

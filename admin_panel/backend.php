@@ -119,7 +119,7 @@
             return $row;
         }
 
-        public function updateSalesChart () {
+        public function updateSalesChart() {
             $stmt =  $this->connection->prepare("SELECT 
                                                 (SELECT COUNT(bookingID) FROM booking WHERE reservationstatus = 'approved') AS approved, 
                                                 (SELECT COUNT(bookingID) FROM booking WHERE reservationstatus = 'declined') AS declined,
