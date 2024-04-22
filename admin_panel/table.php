@@ -1,6 +1,43 @@
 <?php
     session_start();
     require("backend.php");
+
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+
+    //Load Composer's autoloader
+    require '../vendor/autoload.php';
+
+    function Send_notif($name, $email, $message){
+        $mail = new PHPMailer(true);
+
+        $mail->isSMTP();                                                                
+        $mail->SMTPAuth   = true;   
+
+        $mail->Host       = 'smtp.gmail.com'; 
+        $mail->Username   = 'magnifiqueeventsandco@gmail.com';                    
+        $mail->Password   = 'imtyvdctjwkvlisv'; 
+        
+        $mail->SMTPSecure = "tls";            
+        $mail->Port       = 587;
+
+        $mail->setFrom('magnifiqueeventsandco@gmail.com', $name);
+        $mail->addAddress($email);
+
+        $mail->isHTML(true);
+        $mail->Subject = "Magnifique Events & Co.";
+
+        $email_template = $message;
+
+        $mail->Body = $email_template;
+        $mail->send();
+        if($mail) {
+            return true;
+        }else {
+            return false;
+        }
+    }
     
     $connect = new Connect_db();
     $query = new Queries($connect);
@@ -13,9 +50,53 @@
     if (isset($_GET['deleteAcc'])) {
         $query->deleteAccount($_GET['deleteAcc']);
     }
+
+    
     
     if (isset($_GET['UpdateReserveStatus'])) {
-        $query->UpdateReservationStatus($_GET['UpdateReserveStatus']);
+        $accepted = "approved";
+        $statusid = $_GET['UpdateReserveStatus'];
+
+        $row = $query->selectInfo($statusid);
+
+        $name = $row['customername'];
+        $email  = $row['email'];
+        $eventdate = $row['eventdate'];
+        $eventtime = $row['eventtime'];
+        $venue = $row['facility'];
+
+        $message = "Good day $name! your reservation on $eventdate , $eventtime at $venue has been approved. <br>";
+
+        $result = $query->UpdateReservationStatus($accepted,$statusid);
+
+        if ($result) {
+            Send_notif("$name","$email","$message");
+        }else {
+            echo "<script>alert('Error Updating Reservation Status');</script>";
+        }
+    }
+
+    if (isset($_GET['decline'])) {
+        $accepted = "declined";
+        $statusid = $_GET['decline'];
+        
+        $row = $query->selectInfo($statusid);
+
+        $name = $row['customername'];
+        $email  = $row['email'];
+        $eventdate = $row['eventdate'];
+        $eventtime = $row['eventtime'];
+        $venue = $row['facility'];
+
+        $message = "Good day $name! your reservation on $eventdate , $eventtime at $venue has been declined. <br> ";
+
+        $result = $query->UpdateReservationStatus($accepted,$statusid);
+
+        if ($result) {
+            Send_notif("$name","$email","$message");
+        }else {
+            echo "<script>alert('Error Updating Reservation Status');</script>";
+        }
     }
     
     // query

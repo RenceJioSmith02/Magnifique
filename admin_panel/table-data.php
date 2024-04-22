@@ -72,7 +72,7 @@
                         <td><?php echo $row['paymentstatus'] ?></td>
                         <td>
                             <a href="table.php?table=Reservation&UpdateReserveStatus=<?php echo $row['bookingID'] ?>">accept</a>
-                            <a href="table.php?deleteid=<?php echo $row['accountID'] ?>" onclick="return confirm('Are you sure you want to delete this product?')">decline</a>
+                            <a href="table.php?table=Reservation&decline=<?php echo $row['bookingID'] ?>" onclick="return confirm('Are you sure you want to decline this reservation?')">decline</a>
                         </td>
                     </tr>
 

@@ -97,10 +97,26 @@
             $stmt_delete->bind_param("i", $accountID);
             $stmt_delete->execute();
         }
-        public function UpdateReservationStatus($bookingID) {
-            $stmt_delete = $this->connection->prepare("UPDATE `booking` SET `reservationstatus`='Approved' WHERE bookingID = ?");
-            $stmt_delete->bind_param("i", $bookingID);
-            $stmt_delete->execute();
+        public function UpdateReservationStatus($status,$bookingID) {
+            $stmt_delete = $this->connection->prepare("UPDATE `booking` SET `reservationstatus`= ? WHERE bookingID = ?");
+            $stmt_delete->bind_param("si", $status, $bookingID);
+            $result =  $stmt_delete->execute();
+
+            return  $result;
+        }
+        
+        public function selectInfo($bookingID) {
+            $stmt_select = $this->connection->prepare("SELECT a.email, e.customername, e.eventdate, e.eventtime, v.facility FROM `booking` AS b
+                                                            INNER JOIN eventreserve AS e ON b.RID = e.RID 
+                                                            INNER JOIN venue AS v ON b.venueID = v.venueID 
+                                                            INNER JOIN accounts AS a ON e.accountID = a.accountID 
+                                                            WHERE b.bookingID = ?");
+                                                        
+            $stmt_select->bind_param("i", $bookingID);
+            $stmt_select->execute();
+            $row = $stmt_select->get_result()-> fetch_assoc();
+
+            return $row;
         }
         
     }
