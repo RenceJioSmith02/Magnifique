@@ -220,7 +220,11 @@
 .sidebar.close .profile-details .job{
   display: none;
 }
- 
+
+.sidebar .profile-details button {
+  background: none;
+  border: none;
+}
 
 /* .section-panel{ */
 section{

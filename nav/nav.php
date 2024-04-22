@@ -126,6 +126,9 @@
 
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/pop.css">
+    
+    <!-- ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- Include SweetAlert2 CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
@@ -220,7 +223,8 @@
         </nav>
 
         <?php
-            // $result = $query->selectreservation();
+            if (isset($_SESSION['UID'])) {
+                $result = $query->selectALLreservation($_SESSION['UID']);
         ?>
 
         <div id="popup-reservation" class="popup-reservation">
@@ -228,41 +232,42 @@
             <center><h2>reservations</h2></center>
 
             <ul class="reservation-container">
-            <?php //while ($row = mysqli_fetch_assoc($result)) { ?>
+                <?php 
+                $count = 0;
+                while ($row = mysqli_fetch_assoc($result)) { ?>
 
-                <li class="reservation-list">
-                    <div class="o-image">
-                    <img src="<?php //echo $row['Pimage']; ?>" alt="">
-                    <p class="product-name"><?php //echo $row['Pname']; ?></p>
-                    </div>
-                    <div class="price">
-                    <p>&#8369;<?php //echo $row['Pprice']; ?></p>
-                    </div>
-                    <div class="quantity">
-                    <span><?php //echo $row['quantity']; ?></span>
-                    </div>
+                    <a href="#" class="more-info-trigger" data-rid="<?php echo $row['RID']; ?>">
+                        <li class="reservation-list">
+                            <ul class="list-info-container">
+                                <li><?php echo ++$count; ?></li>
+                                <li><?php echo $row['customername'];?></li>
+                                <li><?php echo $row['packagename'];?></li>
+                                <li><?php echo $row['bookingdate'];?></li>
+                                <li>
+                                <?php
+                                    if (isset($row['reservationstatus']) && $row['reservationstatus'] == 'pending') {
+                                        echo "pending";
+                                    } else {
+                                        echo "Approved";
+                                    }
+                                ?>
+                                </li>
+                            </ul>
+                        </li>
+                    </a>
 
-                    <?php
-                        //if (isset($row['status']) && $row['status'] == 'pending') {
-                        //echo "<span>Pending</span>";
-                        //} else {
-                    ?>
-                        <button class="received-btn" onclick="location.href='<?php //echo $_SERVER['PHP_SELF'] . '?reservationRecieved=' . $row['reservationID'] ?>'">Received</button>
-                <?php //} ?>
-                </li>
-
-            <?php //} ?>
+                <?php } ?>
             </ul>
-
             <div class="reservation-close">
-            <button onclick="closePopup()">Close</button>
+                <button onclick="closePopup()">Close</button>
             </div>
-
         </div>
 
-        <div id="overlay" class="overlay"></div>
-    </header>
+        <?php } ?>
 
+        <div id="overlay" class="overlay"></div>
+
+    </header>
 
     <script>
         function openSearch(open) {
@@ -304,7 +309,7 @@
         }
     </script>
 
-    <script>
+    <script>        
         const sidebar = document.querySelector('.sidebar');
         const toggleBtn = document.querySelector('.toggle-btn');
 

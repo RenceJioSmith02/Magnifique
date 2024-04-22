@@ -448,29 +448,6 @@
     transition: var(--transition-1);
   }
   
-  .reservation-list .product-name {
-    width: 60px; 
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
-  }
-  .reservation-list .o-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  
-    height: fit-content;
-    width: 70px;
-    padding: 2px;
-    border-radius: 4px;
-    background: rgba(255,255,255,0.2);
-  }
-  .reservation-list .o-image img {
-    height: 70px;
-    width: 55px;
-  }
-  
   .reservation-container button {
     padding: 4px 9px;
     border-radius: 4px;
@@ -486,7 +463,12 @@
   }
   .reservation-container button:active {
     transform: scale(0.9);
-  } 
+  }
+  .reservation-container a{
+    text-decoration: none;
+    list-style-type: none;
+    color: white;
+  }
   
   
   .overlay {
@@ -503,3 +485,19 @@
     display: inline-block;
     margin-right: 10px;
   }
+
+
+  .list-info-container {
+    display:  flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+  }
+  .list-info-container li {
+    flex: 1;
+    height: 30px;
+    text-align: center;
+    align-content: center;
+  }
+  

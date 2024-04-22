@@ -112,13 +112,13 @@
         // }
 
         // public function selectAll($tablename,$id) {
-        //     $query="SELECT * FROM ".$tablename." WHERE productID=?";
-        //     $stmt =  $this->connection->prepare($query);
-        //     $stmt->bind_param('i',$id);
-        //     $stmt->execute();
-        //     $results = $stmt->get_result();
+            // $query="SELECT * FROM ".$tablename." WHERE productID=?";
+            // $stmt =  $this->connection->prepare($query);
+            // $stmt->bind_param('i',$id);
+            // $stmt->execute();
+            // $results = $stmt->get_result();
 
-        //     return $results;
+            // return $results;
         // }
 
         // public function printUpdateproducts($id){
@@ -139,6 +139,35 @@
         
         //     return $row['Pimage'];
         // }
+
+        public function selectALLreservation($accountID) {
+            $query="SELECT e.RID, e.accountID, e.customername, p.packagename, e.eventdate, e.eventtime, v.facility, b.bookingdate, b.reservationstatus
+            FROM booking as b
+            INNER JOIN eventreserve as e ON b.RID = e.RID
+            INNER JOIN package as p ON b.packageID = p.packageID
+            INNER JOIN venue as v ON b.venueID = v.venueID
+            WHERE e.accountID = ?";
+            $stmt =  $this->connection->prepare($query);
+            $stmt->bind_param('i',$accountID);
+            $stmt->execute();
+            $results = $stmt->get_result();
+
+            return $results;
+        }
+        public function selectONEreservation($RID) {
+            $query="SELECT e.RID, e.accountID, e.customername, p.packagename, e.eventdate, e.eventtime, v.facility, b.bookingdate, b.reservationstatus
+            FROM booking as b
+            INNER JOIN eventreserve as e ON b.RID = e.RID
+            INNER JOIN package as p ON b.packageID = p.packageID
+            INNER JOIN venue as v ON b.venueID = v.venueID
+            WHERE e.RID = ?";
+            $stmt =  $this->connection->prepare($query);
+            $stmt->bind_param('i',$RID);
+            $stmt->execute();
+            $results = $stmt->get_result();
+
+            return $results;
+        }
         
         
         public function checkDate($venue,$eventdate){

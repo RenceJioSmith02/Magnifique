@@ -110,5 +110,27 @@
 
 
 
+  <script>
+      function logout() {
+        Swal.fire({
+              title: 'Are you sure?',
+              text: "You will be logged out!",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Yes, logout!'
+  
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location.href='<?php echo "../index.php?logout=true";?>';
+                //alert("Logout successful!"); // For demonstration, you can replace this with actual logout action
+              }
+        })
+      }
+  </script>
+
+
+
 </body>
 </html>

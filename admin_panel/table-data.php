@@ -21,7 +21,6 @@
                     INNER JOIN payment as pay ON e.paymentID = pay.paymentID
                     WHERE a.accountname LIKE '%$searchEvent%'";
         $stmt = $mysqli->prepare($query);
-        // $stmt->bind_param("s", $searchEvent);
         $stmt->execute();
         $result = $stmt->get_result();
     } else {
