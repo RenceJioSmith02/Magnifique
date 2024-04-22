@@ -199,7 +199,7 @@
                                     <th>Package</th>
                                     <th>Price</th>
                                     <th>Payment Status</th>
-                                    <th>Action</th>
+                                    <th>Reservation Status</th>
                                 </tr>
                             </thead>
                         <?php } elseif (isset($_GET['table']) && $_GET['table'] == 'Users') { ?>
