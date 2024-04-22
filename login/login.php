@@ -100,8 +100,8 @@
                     <span>
                         or use your email paswword
                     </span> 
-                    <input type="email" name="email" placeholder="Email" required />
-                    <input type="password" name="password" placeholder="Password" required/>
+                    <input type="email" name="email" placeholder="Email" required value="<?php if(isset($_SESSION['email'])) echo $_SESSION['email']?>"/>
+                    <input type="password" name="password" placeholder="Password" required value="<?php if(isset($_SESSION['password'])) echo $_SESSION['password']?>"/>
                     <a href="">
                         forgot your password?
                     </a>
