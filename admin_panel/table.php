@@ -49,9 +49,8 @@
     // sessions
     if (isset($_GET['deleteAcc'])) {
         $query->deleteAccount($_GET['deleteAcc']);
+        Queries::swal2('Account Deleted Successfully!', 'Success!' ,'success');
     }
-
-    
     
     if (isset($_GET['UpdateReserveStatus'])) {
         $accepted = "approved";
@@ -71,8 +70,10 @@
 
         if ($result) {
             Send_notif("$name","$email","$message");
+            Queries::swal2('Reservation has been Approved!', 'Success!' ,'success');
         }else {
-            echo "<script>alert('Error Updating Reservation Status');</script>";
+            // echo "<script>alert('Error Updating Reservation Status');</script>";
+            Queries::swal2('Error While Updating Reservation Status!', 'Oops!' ,'error');
         }
     }
 
@@ -94,8 +95,10 @@
 
         if ($result) {
             Send_notif("$name","$email","$message");
+            Queries::swal2('Reservation has been declined!', 'Oops!' ,'error');
         }else {
-            echo "<script>alert('Error Updating Reservation Status');</script>";
+            // echo "<script>alert('Error Updating Reservation Status');</script>";
+            Queries::swal2('Error While Updating Reservation Status!', 'Oops!' ,'error');
         }
     }
     

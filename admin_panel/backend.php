@@ -130,6 +130,20 @@
             return $result;
         }
 
+        public static function swal2($Message, $title, $icon) {
+            // Escape single quotes in the message
+            $escapedMessage = addslashes($Message);
+            echo "
+                <script>
+                    Swal.fire({
+                        icon: '$icon',
+                        title: '$title',
+                        text: '$escapedMessage'
+                    });
+                </script>       
+            ";
+        }
+
         
     }
 

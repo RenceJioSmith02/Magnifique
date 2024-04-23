@@ -68,14 +68,17 @@
         }
 
         if ($query->checkDate($venue, $eventdate) ) {
-            echo '<script>alert("Venue already reserved on that day");</script>';
+            // echo '<script>alert("Venue already reserved on that day");</script>';
+            Queries::swal2('Venue already reserved on that day', 'Oops!', 'error');
         }else {
             $query_insert = new Reservation($connect, $name, $phonenum, $package, $eventdate, $eventtime, $venue, $numofguest, $description, $cardname, $cardtype, $cardnumber, $paymenttype, $amount, $dateofpayment, $eventtype);
 
             if ($query_insert->insertReserve($accountID)) {
-                echo '<script>alert("Event Reservation  Successful!");</script>';
+                // echo '<script>alert("Event Reservation  Successful!");</script>';
+                Queries::swal2('Event Reservation  Successful!', 'Success!', 'success');
             }else {
-                echo '<script>alert("Event Reservation  Failed!");</script>';
+                // echo '<script>alert("Event Reservation  Failed!");</script>';
+                Queries::swal2('Event Reservation  Failed!', 'Oops!' ,'error');
             }
         }
     }
