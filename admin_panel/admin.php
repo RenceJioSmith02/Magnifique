@@ -13,28 +13,28 @@
           header("Location: ../index.php");
         }
 
-        // $query = new Queries($connect);
+        $query = new Queries($connect);
 
-        // $limit = 5;
+        $limit = 10;
 
-        // $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
+        $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
 
-        // $start = ($page - 1) * $limit;
+        $start = ($page - 1) * $limit;
 
-        // $tablename = "event";
-        // $tabletoUse_inQuery  = "eventreserve";
+        $tablename = "event";
+        $tabletoUse_inQuery  = "eventreserve";
 
-        // $result = $query->Print($start, $limit, $tablename);
-        // $rows = $result;
+        $result = $query->Printing($start, $limit, $tablename);
+        $rows = $result;
 
-        // $totalRows = $query->getTotalRows($tabletoUse_inQuery);
-        // $totalPages = ceil($totalRows / $limit);
+        $totalRows = $query->getTotalRows($tabletoUse_inQuery);
+        $totalPages = ceil($totalRows / $limit);
 
-        // $prev = $page - 1;
-        // $next = $page + 1;
+        $prev = $page - 1;
+        $next = $page + 1;
 
-        // $count = 0;
-        // $count += ($page - 1) * 5;
+        $count = 0;
+        $count += ($page - 1) * 10;
 
         $result = $query->updateSalesChart();
         $pending = $result['pending'];
@@ -46,7 +46,6 @@
         $pending = ($pending / $total_catergory) * 100;
         $declined = ($declined / $total_catergory) * 100;
         $approved = ($approved / $total_catergory) * 100;
-        
 
     ?>
 
@@ -182,10 +181,27 @@
                   </tbody>
               </table>
               
-            </div>
-  
-      </main>
+        </div>
+          <div class="pagination" style="top: 0%">
+                      <?php if ($prev !== null): ?>
+                          <a href="?page=<?php echo $prev; ?>">Previous</a>
+                      <?php endif; ?>
+                      
+                      <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                          <a <?php if ($i == $page) echo 'class="active"'; ?> href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                      <?php endfor; ?>
+
+                      <?php if ($next !== null): ?>
+                          <a href="?page=<?php echo $next; ?>">Next</a>
+                      <?php endif; ?>
+                  </div>
+              </div>        
+              
       </div>
+
+      </main>
+                    
+      
 
     </div>
   </section>

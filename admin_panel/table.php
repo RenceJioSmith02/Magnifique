@@ -101,39 +101,51 @@
             Queries::swal2('Error While Updating Reservation Status!', 'Oops!' ,'error');
         }
     }
-    
-    // query
 
-    // $limit = 5;
+    $limit = 5;
 
-    // $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
+    $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
 
-    // $start = ($page - 1) * $limit;
+    $start = ($page - 1) * $limit;
 
-    // // $tablename = "products";
-    // // $tabletoUse_inQuery = "PID";
+    // $tablename = "products";
+    // $tabletoUse_inQuery = "PID";
 
-    // if (isset($_GET['table']) && $_GET['table'] == 'Reservation') {
-    //     $tablename = "Reservation";
-    //     $tabletoUse_inQuery = "eventreserve";
-    // } elseif (isset($_GET['table']) && $_GET['table'] == 'Users') {
-    //     $tablename = "accounts";
-    //     $tabletoUse_inQuery = "accounts";
-    // }
+    if (isset($_GET['table']) && $_GET['table'] == 'Reservation') {
+        $tablename = "booking";
+        $tabletoUse_inQuery = "eventreserve";
+    } elseif (isset($_GET['table']) && $_GET['table'] == 'Users') {
+        $tablename = "accounts";
+        $tabletoUse_inQuery = "accounts";
+    }
         
-    // if (isset($_GET['table']) || isset($_GET['page'])) {
-    //     $result = $query->Print($start, $limit, $tablename);
-    //     $rows = $result;
-    // }
-    
-    // $totalRows = $query->getTotalRows($tabletoUse_inQuery);
-    // $totalPages = ceil($totalRows / $limit);
-    
-    // $prev = $page > 1 ? $page - 1 : null;
-    // $next = $page < $totalPages ? $page + 1 : null;
+    if (isset($_GET['table']) || isset($_GET['page'])) {
+        switch ($tablename) {
+            case 'booking':
+                $result = $query->Printing($start, $limit, $tablename);
+                $rows = $result;
+                break;
 
-    // $count = 0;
-    // $count = ($page - 1) * $limit + 1;
+            case 'accounts':
+                $result = $query->Printing2($start, $limit, $tablename);
+                $rows = $result;
+                break;
+            
+            default:
+                
+                break;
+        }
+        
+    }
+    
+    $totalRows = $query->getTotalRows($tabletoUse_inQuery);
+    $totalPages = ceil($totalRows / $limit);
+    
+    $prev = $page > 1 ? $page - 1 : null;
+    $next = $page < $totalPages ? $page + 1 : null;
+
+    $count = 0;
+    $count = ($page - 1) * $limit + 1;
 
 ?>
 
@@ -237,27 +249,30 @@
                         <?php } ?>
                             
                     </table>
+                        
                     
                     
                     </div>
+                    <div class="pagination" style="top: 40%">
+                            <?php if ($prev !== null): ?>
+                                <a href="?page=<?php echo $prev; ?>">Previous</a>
+                            <?php endif; ?>
+                            
+                            <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+                                <a <?php if ($i == $page) echo 'class="active"'; ?> href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                            <?php endfor; ?>
+
+                            <?php if ($next !== null): ?>
+                                <a href="?page=<?php echo $next; ?>">Next</a>
+                            <?php endif; ?>
+                        </div>
                 </main>
+
             </div>
             
-<!--             
-            <div class="pagination">
-                    <?php if ($prev !== null): ?>
-                        <a href="?page=<?php echo $prev; ?>">Previous</a>
-                    <?php endif; ?>
-                    
-                    <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                        <a <?php if ($i == $page) echo 'class="active"'; ?> href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
-                    <?php endfor; ?>
-
-                    <?php if ($next !== null): ?>
-                        <a href="?page=<?php echo $next; ?>">Next</a>
-                    <?php endif; ?>
-                </div>
-            </div>         -->
+            
+            
+            </div>        
     </section>
 
 
