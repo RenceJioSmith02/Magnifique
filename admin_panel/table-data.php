@@ -43,8 +43,8 @@
                 <?php if ($tablename == 'Event') {?>
                     <tr>
                         <td><?php echo ++$count ?></td>
-                        <td><?php echo $row['accountID'] ?></td>
                         <td><?php echo $row['accountname'] ?></td>
+                        <td><?php echo $row['customername'] ?></td>
                         <td><?php echo $row['phonenum'] ?></td>
                         <td><?php echo $row['eventtype'] ?></td>
                         <td><?php echo $row['eventdate'] ?></td>
@@ -58,8 +58,8 @@
 
                     <tr>
                         <td><?php echo ++$count ?></td>
-                        <td><?php echo $row['accountID'] ?></td>
-                        <td><?php echo $row['accountname'] ?></td>
+                        <<td><?php echo $row['accountname'] ?></td>
+                        <td><?php echo $row['customername'] ?></td> 
                         <td><?php echo $row['phonenum'] ?></td>
                         <td><?php echo $row['eventtype'] ?></td>
                         <td><?php echo $row['eventdate'] ?></td>
@@ -71,10 +71,10 @@
                         <td><?php echo $row['paymentstatus'] ?></td>
                         <td>
                             <?php if ($row['reservationstatus'] == 'pending') {?>
-                                    <a href="table.php?table=Reservation&UpdateReserveStatus=<?php echo $row['bookingID'] ?>">accept</a>
-                                    <a href="table.php?table=Reservation&decline=<?php echo $row['bookingID'] ?>" onclick="return confirm('Are you sure you want to decline this reservation?')">decline</a>
+                                <a href="table.php?table=Reservation&UpdateReserveStatus=<?php echo $row['bookingID'] ?>">accept</a>
+                                <a href="table.php?table=Reservation&decline=<?php echo $row['bookingID'] ?>" onclick="return confirm('Are you sure you want to decline this reservation?')">decline</a>
                             <?php } else {
-                                    echo $row['reservationstatus'];
+                                echo $row['reservationstatus'];
                                 }
                             ?>
                         </td>

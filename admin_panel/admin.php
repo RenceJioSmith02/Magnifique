@@ -182,7 +182,7 @@
               </table>
               
         </div>
-          <div class="pagination" style="top: 0%">
+              <div class="pagination" style="top: 0%">
                       <?php if ($prev !== null): ?>
                           <a href="?page=<?php echo $prev; ?>">Previous</a>
                       <?php endif; ?>

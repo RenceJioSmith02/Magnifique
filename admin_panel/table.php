@@ -102,7 +102,7 @@
         }
     }
 
-    $limit = 5;
+    $limit = 10;
 
     $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
 
@@ -125,27 +125,24 @@
                 $result = $query->Printing($start, $limit, $tablename);
                 $rows = $result;
                 break;
-
             case 'accounts':
                 $result = $query->Printing2($start, $limit, $tablename);
                 $rows = $result;
                 break;
-            
             default:
-                
                 break;
         }
-        
+                
     }
     
     $totalRows = $query->getTotalRows($tabletoUse_inQuery);
     $totalPages = ceil($totalRows / $limit);
     
-    $prev = $page > 1 ? $page - 1 : null;
-    $next = $page < $totalPages ? $page + 1 : null;
+    $prev = $page - 1;
+    $next = $page + 1;
 
     $count = 0;
-    $count = ($page - 1) * $limit + 1;
+    $count += ($page - 1) * 10;
 
 ?>
 
@@ -249,25 +246,24 @@
                         <?php } ?>
                             
                     </table>
+                </div>
                         
-                    
-                    
-                    </div>
                     <div class="pagination" style="top: 40%">
                             <?php if ($prev !== null): ?>
-                                <a href="?page=<?php echo $prev; ?>">Previous</a>
+                                <a href="?page=<?php echo $prev; ?>&table=<?php echo $_GET['table'] ?>">Previous</a>
                             <?php endif; ?>
                             
                             <?php for ($i = 1; $i <= $totalPages; $i++): ?>
-                                <a <?php if ($i == $page) echo 'class="active"'; ?> href="?page=<?php echo $i; ?>"><?php echo $i; ?></a>
+                                <a <?php if ($i == $page) echo 'class="active"'; ?> href="?page=<?php echo $i; ?>  "><?php echo $i; ?></a>
                             <?php endfor; ?>
 
                             <?php if ($next !== null): ?>
-                                <a href="?page=<?php echo $next; ?>">Next</a>
+                                <a href="?page=<?php echo $next; ?>&table=<?php echo $_GET['table'] ?>">Next</a>
                             <?php endif; ?>
                         </div>
+                    
+                    </div>
                 </main>
-
             </div>
             
             

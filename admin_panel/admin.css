@@ -573,6 +573,7 @@ thead th{
   top: 0;
   left: 0;
   background-color: #d5d1defe;
+  z-index: 10;
 }
 tbody tr:nth-child(even){
   background-color: #0000000b;
@@ -634,10 +635,10 @@ td ion-icon {
 /* pagination */
 .pagination {
   display: inline-block;
-  position: fixed;
+  /* position: fixed;
   bottom: 5px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%); */
 }
 .pagination a {
   color: #222;

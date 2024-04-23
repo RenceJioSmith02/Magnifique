@@ -794,7 +794,7 @@
                         </ul>
                     </div>
 
-                </div><br>s
+                </div><br>
                 <h3 style="text-align: right;">Total price: 100,000</h3>
             </div>
             
