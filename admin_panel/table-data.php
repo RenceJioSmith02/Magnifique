@@ -11,8 +11,7 @@
     if (isset($_GET['searchEvent'])) {
         
         $searchEvent = $_GET['searchEvent'];
-
-        // search for all HAHAHAHA
+        
         $query = "SELECT *
                     FROM booking as b
                     INNER JOIN eventreserve as e ON b.RID = e.RID

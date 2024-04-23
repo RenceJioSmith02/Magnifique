@@ -41,6 +41,33 @@
             return $row["total"];
         }
 
+        public function printing($start, $limit, $tablename){
+            $stmt = $this->connection->prepare("SELECT *
+                                                FROM booking as b
+                                                INNER JOIN eventreserve as e ON b.RID = e.RID
+                                                INNER JOIN venue as v ON b.venueID = v.venueID
+                                                INNER JOIN package as p ON b.packageID = p.packageID
+                                                INNER JOIN accounts as a ON e.accountID = a.accountID
+                                                INNER JOIN payment as pay ON e.paymentID = pay.paymentID
+                                                ORDER BY b.bookingID ASC LIMIT ? , ?");
+            $stmt->bind_param('ii',$start, $limit);
+            $stmt->execute();
+            $row = $stmt->get_result();
+            
+            return $row;
+        } 
+
+        public function printing2($start, $limit, $tablename){
+            $stmt = $this->connection->prepare("SELECT *
+                                                FROM accounts 
+                                                ORDER BY accountID ASC LIMIT ? , ?");
+            $stmt->bind_param('ii',$start, $limit);
+            $stmt->execute();
+            $row = $stmt->get_result();
+            
+            return $row;
+        } 
+
         public function selectALLreservation($accountID) {
             $query="SELECT e.RID, e.accountID, e.customername, p.packagename, e.eventdate, e.eventtime, v.facility, b.bookingdate, b.reservationstatus
             FROM booking as b
