@@ -202,9 +202,15 @@
                     </div>
                 </div>
                 
-                <div class="reserveBTN-container">
-                    <button class="reservation-btn" onclick="openModal('reserve')">Reserve Now!</button>
-                </div>
+                        <?php if (isset($_SESSION['UID'])) { ?>
+                            <div class="reserveBTN-container">
+                                <button class="reservation-btn" onclick="openModal('reserve')">Reserve Now!</button>
+                            </div>
+                        <?php } else {?>
+                            <div class="reserveBTN-container">
+                                <button class="reservation-btn" onclick="poplogin()">Reserve Now!</button>
+                            </div>
+                        <?php } ?>
             </div>
         </section>
 
@@ -215,9 +221,11 @@
                 <div class="package-container">
 
                 <div class="package-title">
-                    <h2>UNIFYING LOVE: Wedding Package SET  w/ Ceremony</h2>
+                    <h2>UNIFYING LOVE: Wedding Package SET  w/ Ceremony </h2><br><br>
+                    
                     
                     </div>
+                    
                     <div class="pack">
                     <br>
                         <h3>Venue</h3>
@@ -419,12 +427,13 @@
                     </div>
 
                 </div>
-
+                <h3 style="text-align: right;">Total price: 300,000</h3>
                 
                 <div class="package-container">
                     <br>
                     <div class="package-title">
-                        <h2>UNIFYING LOVE: Wedding Package SET  w/o Ceremony</h2>
+                        <h2>UNIFYING LOVE: Wedding Package SET  w/o Ceremony</h2><br>
+                    
                     </div>
                     <div class="pack">
                         <br>
@@ -522,12 +531,12 @@
                             </li>
                         </ul>
                     </div>
-
+</div><h3 style="text-align: right;">Total price: 200,000</h3>
                 </div>
 
-            </div>
+            
         </div>
-
+        
         <!-- Modal 2: EternalBliss Modal -->
         <div id="EternalBliss" class="modal">
             <div class="modal-content">
@@ -536,7 +545,8 @@
                 <div class="package-container">
 
                     <div class="package-title">
-                        <h2>ETERNAL BLISS: Anniversary Package (Couples only)</h2>
+                        <h2>ETERNAL BLISS: Anniversary Package (Couples only)</h2><br>
+                        
                     </div>
 
                     <div class="pack">
@@ -583,14 +593,16 @@
                             <li>Complimentary anniversary gift from the venue</li>
                             <li>Special discounts or offers for future visits</li>
                         </ul>
+                        <br><h3 style="text-align: right;">Total price: 150,000</h3>
                     </div>
-
+                    
                 </div>
                 <div class="package-container">
 
                     <div class="package-title">
                         
-                        <h2>ETERNAL BLISS: Anniversary Package w/ Guests</h2>
+                        <h2>ETERNAL BLISS: Anniversary Package w/ Guests</h2><br>
+                        
                     </div>
 
                     <div class="pack">
@@ -632,6 +644,7 @@
                             <li>12 x 18 Photo in Frame</li>
                             <li>16gb Wooden USB Flash Drive</li>
                         </ul>
+                        
                     </div>
 
                     </div>
@@ -688,7 +701,7 @@
                         </ul>
                     </div>
                 </div>
-
+                <h3 style="text-align: right;">Total price: 200,000</h3>
             </div>
         </div>
 
@@ -700,7 +713,8 @@
                 <div class="package-container">
 
                     <div class="package-title">
-                        <h2>Azure Skies: Birthday Package</h2>
+                        <h2>Azure Skies: Birthday Package</h2><br>
+                        
                     </div>
 
                     <div class="pack">
@@ -745,10 +759,10 @@
                             <li>Magician or Clown to entertain the kids</li>
                         </ul>
                     </div>
-
+                          
 
                 </div>
-                
+                <h3 style="text-align: right;">Total price: 150,000</h3>
             </div>
         </div>
 
@@ -760,7 +774,9 @@
                 <div class="package-container">
 
                     <div class="package-title">
-                        <h2>Venue Rental Only</h2>
+                        <h2>Venue Rental Only</h2><br>
+                        
+
                     </div>
 
                     <div class="pack-last">
@@ -778,8 +794,8 @@
                         </ul>
                     </div>
 
-                </div>
-
+                </div><br>s
+                <h3 style="text-align: right;">Total price: 100,000</h3>
             </div>
             
         </div>
@@ -931,10 +947,12 @@
                             </div>
 
                         </div>
-                                                        <!-- reserve-btn -->
-                                                        <div class="inputBox">
+                                <!-- reserve-btn -->
+                                <div class="inputBox">
                                     <div class="reserveBTN-container" style="padding-top: 20px">
+                                    <?php if (isset($_SESSION['UID'])) {?>
                                         <button  class="reservation-btn" type="submit" name="reserve" onclick="return confirmreserve();">Reserve</button>
+                                    <?php } ?>
                                     </div>
                                 </div>
                         

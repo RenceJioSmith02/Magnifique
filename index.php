@@ -101,7 +101,7 @@
                     </div>
 
                     <div class="images">
-                        <center><h3>Why Celerate with MAGNIFIQUE?</h3></center>
+                        <center><h3>Why Celebrate with MAGNIFIQUE?</h3></center>
                         <div class="content">
                             <img src="img/home/1.png" alt="">
                             <div class="text">

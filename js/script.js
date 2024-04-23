@@ -36,6 +36,15 @@ function poploginwithError() {
         console.error("Popup or container element not found.");
     }
 }
+function poplogin() {
+    const popUp = document.querySelector('.pop-up.login');
+    if (popUp) {
+        popUp.classList.add('active');
+    } else {
+        console.error("Popup or container element not found.");
+    }
+}
+
 
 
 

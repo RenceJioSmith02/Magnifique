@@ -21,7 +21,7 @@
         $mail->SMTPSecure = "tls";            
         $mail->Port       = 587;
 
-        $mail->setFrom('magnifiqueeventsandco@gmail.com', $name);
+        $mail->setFrom('magnifiqueeventsandco@gmail.com', 'Magnifique Events and Co');
         $mail->addAddress($email);
 
         $mail->isHTML(true);
@@ -232,7 +232,7 @@
 
         <div id="popup-reservation" class="popup-reservation">
 
-            <center><h2>reservations</h2></center>
+            <center><h2>Reservations</h2></center>
 
             <ul class="reservation-container">
                 <?php 
@@ -241,10 +241,10 @@
 
                     <a href="#" class="more-info-trigger" data-rid="<?php echo $row['RID']; ?>">
                         <li class="reservation-list">
-                            <ul class="list-info-container">
+                            <ul class="list-info-container" style="font-size: 12px;">
                                 <li><?php echo ++$count; ?></li>
                                 <li><?php echo $row['customername'];?></li>
-                                <li><?php echo $row['packagename'];?></li>
+                                <li style="font-size: 11px;"><?php echo $row['packagename'];?></li>
                                 <li><?php echo $row['bookingdate'];?></li>
                                 <li>
                                 <?php
